@@ -1,0 +1,30 @@
+name: Deploy
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Copy repository contents via scp
+        uses: appleboy/scp-action@master
+        with:
+          HOST: ${{ secrets.SSH_RC_HOST }}
+          USERNAME: ${{ secrets.SSH_RC_USERNAME }}
+          PORT: ${{ secrets.SSH_RC_PORT }}
+          KEY: ${{ secrets.SSH_RC_KEY }}
+          source: "."
+          target: "/usr/share/nginx/html/referencecollection"
+
+      - name: Executing remote command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_RC_HOST }}
+          USERNAME: ${{ secrets.SSH_RC_USERNAME }}
+          PORT: ${{ secrets.SSH_RC_PORT }}
+          KEY: ${{ secrets.SSH_RC_KEY }}
+          script: ls
