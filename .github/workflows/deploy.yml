@@ -18,7 +18,7 @@ jobs:
           PORT: ${{ secrets.SSH_RC_PORT }}
           KEY: ${{ secrets.SSH_RC_KEY }}
           source: "."
-          target: "/usr/share/nginx/html/referencecollection"
+          target: "/usr/share/nginx/html/referencecollection.com"
 
       - name: Executing remote command
         uses: appleboy/ssh-action@master
