@@ -25,6 +25,13 @@ if (scheme !== undefined && scheme !== null) {
 function changeAppearance() {
     const mode = darkModeMediaQuery.matches ? "dark" : "light";
     document.documentElement.setAttribute("app-appearance", mode);
+    if (mode === "dark" && dark_theme && light_theme) {
+        dark_theme.removeAttribute('disabled');
+        light_theme.setAttribute('disabled', 'true');
+    } else if (dark_theme && light_theme) {
+        light_theme.removeAttribute('disabled');
+        dark_theme.setAttribute('disabled', 'true');
+    }
 }
 
 /* NAVIGATION */

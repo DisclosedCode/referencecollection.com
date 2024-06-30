@@ -391,7 +391,8 @@ body {
 
 .hero_content h1 {
     line-height: 2.45rem;
-    font-size: 1.75rem;
+    font-size: 1.50rem;
+    font-weight: 500;
 }
 
 .hero_content h1:nth-child(1) {
