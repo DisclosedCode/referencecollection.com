@@ -38,7 +38,7 @@ fetch('/website/buttons.html')
     }).finally(
     t => {
         const code_block = document.getElementById('code_block');
-        const filename = url.match(/\/([^\/]+)\.html$/);
+        const filename = window.location.href.match(/\/([^\/]+)\.html$/);
 
         function HighlightCodeBlock(url) {
             fetch(url)
