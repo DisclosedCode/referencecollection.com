@@ -7,8 +7,8 @@ fetch('/website/buttons.html')
         const
             text = "Reference Codebook: \n",
             url = window.location.href,
-            language = header_buttons.dataset.value,
-            extension = header_buttons.dataset.ext;
+            title = "Title";
+        const filename = url.match(/\/([^\/]+)\.html$/);
 
         const
             copy_link = document.getElementById("copy_link"),
@@ -19,11 +19,11 @@ fetch('/website/buttons.html')
             linkedin_share = document.getElementById("linkedin_share"),
             y_share = document.getElementById("y_share");
 
-        twitter_share.href = "https://twitter.com/intent/tweet?text=" + language + " " + text + "&url=" + url;
-        facebook_share.href = "https://www.facebook.com/sharer/sharer.php?quote=" + language + " " + text + "&u=" + url;
-        y_share.href = "https://news.ycombinator.com/submitlink?t=" + language + " " + text + "&u=" + url;
-        reddit_share.href = "https://www.reddit.com/submit?title=" + language + " " + text + "&u=" + url;
-        linkedin_share.href = "https://www.linkedin.com/shareArticle?mini=true&url=" + url + "&title=" + language + " " + text;
+        twitter_share.href = "https://twitter.com/intent/tweet?text=" + title + " " + text + "&url=" + url;
+        facebook_share.href = "https://www.facebook.com/sharer/sharer.php?quote=" + title + " " + text + "&u=" + url;
+        y_share.href = "https://news.ycombinator.com/submitlink?t=" + title + " " + text + "&u=" + url;
+        reddit_share.href = "https://www.reddit.com/submit?title=" + title + " " + text + "&u=" + url;
+        linkedin_share.href = "https://www.linkedin.com/shareArticle?mini=true&url=" + url + "&title=" + title + " " + text;
 
         copy_link.addEventListener('click', () => {
             navigator.clipboard.writeText(url);
@@ -31,17 +31,14 @@ fetch('/website/buttons.html')
 
         download_link.addEventListener('click', () => {
             let link = document.createElement('a');
-            link.href = '../references/' + language + "_reference" + extension;
-            link.download = language + "_reference" + extension;
+            link.href = '../references/' + filename;
+            link.download = filename;
             link.click();
         });
     }).finally(
     t => {
         const code_block = document.getElementById('code_block');
-        const language = code_block.dataset.value;
-        const extension = code_block.dataset.ext;
-        console.log(language)
-        console.log(extension)
+        const filename = code_block.dataset.filename;
 
         function HighlightCodeBlock(url) {
             fetch(url)
@@ -55,6 +52,6 @@ fetch('/website/buttons.html')
                 });
         }
 
-        HighlightCodeBlock('/references/' + language + '_reference' + extension);
+        HighlightCodeBlock('/references/' + filename);
     }
 );

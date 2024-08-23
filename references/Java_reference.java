@@ -2,7 +2,6 @@
  * Java Reference
  *
  * Author: ReferenceCollection.com
- * Version: 1.0
  * License: MIT License
  */
 

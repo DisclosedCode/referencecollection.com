@@ -1,14 +1,29 @@
 [
     {
         "title": "Java",
-        "filename": "java_reference.java"
+        "filename": "java_reference.java",
+        "meta": {
+            "title": "Java Reference Guide",
+            "description": "Java is an object-oriented programming language designed for platform independence, meaning code runs on any device with a JVM. Known for its simplicity, security, and performance.",
+            "keywords": "Learn Java programming, Comprehensive Java guide, Java coding tutorials, Advanced Java techniques, Java beginner’s manual, Java syntax and semantics, Java API documentation, Java software development kit (SDK), Java Integrated Development Environment (IDE), Java Virtual Machine (JVM), Java runtime environment (JRE), Object-oriented programming in Java, Java source code examples, Java classes and objects, Java reference book, Understanding Java classes, Java programming examples, Java error troubleshooting, Java libraries usage, Java learning resources"
+        }
     },
     {
         "title": "Javascript",
-        "filename": "javascript_reference.js"
+        "filename": "javascript_reference.js",
+        "meta": {
+            "title": "Javascript Reference Guide",
+            "description": "JavaScript, a dynamic scripting language, powers web interactivity. It runs on browsers, executing client-side code for dynamic web pages. With its versatility and event-driven nature, JavaScript facilitates everything from simple form validation to complex web applications.",
+            "keywords": "Javascript basics, Javascript tutorial, Javascript reference guide, Learn Javascript step-by-step, Javascript programming fundamentals, Javascript syntax explained, Javascript functions tutorial, Javascript variables and data types, Javascript arrays and objects, Javascript control flow, Javascript DOM manipulation, Javascript event handling, Javascript asynchronous programming, Javascript ES6 features, Javascript debugging techniques, Javascript best practices, Javascript projects for beginners, Javascript advanced topics, Javascript closures, Javascript prototypes, Javascript modules"
+        }
     },
     {
         "title": "Python",
-        "filename": "python_reference.py"
+        "filename": "python_reference.py",
+        "meta": {
+            "title": "Python Reference Guide",
+            "description": "Python is a high-level, dynamic programming language known for its simplicity and readability. Its clear syntax and vast libraries make it ideal for beginners and experts alike, supporting rapid development and diverse applications from web development to data science.",
+            "keywords": "Python basics, Python tutorial, Python reference guide, Learn Python step-by-step, Python programming fundamentals, Python syntax explained, Python functions tutorial, Python variables and data types, Python arrays and objects, Python control flow, Python DOM manipulation, Python event handling, Python asynchronous programming, Python ES6 features, Python debugging techniques, Python best practices, Python projects for beginners, Python advanced topics, Python closures, Python prototypes, Python modules"
+        }
     }
 ]
