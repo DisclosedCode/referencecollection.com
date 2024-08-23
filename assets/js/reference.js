@@ -8,7 +8,7 @@ fetch('/website/buttons.html')
             text = "Reference Codebook: \n",
             url = window.location.href,
             title = "Title";
-        const filename = url.match(/\/([^\/]+)\.html$/);
+        const filename = url.match(/\/([^\/]+)\.html$/)[1];
 
         const
             copy_link = document.getElementById("copy_link"),
@@ -38,7 +38,7 @@ fetch('/website/buttons.html')
     }).finally(
     t => {
         const code_block = document.getElementById('code_block');
-        const filename = window.location.href.match(/\/([^\/]+)\.html$/);
+        const filename = window.location.href.match(/\/([^\/]+)\.html$/)[1];
 
         function HighlightCodeBlock(url) {
             fetch(url)
