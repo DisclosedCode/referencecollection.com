@@ -1,57 +1,78 @@
-fetch('/website/buttons.html')
-    .then(response => response.text())
-    .then(html => {
-        const header_buttons = document.getElementById('header_buttons');
-        header_buttons.innerHTML = html;
+async function fetchHTML(url) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Failed to fetch HTML');
+    return response.text();
+}
 
-        const
-            text = "Reference Codebook: \n",
-            url = window.location.href,
-            title = "Title";
+async function fetchAndHighlightCode(url, codeBlock) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Failed to fetch file');
+        const code = await response.text();
+        codeBlock.textContent = code;
+        hljs.highlightAll();
+    } catch (error) {
+        codeBlock.textContent = 'Error fetching file';
+    }
+}
+
+function setSocialLinks(title, text, url) {
+    const socialLinks = {
+        twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title + ' ' + text)}&url=${encodeURIComponent(url)}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(title + ' ' + text)}&u=${encodeURIComponent(url)}`,
+        reddit: `https://www.reddit.com/submit?title=${encodeURIComponent(title + ' ' + text)}&u=${encodeURIComponent(url)}`,
+        linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title + ' ' + text)}`,
+        ycombinator: `https://news.ycombinator.com/submitlink?t=${encodeURIComponent(title + ' ' + text)}&u=${encodeURIComponent(url)}`
+    };
+
+    document.getElementById('twitter_share').href = socialLinks.twitter;
+    document.getElementById('facebook_share').href = socialLinks.facebook;
+    document.getElementById('reddit_share').href = socialLinks.reddit;
+    document.getElementById('linkedin_share').href = socialLinks.linkedin;
+    document.getElementById('y_share').href = socialLinks.ycombinator;
+}
+
+function setupDownloadLink(downloadLink, filename) {
+    downloadLink.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = `../references/${filename}`;
+        link.download = filename;
+        link.click();
+    });
+}
+
+function setupCopyLink(copyLink, url) {
+    copyLink.addEventListener('click', () => {
+        navigator.clipboard.writeText(url);
+    });
+}
+
+async function initialize() {
+    try {
+        const url = window.location.href;
         const filename = url.match(/\/([^\/]+)\.html$/)[1];
 
-        const
-            copy_link = document.getElementById("copy_link"),
-            download_link = document.getElementById("download_link"),
-            twitter_share = document.getElementById("twitter_share"),
-            facebook_share = document.getElementById("facebook_share"),
-            reddit_share = document.getElementById("reddit_share"),
-            linkedin_share = document.getElementById("linkedin_share"),
-            y_share = document.getElementById("y_share");
+        // Fetch and set HTML content
+        const html = await fetchHTML('/website/buttons.html');
+        const headerButtons = document.getElementById('header_buttons');
+        headerButtons.innerHTML = html;
 
-        twitter_share.href = "https://twitter.com/intent/tweet?text=" + title + " " + text + "&url=" + url;
-        facebook_share.href = "https://www.facebook.com/sharer/sharer.php?quote=" + title + " " + text + "&u=" + url;
-        y_share.href = "https://news.ycombinator.com/submitlink?t=" + title + " " + text + "&u=" + url;
-        reddit_share.href = "https://www.reddit.com/submit?title=" + title + " " + text + "&u=" + url;
-        linkedin_share.href = "https://www.linkedin.com/shareArticle?mini=true&url=" + url + "&title=" + title + " " + text;
+        // Set social sharing links
+        const title = headerButtons.dataset.title;
+        const text = "Reference Codebook: \n";
+        setSocialLinks(title, text, url);
 
-        copy_link.addEventListener('click', () => {
-            navigator.clipboard.writeText(url);
-        });
+        // Set up event listeners
+        setupCopyLink(document.getElementById('copy_link'), url);
+        setupDownloadLink(document.getElementById('download_link'), filename);
 
-        download_link.addEventListener('click', () => {
-            let link = document.createElement('a');
-            link.href = '../references/' + filename;
-            link.download = filename;
-            link.click();
-        });
-    }).finally(
-    t => {
-        const code_block = document.getElementById('code_block');
-        const filename = window.location.href.match(/\/([^\/]+)\.html$/)[1];
+        // Highlight code block
+        const codeBlock = document.getElementById('code_block');
+        await fetchAndHighlightCode(`/references/${filename}`, codeBlock);
 
-        function HighlightCodeBlock(url) {
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    code_block.textContent = data;
-                    hljs.highlightAll();
-                })
-                .catch(error => {
-                    code_block.textContent = 'Error fetching file';
-                });
-        }
-
-        HighlightCodeBlock('/references/' + filename);
+    } catch (error) {
+        console.error('Error during initialization:', error);
     }
-);
+}
+
+initialize();
