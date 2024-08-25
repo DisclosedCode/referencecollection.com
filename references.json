@@ -25,5 +25,14 @@
             "description": "Python is a high-level, dynamic programming language known for its simplicity and readability. Its clear syntax and vast libraries make it ideal for beginners and experts alike, supporting rapid development and diverse applications from web development to data science.",
             "keywords": "Python basics, Python tutorial, Python reference guide, Learn Python step-by-step, Python programming fundamentals, Python syntax explained, Python functions tutorial, Python variables and data types, Python arrays and objects, Python control flow, Python DOM manipulation, Python event handling, Python asynchronous programming, Python ES6 features, Python debugging techniques, Python best practices, Python projects for beginners, Python advanced topics, Python closures, Python prototypes, Python modules"
         }
+    },
+    {
+        "title": "Test",
+        "filename": "python_reference.py",
+        "meta": {
+            "title": "Test Reference Guide",
+            "description": "Python is a high-level, dynamic programming language known for its simplicity and readability. Its clear syntax and vast libraries make it ideal for beginners and experts alike, supporting rapid development and diverse applications from web development to data science.",
+            "keywords": "Python basics, Python tutorial, Python reference guide, Learn Python step-by-step, Python programming fundamentals, Python syntax explained, Python functions tutorial, Python variables and data types, Python arrays and objects, Python control flow, Python DOM manipulation, Python event handling, Python asynchronous programming, Python ES6 features, Python debugging techniques, Python best practices, Python projects for beginners, Python advanced topics, Python closures, Python prototypes, Python modules"
+        }
     }
 ]
