@@ -1116,6 +1116,3 @@ public class JavaReference {
 
     }
 }
-
-
-
