@@ -2,6 +2,7 @@
     {
         "title": "Java",
         "filename": "java_reference.java",
+        "language": "java",
         "meta": {
             "title": "Java Reference Guide",
             "description": "Java is an object-oriented programming language designed for platform independence, meaning code runs on any device with a JVM. Known for its simplicity, security, and performance.",
@@ -11,6 +12,7 @@
     {
         "title": "Javascript",
         "filename": "javascript_reference.js",
+        "language": "javascript",
         "meta": {
             "title": "Javascript Reference Guide",
             "description": "JavaScript, a dynamic scripting language, powers web interactivity. It runs on browsers, executing client-side code for dynamic web pages. With its versatility and event-driven nature, JavaScript facilitates everything from simple form validation to complex web applications.",
@@ -20,6 +22,7 @@
     {
         "title": "Python",
         "filename": "python_reference.py",
+        "language": "python",
         "meta": {
             "title": "Python Reference Guide",
             "description": "Python is a high-level, dynamic programming language known for its simplicity and readability. Its clear syntax and vast libraries make it ideal for beginners and experts alike, supporting rapid development and diverse applications from web development to data science.",
