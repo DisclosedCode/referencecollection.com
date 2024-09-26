@@ -100,6 +100,7 @@ a {
     --font-medium: 'Geist Medium', sans-serif;
     --font-mono-medium: 'GeistMono Medium', sans-serif;
     --font-optician: 'Optician Sans', sans-serif;
+    --font-jetbrains: 'JetBrainsMono', sans-serif;
     --font-size: 0.850rem;
 
     /* Colors */
@@ -144,7 +145,7 @@ a {
 
     /* Colors */
     --background-primary: #161614;
-    --background-secondary: #1a1c1d;
+    --background-secondary: #222222;
 
     --c1: #818b94;
     --c2: #d7dbe1;
@@ -766,16 +767,17 @@ input[type="search"]::-ms-clear {
     padding: 0.8rem;
     border-top-right-radius: var(--main-radius);
     border-top-left-radius: var(--main-radius);
-    background-color: var(--background-secondary)
+    background-color: var(--background-secondary);
+    border-bottom: 1px solid var(--c4);
 }
 
 pre.shiki{
     padding: 1rem;
 }
 
-pre.shiki .line:not(:last-of-type):before {
+pre.shiki .line:before {
     content: counter(line-number);
-    color: #3f3f46;
+    color: var(--c1);
     display: inline-block;
     text-align: right;
     margin-right: 1em;
@@ -787,18 +789,17 @@ pre.shiki .line {
 }
 
 code, kbd, pre, samp {
-    font-family: JetBrainsMono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-    font-feature-settings: normal;
-    font-variation-settings: normal;
-    font-size: 1em;
+    font-family: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-size: 0.875rem;
+    line-height: 1.350rem;
 }
 
 pre.shiki,pre.shiki span {
     color: var(--shiki-light) !important;
-    background-color: transparent
+    background-color: var(--background-secondary);
 }
 
 
 [app-appearance="dark"] pre.shiki ,[app-appearance="dark"] pre.shiki span {
-    color: var(--shiki-dark) !important
+    color: var(--shiki-dark) !important;
 }
