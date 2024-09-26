@@ -2,7 +2,7 @@
 Python Reference
 
 Author: ReferenceCollection.com
-License: MIT License
+License: MIT
 """
 
 
@@ -14,12 +14,12 @@ License: MIT License
 # 4. Python Versions
 
 """
-# 1. Overview:
+1. Overview:
 Python is a high-level, interpreted programming language prized for its
 simplicity and readability, suitable for a wide range of applications including
 web development, data analysis, and artificial intelligence.
 
-#2. History:
+2. History:
 Developed by Guido van Rossum and first released in 1991, Python has since gained popularity
 due to its clear and concise syntax. It has a vibrant community and extensive library support,
 making it easy for developers to build powerful applications quickly.

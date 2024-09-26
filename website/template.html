@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" app-appearance="[light | dark]">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,7 +25,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="https://referencecollection.com" />
 
-    <link rel="icon" href="../assets/images/favicon.ico" />
+    <link rel="icon" href="../assets/images/rc-favicon.ico" />
 
     <link href="../assets/css/main.css" type="text/css" rel="stylesheet" />
     <!-- Google tag (gtag.js) -->
@@ -53,23 +54,24 @@
                         <line x1="10" y1="3" x2="8" y2="21"></line>
                         <line x1="16" y1="3" x2="14" y2="21"></line>
                     </svg>
-                    <!-- header_title -->
+                    <h1><!-- header_title --></h1>
                 </div>
             </div>
 
             <div class="header_buttons">
                 <div class="flex_buttons">
-                    <a class="default_btn" href="../../">
-                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                             stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M15 6l-6 6l6 6"></path>
+                    <a class="header_back" href="../../#references">
+                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="11 17 6 12 11 7"></polyline>
+                            <polyline points="18 17 13 12 18 7"></polyline>
                         </svg>
+                        Back
                     </a>
                     <div class="share_dropdown">
                         <a class="header_share" onclick="toggleDropdown()">
-                            <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
                                 <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
@@ -83,74 +85,72 @@
                             <ul>
                                 <li>
                                     <a id="copy_link" href="#" class="share_link">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                             fill="none"
-                                             stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z"></path>
-                                            <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"></path>
+                                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                            </path>
+                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                            </path>
                                         </svg>
                                         Copy link
                                     </a>
                                 </li>
                                 <li>
                                     <a id="linkedin_share" href="#" class="share_link" target="_blank">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                             fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-                                            <path d="M8 11l0 5"></path>
-                                            <path d="M8 8l0 .01"></path>
-                                            <path d="M12 16l0 -5"></path>
-                                            <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+                                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                            </path>
+                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                            </path>
                                         </svg>
                                         LinkedIn
                                     </a>
                                 </li>
                                 <li>
                                     <a id="y_share" href="#" class="share_link" target="_blank">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                             fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-                                            <path d="M8 7l4 6l4 -6"></path>
-                                            <path d="M12 17l0 -4"></path>
+                                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                            </path>
+                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                            </path>
                                         </svg>
                                         Hacker News
                                     </a>
                                 </li>
                                 <li>
                                     <a id="reddit_share" href="#" class="share_link" target="_blank">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                             fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z"></path>
-                                            <path d="M12 8l1 -5l6 1"></path>
-                                            <path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                            <circle cx="9" cy="13" r=".5" fill="currentColor"></circle>
-                                            <circle cx="15" cy="13" r=".5" fill="currentColor"></circle>
-                                            <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5"></path>
+                                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                            </path>
+                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                            </path>
                                         </svg>
                                         Reddit
                                     </a>
                                 </li>
                                 <li>
                                     <a id="twitter_share" href="#" class="share_link" target="_blank">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                             fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
-                                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                            </path>
+                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                            </path>
                                         </svg>
                                         Twitter
                                     </a>
                                 </li>
                                 <li>
                                     <a id="facebook_share" href="#" class="share_link" target="_blank">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                             fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+                                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                            </path>
+                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                            </path>
                                         </svg>
                                         Facebook
                                     </a>
@@ -161,9 +161,9 @@
                 </div>
                 <div class="flex_buttons">
                     <a class="header_contribute" target="_blank"
-                       href="https://github.com/DisclosedCode/referencecollection.com">
-                        <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                             stroke-linecap="round" stroke-linejoin="round">
+                        href="https://github.com/DisclosedCode/referencecollection.com">
+                        <svg width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
                             <path d="M6 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -180,9 +180,9 @@
             <div class="source_code">
                 <div class="code_wrapper">
                     <div class="window_topbar">
-                        <div style="width: 11px;height: 11px;border-radius: 6px;background-color: #ef4c4b"></div>
-                        <div style="width: 11px;height: 11px;border-radius: 6px;background-color: #f3b91e"></div>
-                        <div style="width: 11px;height: 11px;border-radius: 6px;background-color: #24dd38"></div>
+                        <div style="width: 9px;height: 9px;border-radius: 2px;background-color: #ef4c4b"></div>
+                        <div style="width: 9px;height: 9px;border-radius: 2px;background-color: #f3b91e"></div>
+                        <div style="width: 9px;height: 9px;border-radius: 2px;background-color: #24dd38"></div>
                     </div>
                 </div>
                 <!-- meta_source_code -->
@@ -199,4 +199,5 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/reference.js"></script>
 </body>
+
 </html>

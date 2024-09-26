@@ -49,3 +49,12 @@ window.onclick = function (event) {
                 dropdown.classList.remove('show_dropdown');
     }
 }
+
+const contact = document.getElementById('contact'),
+    contact_details = document.querySelector('.contact_details');
+
+if (contact != undefined) {
+    contact.addEventListener('click', () => {
+        contact_details.classList.toggle('show_contact');
+    });
+}

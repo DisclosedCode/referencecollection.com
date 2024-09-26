@@ -13,6 +13,7 @@
         "title": "Javascript",
         "filename": "javascript_reference.js",
         "language": "javascript",
+        "new":true,
         "meta": {
             "title": "Javascript Reference Guide",
             "description": "JavaScript, a dynamic scripting language, powers web interactivity. It runs on browsers, executing client-side code for dynamic web pages. With its versatility and event-driven nature, JavaScript facilitates everything from simple form validation to complex web applications.",

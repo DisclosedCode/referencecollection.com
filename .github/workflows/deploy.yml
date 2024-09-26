@@ -1,30 +1,28 @@
-name: Deploy
-
+name: Deploy and Start Server
 on: [push]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
-
-      - name: Copy repository contents via scp
-        uses: appleboy/scp-action@master
-        with:
-          HOST: ${{ secrets.SSH_RC_HOST }}
-          USERNAME: ${{ secrets.SSH_RC_USERNAME }}
-          PORT: ${{ secrets.SSH_RC_PORT }}
-          KEY: ${{ secrets.SSH_RC_KEY }}
-          source: "."
-          target: "/usr/share/nginx/html/referencecollection.com"
-
-      - name: Executing remote command
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_RC_KEY }}
+          ARGS: "-avzc --delete"
+          SOURCE: "."
+          REMOTE_HOST: ${{ secrets.SSH_RC_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_RC_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SSH_RC_PORT }}
+          TARGET: "/usr/share/nginx/html/referencecollection.com"
+          EXCLUDE: "/dist/, /node_modules/, /.git/, /.github/"
+      - name: Start Node.js Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_RC_HOST }}
-          USERNAME: ${{ secrets.SSH_RC_USERNAME }}
-          PORT: ${{ secrets.SSH_RC_PORT }}
-          KEY: ${{ secrets.SSH_RC_KEY }}
-          script: ls
+          username: ${{ secrets.SSH_RC_USERNAME }}
+          port: ${{ secrets.SSH_RC_PORT }}
+          key: ${{ secrets.SSH_RC_KEY }}
+          script: |
+            cd /usr/share/nginx/html/server
+            node server.js
