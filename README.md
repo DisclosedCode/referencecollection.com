@@ -2,7 +2,8 @@
 
 ### About
 
-Code-based references for various programming languages, frameworks and tools designed to simplify your coding experience by providing practical and focused guides that are constantly updated and refined. All of these references are available at referencecollection.com or directly in the /references/* directory.
+Code-based references for various programming languages, frameworks and tools designed to simplify your coding experience by providing practical and focused guides that are constantly updated and refined. 
+All of these references are available at https://referencecollection.com/ or directly in the [reference directory](./refrences).
 
 ### How it started
 
