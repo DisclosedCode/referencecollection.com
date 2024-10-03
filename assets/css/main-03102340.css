@@ -542,15 +542,14 @@ input[type="search"]::-ms-clear {
 }
 
 .footer_bar {
-    font-family: var(--font-medium);
+    font-family: var(--font-mono-medium);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     row-gap: 0.15rem;
     padding: var(--main-side-padding);
-    color: var(--c1);
-    font-size: 0.850rem;
+    font-size: 0.750rem;
 }
 
 
@@ -564,13 +563,12 @@ input[type="search"]::-ms-clear {
 /* Contact */
 
 .contact_container {
-    display: flex;
+    display: inline-flex;
     flex-direction: row-reverse;
-    column-gap: 0.5rem;
+    column-gap: 0.2rem;
 }
 
 .contact_details {
-    font-family: var(--font-medium);
     color: var(--c1);
     display: none;
 }
@@ -584,6 +582,7 @@ input[type="search"]::-ms-clear {
 
 .show_contact {
     display: flex;
+    color: var(--c3);
 }
 
 /* License */
@@ -592,7 +591,8 @@ input[type="search"]::-ms-clear {
     font-family: var(--font-mono-medium);
     font-size: 0.750rem;
     text-align: center;
-    padding: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
     line-height: 1.3;
 }
 
@@ -601,8 +601,11 @@ input[type="search"]::-ms-clear {
     color: var(--c3);
 }
 
-/* End */
+#license a:hover {
+    text-decoration: underline;
+}
 
+/* End */
 
 .languages {
     display: grid;
@@ -623,13 +626,17 @@ input[type="search"]::-ms-clear {
     box-shadow: inset 0 0 0 1px var(--c4);
 }
 
+.language_wrapper {
+    display: flex;
+    align-items: center;
+}
 
-.language:hover .terminal_dollar {
+.language:hover .language_icon {
     color: var(--c7);
 }
 
-.terminal_dollar {
-    padding-right: 0.5rem;
+.language_icon {
+    margin-right: 0.5rem;
     color: var(--c4);
 }
 
@@ -796,6 +803,7 @@ pre.shiki .line:before {
     text-align: right;
     margin-right: 1em;
     width: 4ch;
+    opacity: 0.4;
 }
 
 pre.shiki .line {
