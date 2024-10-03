@@ -1,55 +1,68 @@
 /*
- * Java Reference
+ * Java Reference and Guide
  *
- * Author: ReferenceCollection.com
- * License: MIT License
- */
-
-/**
- * Introduction
- *
- * 1. Overview
- * 2. History
- * 3. Java Development Kit (JDK)
- * 4. Java Virtual Machine (JVM)
+ * ReferenceCollection.com
+ * Licensed under CC BY-SA
  */
 
 /*
- * 1. Overview:
+ * Table of Contents
+ * ----------------
+ * 1.  Introduction
+ * 2.  Packages and Imports
+ * 3.  Comments & Documentation
+ * 4.  Variables and Data Types
+ * 5.  Operators
+ * 6.  Control Flow Statements
+ * 7.  Arrays
+ * 8.  Methods
+ * 9.  Object-Oriented Programming
+ * 10. Exception Handling
+ * 11. File Input/Output (I/O)
+ * 12. Collections Framework
+ * 13. Generics
+ */
+
+/*
+---------------
+1. Introduction
+---------------
+*/
+
+/*
+ * Overview:
  * Java is an object-oriented programming language designed for platform independence,
  * meaning code runs on any device with a JVM. Known for its simplicity, security, and performance.
- *
- * 2. History:
+ * 
+ * History:
  * Developed by Sun Microsystems in 1995, Java evolved through versions, gaining
  * features like generics and lambda expressions. Oracle acquired Sun in 2010.
- *
- * 3. Java Development Kit (JDK)
+ * 
+ * JDK:
  * Java Development Kit (JDK) is a set of tools necessary for developing, compiling,
  * debugging, and running Java programs. It contains the Java Runtime Environment (JRE),
  * the Java compiler (javac), and other development utilities like javadoc and jar.
- *
- * 4. Java Virtual Machine (JVM):
+ * 
+ * Java Virtual Machine (JVM):
  * JVM is a virtual machine that runs Java programs on any platform, it handles
  * memory management, garbage collection, and provides a runtime environment
  * for executing Java applications.
  */
 
-/**
- * Packages and Imports
- *
- * 1. Packages
- * 2. Imports
- * 3. Wildcard Imports
- */
+/*
+-----------------------
+2. Packages and Imports
+-----------------------
+*/
 
 /*
- * 1. Packages:
+ * Packages:
  * Help you organize classes, interfaces and more into groups.
  */
 package com.referencecollection;
 
 /*
- * 2. Imports:
+ * Imports:
  * Allow you to access packages, classes and more.
  */
 
@@ -57,7 +70,7 @@ import java.util.List;
 import java.util.Set;
 
 /*
- * 3. Wildcard '*' Imports:
+ * Wildcard '*' Imports:
  * Allow you to import all classes from a package
  */
 import java.util.*;
@@ -71,16 +84,15 @@ public class JavaReference {
      */
     public static void main(String[] args) {
 
-        /**
-         * I. Comments & Documentation
-         *
-         * 1. Comments
-         * 2. Javadoc
-         */
+        /*
+        ---------------------------
+        3. Comments & Documentation
+        ---------------------------
+        */
         class CommentsAndDocumentation {
 
             /*
-             * 1. Comments:
+             * Comments:
              * Comments are non-executable statements used to annotate/explain a code block
              */
 
@@ -91,7 +103,7 @@ public class JavaReference {
              */
 
             /**
-             * 2. Javadoc:
+             * Javadoc:
              * Javadoc is a tool that generates API documentation from Java code using
              * specially formatted comments. These comments include class/method details,
              * parameters, and return values for creating HTML documentation.
@@ -110,18 +122,15 @@ public class JavaReference {
              */
         }
 
-        /**
-         * II. Variables and Data Types
-         *
-         * 1. Primitive Data Types
-         * 2. Reference Data Types
-         * 3. Type Conversion (Casting)
-         */
+        /*
+        ---------------------------
+        4. Variables and Data Types
+        ---------------------------
+        */
         class VariablesAndDataTypes {
             public static void main(String[] args) {
-
                 /*
-                 * 1. Primitive Data Types:
+                 * Primitive Data Types:
                  * The eight basic data types, for storing simple values.
                  */
                 byte byteVariable = 12;            // Range: -128 to 127
@@ -138,7 +147,7 @@ public class JavaReference {
                 final double RADIUS = 5.0;
 
                 /*
-                 * 2. Reference Data Types:
+                 * Reference Data Types:
                  * Used to store data that reference memory locations,
                  * like arrays, objects, interfaces, etc.
                  */
@@ -149,7 +158,7 @@ public class JavaReference {
                 JavaReference javaReference = new JavaReference();
 
                 /*
-                 * 3. Type Conversion (Casting):
+                 * Type Conversion (Casting):
                  * Casting is the process of converting one data type into another.
                  * Implicit conversion (widening) happens automatically with no data is lost.
                  * Explicit conversion (narrowing) uses casting operators and may lose data.
@@ -164,17 +173,11 @@ public class JavaReference {
             }
         }
 
-        /**
-         * III. Operators
-         *
-         * 1. Arithmetic Operators
-         * 2. Assignment Operators
-         * 3. Comparison Operators
-         * 4. Logical Operators
-         * 5. Bitwise Operators
-         * 6. Unary Operators
-         * 7. Ternary Operator
-         */
+        /*
+        ------------
+        5. Operators
+        ------------
+        */
         class Operators {
             public static void main(String[] args) {
 
@@ -182,7 +185,7 @@ public class JavaReference {
                 int b = 5;
 
                 /*
-                 * 1. Arithmetic Operators:
+                 * Arithmetic Operators:
                  * Perform basic mathematical operations
                  */
                 int sum = a + b;                   // Addition
@@ -192,7 +195,7 @@ public class JavaReference {
                 int remainder = a % b;             // Modulus
 
                 /*
-                 * 2. Assignment Operators:
+                 * Assignment Operators:
                  * Assigning values with operations
                  */
                 a += 5;                             // Add (a = a + 5)
@@ -202,7 +205,7 @@ public class JavaReference {
                 a %= 7;                             // Modulus (a = a % 7)
 
                 /*
-                 * 3. Comparison Operators:
+                 * Comparison Operators:
                  * Comparing values, returns true or false
                  */
                 boolean isEqual = (a == b);        // Equality
@@ -213,7 +216,7 @@ public class JavaReference {
                 boolean lesserOrEqual = (a <= b);  // Less than or equal to
 
                 /*
-                 * 4. Logical Operators:
+                 * Logical Operators:
                  * Combine multiple conditions, returns true or false
                  */
                 boolean x = true;
@@ -223,7 +226,7 @@ public class JavaReference {
                 boolean logicalNotX = !x;          // Logical NOT
 
                 /*
-                 * 5. Bitwise Operators:
+                 * Bitwise Operators:
                  * Perform operations at bit level
                  */
                 int bitwiseAnd = a & b;            // Bitwise AND
@@ -234,7 +237,7 @@ public class JavaReference {
                 int rightShift = a >> 1;           // Right Shift
 
                 /*
-                 * 6. Unary Operators:
+                 * Unary Operators:
                  * Unary operators operate on a single operand.
                  */
                 int pre_increment = (++a);          // Pre-increment
@@ -246,7 +249,7 @@ public class JavaReference {
                 boolean logical = (!true);          // Logical negation
 
                 /*
-                 * 7. Ternary Operator:
+                 * Ternary Operator:
                  * Concise way to write conditional expressions.
                  * Syntax: (condition) ? (if-true) : (if-false)
                  */
@@ -255,21 +258,16 @@ public class JavaReference {
             }
         }
 
-        /**
-         * IV. Control Flow Statements
-         *
-         * 1. Conditional Statements
-         * 2. Looping Statements
-         * 3. Transfer Statements
-         */
+        
+        /*
+        --------------------------
+        6. Control Flow Statements
+        ---------------------------
+        */
         class ControlFlowStatements {
             public static void main(String[] args) {
 
-                /*
-                 * 1. Conditional statements:
-                 *    if-else
-                 *    switch
-                 */
+                // Conditional statements:
 
                 /*
                  * if-else statement:
@@ -300,13 +298,7 @@ public class JavaReference {
                         System.out.println("Invalid choice");
                 }
 
-                /*
-                 * 2. Looping statements:
-                 *    for
-                 *    while
-                 *    do-while
-                 *    for
-                 */
+                // Looping statements:
 
                 /*
                  * for statement:
@@ -345,12 +337,7 @@ public class JavaReference {
                     System.out.println("Number: " + number);
                 }
 
-                /*
-                 * 3. Transfer statements:
-                 *    break
-                 *    continue
-                 *    return
-                 */
+                // Transfer statements:
 
                 /*
                  * break statement:
@@ -385,20 +372,16 @@ public class JavaReference {
             }
         }
 
-        /**
-         * V. Arrays
-         *
-         * 1. Declaration and Initialization
-         * 2. Accessing Elements
-         * 3. Modifying Elements
-         * 4. Iterating Through Arrays
-         * 5. Multi-dimensional Arrays
-         */
+        /*
+        ---------
+        7. Arrays
+        ---------
+        */
         class Arrays {
             public static void main(String[] args) {
 
                 /*
-                 * 1. Declaration and Initialization:
+                 * Declaration and Initialization:
                  * Arrays are objects that store multiple variables of the same type.
                  */
                 double[] doubleArray = new double[5]; // Initialization with size 5
@@ -408,28 +391,26 @@ public class JavaReference {
                 String[] stringArray = {"apple", "banana", "orange"};
 
                 /*
-                 * 2. Accessing Array Elements:
+                 * Accessing Array Elements:
                  * Elements are accessed using index numbers, starting from 0.
                  */
                 System.out.println("First element: " + intArray[0]);
                 System.out.println("Second element: " + intArray[1]);
 
                 /*
-                 * 3. Modifying Elements:
+                 * Modifying Elements:
                  * Arrays can be modified by assigning new values to them.
                  */
                 doubleArray[0] = 10;
                 doubleArray[1] = 20;
 
-                /*
-                 * 3. Iterating Through Arrays:
-                 */
+                // Iterating Through Arrays:
                 for (int f = 0; f < fibonacci.length; f++) {
                     System.out.print(fibonacci[f] + " ");
                 }
 
                 /*
-                 * 4. Multidimensional Arrays:
+                 * Multidimensional Arrays:
                  * Arrays can have more than one dimension.
                  */
                 int[][] matrix = new int[3][3]; // Declaration and initialization of a 3x3 matrix
@@ -439,19 +420,16 @@ public class JavaReference {
             }
         }
 
-        /**
-         * VI. Methods
-         *
-         * 1. Method Declaration
-         * 2. Access modifiers
-         * 3. Method Overloading
-         * 4. Recursion
-         */
+        /*
+        ----------
+        8. Methods
+        ----------
+        */
         class Methods {
             public static void main(String[] args) {
 
                 /*
-                 * 1. Method Declaration:
+                 * Method Declaration:
                  * Methods are reusable blocks of code.
                  * Syntax: <access modifier> <return type> <method name>(<parameter list>)
                  */
@@ -462,7 +440,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 2. Access modifiers:
+                 * Access modifiers:
                  * Access modifiers define the accessibility of a method.
                  *  - public: Accessible from any class
                  *  - private: Accessible only within the same class
@@ -475,7 +453,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 3. Method Overloading:
+                 * Method Overloading:
                  * Redefining the same method with different parameter lists.
                  */
                 class MethodOverloading {
@@ -485,7 +463,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 4. Recursion:
+                 * Recursion:
                  * Method calls itself, known as recursion.
                  */
                 class Recursion {
@@ -501,22 +479,16 @@ public class JavaReference {
             }
         }
 
-        /**
-         * VII. Object-Oriented Programming
-         *
-         * 1. Classes
-         * 2. Objects
-         * 3. Encapsulation
-         * 4. Inheritance
-         * 5. Polymorphism
-         * 6. Abstraction
-         * 7. Interfaces
-         */
+        /*
+        ------------------------------
+        9. Object-Oriented Programming
+        ------------------------------
+        */
         class OOP {
             public static void main(String[] args) {
 
                 /*
-                 * 1. Classes
+                 * Classes:
                  * Class is a blueprint for creating objects.
                  */
                 class Car {
@@ -544,7 +516,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 2. Objects:
+                 * Objects:
                  * Objects are instances of classes.
                  */
                 Car honda = new Car("Honda", "Accord");
@@ -553,7 +525,7 @@ public class JavaReference {
                 honda.displayCarInfo();
 
                 /*
-                 * 3. Encapsulation:
+                 * Encapsulation:
                  * Hide the internal state of an object, and only allows access through methods.
                  */
                 class Wallet {
@@ -575,7 +547,7 @@ public class JavaReference {
                 System.out.println("Balance: " + wallet.getBalance());
 
                 /*
-                 * 4. Inheritance:
+                 * Inheritance:
                  * Allows a class to inherit properties and behavior from another class.
                  */
                 class ElectricCar extends Car {
@@ -590,7 +562,7 @@ public class JavaReference {
                     }
 
                     /*
-                     * Method overriding
+                     * Method overriding:
                      * Providing a specific implementation for a method
                      * already defined in its superclass (car).
                      */
@@ -601,7 +573,7 @@ public class JavaReference {
                     }
 
                     /*
-                     * Method overloading
+                     * Method overloading:
                      * Defining multiple methods with the same name but different parameters.
                      */
                     public void displayCarInfo(boolean includeBatteryLife) {
@@ -618,7 +590,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 5. Polymorphism:
+                 * Polymorphism:
                  * Lets different objects be treated similarly, even if they're from different classes
                  */
                 Car teslaModelS = new ElectricCar("Tesla", "Model S", 400);
@@ -626,7 +598,7 @@ public class JavaReference {
                 teslaModelS.displayCarInfo();
 
                 /*
-                 * 6. Abstraction:
+                 * Abstraction:
                  * Is about hiding implementation details and showing only essential features.
                  * Abstract classes can contain both implemented and abstract methods.
                  * Abstract Classes can only extend one abstract class.
@@ -656,7 +628,7 @@ public class JavaReference {
                 myMotorcycle.operate(); // Operating Motorcycle
 
                 /*
-                 * 7. Interfaces:
+                 * Interfaces:
                  * Define a contract for classes, specifying methods they must implement.
                  * Classes can implement multiple interfaces.
                  */
@@ -677,20 +649,16 @@ public class JavaReference {
             }
         }
 
-        /**
-         * VIII. Exception Handling
-         *
-         * 1. Try-Catch Blocks
-         * 2. Multiple Catch Blocks
-         * 3. Finally Block
-         * 5. Custom Exceptions
-         * 4. Throwing Exceptions
-         */
+        /*
+        ----------------------
+        10. Exception Handling
+        ----------------------
+        */
         class ExceptionHandling {
             public static void main(String[] args) {
 
                 /*
-                 * 1. Try-Catch Blocks:
+                 * Try-Catch Blocks:
                  * Handle potential errors or exceptions in code.
                  */
                 int[] intArray = {1, 2, 3, 4, 5};
@@ -701,7 +669,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 2. Multiple Catch Blocks:
+                 * Multiple Catch Blocks:
                  * Handling different types of exceptions separately.
                  */
                 try {
@@ -714,7 +682,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 3. Finally Block:
+                 * Finally Block:
                  * Finally block get executed regardless of an exception or not.
                  */
                 try {
@@ -727,7 +695,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 4. Custom Exceptions:
+                 * Custom Exceptions:
                  * You can create your own exceptions to handle specific situations.
                  */
                 class InvalidAgeException extends Exception {
@@ -737,7 +705,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 5. Throwing Exceptions:
+                 * Throwing Exceptions:
                  * You can manually throw exceptions to handle specific cases.
                  */
                 class ThrowExceptionExample {
@@ -759,19 +727,16 @@ public class JavaReference {
             }
         }
 
-        /**
-         * IX. File Input/Output (I/O)
-         *
-         * 1. File Handling
-         * 2. Reading from Files
-         * 3. Writing to Files
-         * 4. File Handling Exceptions
-         */
+        /*
+        ---------------------------
+        11. File Input/Output (I/O)
+        ---------------------------
+        */
         class InputOuput {
             public static void main(String[] args) {
 
                 /*
-                 * 1. File Handling:
+                 * File Handling:
                  * Managing files on a computer system.
                  */
                 try {
@@ -806,7 +771,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 2. Writing to Files:
+                 * Writing to Files:
                  * Ways of writing data to a file.
                  */
                 try {
@@ -834,7 +799,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 3. Reading from Files:
+                 * Reading from Files:
                  * Ways of reading data from a file.
                  */
                 try {
@@ -878,22 +843,16 @@ public class JavaReference {
             }
         }
 
-        /**
-         * X. Collections Framework
-         *
-         * 1. Lists: ArrayList vs LinkedList
-         * 2. Sets: HashSet vs TreeSet
-         * 3. Maps: HashMap vs TreeMap
-         * 4. Iterating Through Lists/Sets
-         * 5. Iterating Through Maps
-         * 6. Sorting Collections
-         * 7. Collection Algorithms
-         */
+        /*
+        -------------------------
+        12. Collections Framework
+        -------------------------
+        */
         class CollectionsFramework {
             public static void main(String[] args) {
 
                 /*
-                 * 1. List: ArrayList:
+                 * List: ArrayList:
                  * Lists maintain the order of elements and allow duplicate elements.
                  */
                 List<String> arrayList = new ArrayList<>();
@@ -901,7 +860,7 @@ public class JavaReference {
                 arrayList.add("two");
 
                 /*
-                 * 1. List: LinkedList
+                 * List: LinkedList
                  * A sequence of elements, each element is connected to its next and previous elements
                  */
                 List<String> linkedList = new LinkedList<>();
@@ -909,7 +868,7 @@ public class JavaReference {
                 linkedList.add("two");
 
                 /*
-                 * 2. Set: HashSet
+                 * Set: HashSet
                  * Stores unique elements, without maintaining any order.
                  */
                 Set<String> hashSet = new hashSet<>();
@@ -917,7 +876,7 @@ public class JavaReference {
                 linkedList.add("two");
 
                 /*
-                 * 2. Set: TreeSet
+                 * Set: TreeSet
                  * Sorted set that stores unique elements in ascending order.
                  */
                 Set<String> treeSet = new TreeSet<>();
@@ -925,7 +884,7 @@ public class JavaReference {
                 linkedList.add("two");
 
                 /*
-                 * 3. Map: HashMap
+                 * Map: HashMap
                  * Stores key-value pairs, allowing fast retrieval of values by their keys.
                  */
                 Map<String, Integer> hashMap = new HashMap<>();
@@ -933,7 +892,7 @@ public class JavaReference {
                 hashMap.put("two", 2);
 
                 /*
-                 * 3. Map: TreeMap
+                 * Map: TreeMap
                  * Sorted map that stores key-value pairs in sorted order based on the keys.
                  */
                 Map<String, Integer> treeMap = new TreeMap<>();
@@ -941,7 +900,7 @@ public class JavaReference {
                 treeMap.put("two", 2);
 
                 /*
-                 * 4. Iterating Through Lists/Sets:
+                 * Iterating Through Lists/Sets:
                  * Use for-each loop or iterators.
                  */
                 for (String item : hashSet) {
@@ -954,7 +913,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 5. Iterating Through Maps:
+                 * Iterating Through Maps:
                  * Use for-each loop or iterators.
                  */
                 for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
@@ -968,7 +927,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 6. Collection Algorithms:
+                 * Collection Algorithms:
                  * Java provides different methods to work with collections.
                  */
                 List<Integer> numbers = new ArrayList<>();
@@ -985,26 +944,18 @@ public class JavaReference {
             }
         }
 
-        /**
-         * XI. Generics
-         *
-         * 1. Introduction to Generics
-         * 2. Generic Classes
-         * 3. Generic Methods
-         * 4. Wildcards
-         * 5. Bounded Type Parameters
-         */
+        /*
+        ------------
+        13. Generics
+        ------------
+        Create classes, interfaces, and methods that operate with parameterized types.
+        The letter 'T' represents the type parameter.
+        */
         class Generics {
             public static void main(String[] args) {
 
                 /*
-                 * 1. Introduction to Generics:
-                 * Create classes, interfaces, and methods that operate with parameterized types.
-                 * The letter 'T' represents the type parameter.
-                 */
-
-                /*
-                 * 2. Generic Classes
+                 * Generic Classes
                  * Classes with type parameters for flexible and type-safe code.
                  */
                 class Shape<T> {
@@ -1026,7 +977,7 @@ public class JavaReference {
                 integerBox.set(100);
 
                 /*
-                 * 3. Generic Methods:
+                 * Generic Methods:
                  * Methods with type parameters for flexibility.
                  */
                 class GenericMethod {
@@ -1048,7 +999,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 4. Wildcards:
+                 * Wildcards:
                  * Flexible typing for methods with unknown types.
                  * There are three types of wildcards: ?, ? extends T, and ? super T.
                  */
@@ -1071,7 +1022,7 @@ public class JavaReference {
                 }
 
                 /*
-                 * 5. Bounded Type Parameters:
+                 * Bounded Type Parameters:
                  * You can restrict the types that can be passed as type arguments
                  * There are two kinds of bounds: upper bound and lower bound.
                  */

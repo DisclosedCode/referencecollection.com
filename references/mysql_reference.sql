@@ -1,8 +1,8 @@
 ----------------------------------
 -- MySQL Reference and Guide
 
--- Author: ReferenceCollection.com
--- License: MIT
+-- ReferenceCollection.com
+-- Licensed under CC BY-SA
 ----------------------------------
 
 -- Table of Contents
@@ -32,6 +32,7 @@
 ------------------
 -- 1. Introduction
 ------------------
+
 -- Overview
 -----------
 -- MySQL is an open-source relational database management system (RDBMS).

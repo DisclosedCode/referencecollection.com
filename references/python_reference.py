@@ -1,50 +1,56 @@
 """
-Python Reference
+Python Reference and Guide
 
 Author: ReferenceCollection.com
-License: MIT
+Licensed under CC BY-SA
 """
 
+# Table of Contents
 
-# Introduction
+# 1.  Introduction
+# 2.  Basics of Python
+# 3.  Modules and Packages
+# 4.  Variables and Data Types
+# 5.  Operators
+# 6.  Control Flow Statements
+# 7.  Data Structures
+# 8.  Functions
+# 9.  File Handling
+# 10. Exception Handling
+# 11. Object-Oriented Programming (OOP)
 
-# 1. Overview
-# 2. History
-# 3. Python Interpreter
-# 4. Python Versions
+# ---------------
+# 1. Introduction
+# ---------------
 
 """
-1. Overview:
+Overview:
 Python is a high-level, interpreted programming language prized for its
 simplicity and readability, suitable for a wide range of applications including
 web development, data analysis, and artificial intelligence.
 
-2. History:
+History:
 Developed by Guido van Rossum and first released in 1991, Python has since gained popularity
 due to its clear and concise syntax. It has a vibrant community and extensive library support,
 making it easy for developers to build powerful applications quickly.
 
-3. Python Interpreter:
+Python Interpreter:
 The Python interpreter is a program that executes Python code. It reads and interprets
 Python scripts line by line, converting them into machine-readable bytecode that is
 then executed by the computer's processor.
 
-4. Python Versions:
+Python Versions:
 Python has two major versions in use today: Python 2 and Python 3. Python 2, released in 2000,
 was the dominant version for many years. However, Python 3, introduced in 2008, is now the
 recommended version.
 """
 
-
-# I. Basics of Python
-
-# 1. Indentation
-# 2. Comments
-# 3. Documentation
-# 4. Input and Output
+# -------------------
+# 2. Basics of Python
+# -------------------
 
 """
-1. Indentation
+Indentation:
 Indentation is crucial in Python for defining the structure and the scope of the blocks.
 """
 
@@ -54,7 +60,7 @@ if True:
 print("This is outside the if block")
 
 """
-2. Comments
+Comments:
 Comments annotate code for readability. They're ignored by the interpreter.
 """
 
@@ -66,7 +72,7 @@ multi-line comment
 """
 
 """
-3. Documentation
+Documentation:
 Docstrings are documentation strings enclosed within triple quotes (''' ''').
 """
 
@@ -89,7 +95,7 @@ help(greet)
 print(greet.__doc__)
 
 """
-4. Input and Output:
+Input and Output:
 Python provides functions for taking input from the user and displaying output.
 """
 
@@ -100,16 +106,12 @@ age = input("Enter your age: ")
 # Output
 print("Name:", name, "Age:", age)
 
-
-# II. Modules and Packages
-
-# 1. Modules
-# 2. Packages
-# 3. Importing Modules
-# 4. Importing from Packages
+# -----------------------
+# 3. Modules and Packages
+# -----------------------
 
 """
-1. Modules:
+Modules:
 Modules are files containing Python code, in order to be reused.
 """
 
@@ -118,7 +120,7 @@ def add(a, b):
     return a + b
 
 """
-2. Packages:
+Packages:
 Packages are directories containing multiple Python modules. They contain a special file
 called __init__.py, indicating that the directory is a package.
 """
@@ -131,7 +133,7 @@ def greet():
     print("Hello from module.py")
 
 """
-3. Importing Modules:
+Importing Modules:
 - import module_name: Imports the entire module.
 - from module_name import function_name: Imports specific functions or objects.
 - import module_name as alias: Imports the module with an alias.
@@ -145,7 +147,7 @@ from math import add
 import math as m
 
 """
-4. Importing from Packages:
+Importing from Packages:
 Same import mechanisms apply for packages with a slight change.
 """
 
@@ -154,17 +156,12 @@ import my_package.module
 # Import module with alias from a package
 import my_package.module as mod
 
-
-# III. Variables and Data Types
-
-# 1. Variables
-# 2. Primitive Data Types
-# 3. Reference Data Types
-# 4. Dynamic Typing
-# 5. Type Conversion
+# ---------------------------
+# 4. Variables and Data Types
+# ---------------------------
 
 """
-1. Variables:
+Variables:
 Variables are used to store data values. A variable is created when it is assigned a value
 and is automatically assigned a type based on its value.
 """
@@ -174,7 +171,7 @@ age = 30
 name = "David"
 
 """
-2. Primitive Data Types:
+Primitive Data Types:
 - int: Integer numbers without decimals.
 - float: Floating-point numbers with decimals.
 - str: Strings, enclosed in single or double quotes.
@@ -191,7 +188,7 @@ null_value = None           # NoneType
 complex_num = 3 + 4j        # complex
 
 """
-3. Complex Data Types:
+Complex Data Types:
 Python also supports complex data types, such as lists, tuples, dictionaries, and sets:
 - list: Ordered collection of items, mutable.
 - tuple: Ordered collection of items, immutable.
@@ -205,7 +202,7 @@ student_info = {"name": "Alice", "age": 20}     # dict
 unique_numbers = {1, 2, 3, 4, 5}                # set
 
 """
-4. Dynamic Typing:
+Dynamic Typing:
 Variables can also change types during execution
 """
 
@@ -213,7 +210,7 @@ variable = 50
 variable = "Hello!"
 
 """
-5. Type Conversion:
+Type Conversion:
 Converting data from one type to another. Common conversion functions include
 int(), float(), str(), and bool().
 """
@@ -224,20 +221,12 @@ result = 10 + 1.5           # 11.5 (converted to float)
 # Explicit
 result = 100 + int("10")    # 110 (string converted to int)
 
-
-# IV. Operators
-
-# 1. Arithmetic Operators
-# 2. Comparison Operators
-# 3. Assignment Operators
-# 4. Logical Operators
-# 5. Bitwise Operators
-# 6. Membership Operators
-# 7. Identity Operators
-# 8. Ternary Operator
+# ------------
+# 5. Operators
+# ------------
 
 """
-1. Arithmetic Operators:
+Arithmetic Operators:
 Perform mathematical operations.
 """
 
@@ -250,7 +239,7 @@ exponentiation = 2 ** 3      # Exponentiation
 floor_division = 10 // 3     # Floor division (integer division, flooring the result)
 
 """
-2. Comparison Operators:
+Comparison Operators:
 Compare values.
 """
 
@@ -262,7 +251,7 @@ greater_than_or_equal_to = (10 >= 10)   # Greater than or equal to
 less_than_or_equal_to = (10 <= 5)       # Less than or equal to
 
 """
-3. Assignment Operators:
+Assignment Operators:
 Assign values to variables.
 """
 
@@ -276,7 +265,7 @@ var **= 2    # Exponentiation:  var = var ** 2
 var //= 2    # Floor division:  var = var // 2 (2.0)
 
 """
-4. Logical Operators:
+Logical Operators:
 Combine conditional statements.
 """
 
@@ -288,7 +277,7 @@ result_or = true_condition or false_condition       # Logical OR
 result_not = not true_condition                     # Logical NOT
 
 """
-5. Bitwise Operators:
+Bitwise Operators:
 Perform bitwise operations on integers.
 """
 
@@ -303,7 +292,7 @@ left_shift = a << b         # Left shift
 right_shift = a >> b        # Right shift
 
 """
-6. Membership Operators:
+Membership Operators:
 Test if a sequence is present in an object.
 """
 
@@ -314,7 +303,7 @@ result = 6 not in list      # True
 result = 7 in list          # False
 
 """
-7. Identity Operators:
+Identity Operators:
 Compare the memory locations of two objects.
 """
 
@@ -327,7 +316,7 @@ result = x is y             # False
 result = x is not y         # True
 
 """
-8. Ternary Operator:
+Ternary Operator:
 A concise way to write conditional expressions.
 Syntax: result_if_true if condition else result_if_false
 """
@@ -336,15 +325,12 @@ x = 10
 y = 20
 result = "x is greater" if x > y else "y is greater"
 
-
-# IV. Control Flow Statements
-
-# 1. Conditional Statements
-# 2. Looping Statements
-# 3. Control Flow Keywords
+# --------------------------
+# 6. Control Flow Statements
+# --------------------------
 
 """
-1. Conditional Statements:
+Conditional Statements:
 Execute different actions based on conditions.
 """
 
@@ -358,7 +344,7 @@ else:
     print("x is less than 5"
 
 """
-2. Looping Statements:
+Looping Statements:
 Execute a block of code repeatedly.
 """
 
@@ -392,7 +378,7 @@ else:
     print("Loop finished")
 
 """
-3. Control Transfer Statements:
+Control Transfer Statements:
 Change the flow of execution.
 """
 
@@ -412,15 +398,12 @@ for i in range(5):
 for i in range(5):
     pass # do nothing, placeholder for future code
 
-# IV. Data Structures
-
-# 1. Lists
-# 2. Tuples
-# 3. Sets
-# 4. Dictionaries
+# ------------------
+# 7. Data Structures
+# ------------------
 
 """
-1. Lists:
+Lists:
 Ordered collection of items, that can be changed (mutable).
 """
 
@@ -449,7 +432,7 @@ del numbers_list[4]         # Deletes element at index 4
 popped = numbers_list.pop() # Removes and returns the last element
 
 """
-2. Tuples:
+Tuples:
 Ordered collection of items, that can't be changed (immutable).
 """
 
@@ -467,7 +450,7 @@ print(b)                    # 2
 print(a, b, c, d, e)        # 1 2 3 4 5
 
 """
-3. Sets:
+Sets:
 A collection of unique items, unordered and mutable.
 """
 
@@ -493,7 +476,7 @@ intersection = set1 & set2   # Intersection
 difference = set1 - set2     # Difference
 
 """
-4. Dictionaries:
+Dictionaries:
 A collection of key-value pairs.
 """
 
@@ -522,21 +505,12 @@ age = person.pop("age")  # Removes and returns the value of 'age'
 for key, value in person.items():
     print(key, value)
 
-# IV. Functions
-
-# 1. Function Definition
-# 2. Function Arguments
-# 3. Default Arguments
-# 3. Keyword Arguments
-# 5. Arbitrary Arguments
-# 6. Arbitrary Keyword Arguments
-# 7. Returning Values
-# 8. Lambda Functions
-# 9. Recursion
-# 10. Scope of Variables
+# ------------
+# 8. Functions
+# ------------
 
 """
-1. Function Definition:
+Function Definition:
 A block of reusable code, defined using 'def'.
 """
 
@@ -546,7 +520,7 @@ def greet():
 greet()  # Hello world!
 
 """
-2. Function Arguments:
+Function Arguments:
 Values passed to a function call.
 """
 
@@ -556,7 +530,7 @@ def greet(name):
 greet("John")  # Hello John!
 
 """
-3. Default Arguments:
+Default Arguments:
 Assigns a default value to a function parameter.
 """
 
@@ -567,7 +541,7 @@ greet()          # Output: Hello world
 greet("David")   # Output: Hello David
 
 """
-4. Keyword Arguments:
+Keyword Arguments:
 Passing arguments to a function with key-value.
 """
 
@@ -577,7 +551,7 @@ def greet(name, message):
 greet(message="Good morning!", name="David")  # Hello David! Good morning!
 
 """
-5. Arbitrary Arguments (*args):
+Arbitrary Arguments (*args):
 Accept any number of arguments.
 """
 
@@ -591,7 +565,7 @@ result = add(1, 2, 3)
 print(result)  # 6
 
 """
-6. Arbitrary Keyword Arguments (**kwargs):
+Arbitrary Keyword Arguments (**kwargs):
 Accept any number of keyword arguments.
 """
 
@@ -604,7 +578,7 @@ greet(David="Hi", John="Hello")
 # John: Hello
 
 """
-7. Returning Values:
+Returning Values:
 Return a value and terminate the function.
 """
 
@@ -626,7 +600,7 @@ print("Rectangle Area:", area)
 print("Rectangle Perimeter:", perimeter)
 
 """
-8. Lambda Functions:
+Lambda Functions:
 Anonymous functions defined using 'lambda' keyword.
 Syntax: lambda arguments: expression
 """
@@ -637,7 +611,7 @@ result = add(3, 5)
 print(result)  # 8
 
 """
-9. Recursion:
+Recursion:
 A function that calls itself.
 """
 
@@ -651,7 +625,7 @@ result = factorial(5)
 print(result)  # 120
 
 """
-10. Scope of Variables:
+Scope of Variables:
 Understand variable visibility.
 """
 
@@ -672,21 +646,12 @@ func_2()     # Inside func_2: 20
 
 # Accessing local_var outside func_2 will raise an error
 
-
-# IV. File Handling
-
-# 1. File Modes
-# 2. Opening a File
-# 2. Reading from a File
-# 3. Writing to a File
-# 4. Appending to a File
-# 5. Closing a File
-# 6. Using 'with' Statement
-# 7. File Modes
-# 8. Handling Exceptions
+# ----------------
+# 9. File Handling
+# ----------------
 
 """
-7. File Modes:
+File Modes:
 Different modes for opening files - read, write, append, etc.
 """
 
@@ -698,7 +663,7 @@ Different modes for opening files - read, write, append, etc.
 # 'r+': Update mode (read and write)
 
 """
-2. Opening a File:
+Opening a File:
 Opening a file for reading, writing, or appending.
 """
 
@@ -712,7 +677,7 @@ file = open("file.txt", "w")
 file = open("file.txt", "a")
 
 """
-3. Reading from a File:
+Reading from a File:
 Reading data from an opened file.
 """
 
@@ -726,7 +691,7 @@ line = file.readline()
 lines = file.readlines()
 
 """
-4. Writing to a File:
+Writing to a File:
 Writing data to an opened file.
 """
 
@@ -738,14 +703,14 @@ lines = ["First Line\n", "Second Line\n", "Third Line\n"]
 file.writelines(lines)
 
 """
-5. Closing a File:
+Closing a File:
 Free up system resources by closing the file.
 """
 
 file.close()
 
 """
-6. File Methods:
+File Methods:
 Methods to perform operations on files.
 """
 
@@ -759,7 +724,7 @@ Methods to perform operations on files.
 # file.flush(): Flush the internal buffer
 
 """
-7. Using 'with' Statement for File Handling:
+Using 'with' Statement for File Handling:
 Automatically closes the file when done.
 """
 
@@ -770,20 +735,12 @@ with open('file.txt', 'a') as file:
     print(data)
 # File is automatically closed after the block ends
 
-
-# IV. Exception Handling
-
-# 1. Try-Except Block
-# 2. Try-Except-Else Block
-# 3. Try-Except-Finally Block
-# 4. Multiple Except Blocks
-# 5. Raising Exceptions
-# 6. Custom Exceptions
-# 7. Using 'finally' Keyword
-
+# ----------------------
+# 10. Exception Handling
+# ----------------------
 
 """
-1. Try-Except Block:
+try-except Block:
 Handling exceptions using try and except blocks.
 """
 
@@ -796,7 +753,7 @@ except ZeroDivisionError:
 
 
 """
-2. try-except-else Block:
+try-except-else Block:
 Executes the else block if no exception occurs.
 """
 
@@ -808,7 +765,7 @@ else:
     print("Result:", result)
 
 """
-3. try-except-finally Block:
+try-except-finally Block:
 Finally block get executed regardless of an exception or not.
 """
 
@@ -820,7 +777,7 @@ finally:
     print("Execution completed")
 
 """
-4. Multiple Except Blocks:
+Multiple Except Blocks:
 Handling multiple exceptions using separate except blocks.
 """
 
@@ -835,7 +792,7 @@ except ValueError:
     print("Error: Value error")
 
 """
-5. Raising Exceptions:
+Raising Exceptions:
 Manually raising exceptions using the raise keyword.
 """
 
@@ -844,7 +801,7 @@ if a < 5:
     raise Exception("x should not exceed 5")
 
 """
-6. Custom Exceptions:
+Custom Exceptions:
 Defining custom exceptions for specific use cases.
 """
 
@@ -857,21 +814,12 @@ try:
 except MyError as e:
     print("Custom error:", e.message)
 
-
-# IV. Object-Oriented Programming (OOP)
-
-"""
-1. Classes and Objects
-2. Inheritance
-3. Method Overriding
-4. Encapsulation
-5. Polymorphism
-6. Class and Instance Variables
-7. Static and Class Methods
-"""
+# -------------------------------------
+# 11. Object-Oriented Programming (OOP)
+# -------------------------------------
 
 """
-1. Classes and Objects:
+Classes and Objects:
 Classes are blueprints for creating objects with attributes and methods.
 """
 class Car:
@@ -895,7 +843,7 @@ print(car_1.brand)  # Toyota
 car_1.display_info()  # Brand: Toyota, Model: Camry
 
 """
-2. Inheritance
+Inheritance:
 Allows a class to inherit properties and behavior from another class.
 """
 # Inherits from Car
@@ -920,7 +868,7 @@ electric_car = ElectricCar("Toyota", "Prius", 400)
 electric_car.display_info()  # Brand: Toyota, Model: Prius, Battery Life: 400
 
 """
-3. Encapsulation
+Encapsulation:
 Hide the internal state of an object, and only allow access through methods.
 """
 
@@ -947,7 +895,7 @@ book.set_status('Checked Out')
 print("Status:", book.get_status())
 
 """
-4. Polymorphism:
+Polymorphism:
 Ability of objects to take on different forms based on their class.
 """
 
@@ -958,7 +906,7 @@ describe_vehicle(car_1)         # Brand: Toyota, Model: Camry
 describe_vehicle(electric_car)  # Brand: Toyota, Model: Prius, Battery Life: 400
 
 """
-5. Class and Instance Variables:
+Class and Instance Variables:
 Class variables are shared among all instances of a class.
 Instance variables are unique to each instance.
 """
@@ -973,7 +921,7 @@ class Circle:
         return Circle.pi * self.radius ** 2
 
 """
-6. Static and Class Methods:
+Static and Class Methods:
 Static methods don't access or modify class or instance variables.
 Class methods operate on class variables and can access or modify them.
 """

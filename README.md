@@ -2,13 +2,11 @@
 
 ### About
 
-Designed to accelerate your coding journey by providing clear and descriptive references for various programming languages, frameworks, and tools. Our goal is to make coding accessible and efficient for everyone, from beginners to advanced developers.
+Code-based references for various programming languages, frameworks and tools designed to simplify your coding experience by providing practical and focused guides that are constantly updated and refined. All of these references are available at referencecollection.com or directly in the /references/* directory.
 
 ### How it started
 
-Throughout my professional career and education. Whenever I explored a new programming language, I developed the habit of creating a reference file with the same extension as the language.
-In this file, I documented the language's basic, intermediate, and advanced features in a clear and concise manner. This practice enhanced my productivity and provided a quick, accessible way to refresh my knowledge.
-I created this repository to share these reference files and continue expanding on them in the same style.
+Throughout my education and career. Whenever I learned a new programming language, I developed the habit of creating a reference file with the same extension as the language. In this file, I documented the language's basic, intermediate, and advanced concepts. This organized approach made it easier for me to quickly review important information and refresh my knowledge. I created this repository to share these reference guides and to keep expanding them in a consistent, accessible format. Additionally, I am working on training AI to help write even better references, enhancing the quality and accessibility of these resources for all developers.
 
 ### Contributing
 
@@ -17,5 +15,3 @@ We welcome contributions from the community to help make this repository a valua
 ### How to Contribute
 
 Comming soon.
-
-

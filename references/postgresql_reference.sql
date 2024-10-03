@@ -1,8 +1,8 @@
 ----------------------------------
 -- PostgreSQL Reference and Guide
 
--- Author: ReferenceCollection.com
--- License: MIT
+-- ReferenceCollection.com
+-- Licensed under CC BY-SA
 ----------------------------------
 
 -- Table of Contents
