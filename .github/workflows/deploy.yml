@@ -14,7 +14,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.SSH_RC_HOST }}
           REMOTE_USER: ${{ secrets.SSH_RC_USERNAME }}
           REMOTE_PORT: ${{ secrets.SSH_RC_PORT }}
-          TARGET: "/usr/share/nginx/html/referencecollection.com"
+          TARGET: "/usr/share/nginx/referencecollection/html/referencecollection.com"
           EXCLUDE: "/dist/, /node_modules/, /.git/, /.github/"
       - name: Start Node.js Server
         uses: appleboy/ssh-action@master
@@ -24,5 +24,5 @@ jobs:
           port: ${{ secrets.SSH_RC_PORT }}
           key: ${{ secrets.SSH_RC_KEY }}
           script: |
-            cd /usr/share/nginx/html/server
+            cd /usr/share/nginx/referencecollection/html/server
             node server.js
