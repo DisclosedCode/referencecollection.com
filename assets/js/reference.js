@@ -1,4 +1,4 @@
-function setSocialLinks(title, text, url) {
+function setSocialLinks(url) {
     const socialLinks = {
         twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,

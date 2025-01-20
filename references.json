@@ -33,7 +33,6 @@
         "title": "MySQL",
         "filename": "mysql_reference.sql",
         "language": "sql",
-        "new":true,
         "meta": {
             "title": "MySQL Reference: Comprehensive Developer's Guide",
             "description": "MySQL Guide covering basic to advanced concepts, including data types, joins, functions, procedures and more. Essential reference for programmers of all levels.",
@@ -44,11 +43,65 @@
         "title": "PostgreSQL",
         "filename": "postgresql_reference.sql",
         "language": "plsql",
-        "new":true,
         "meta": {
             "title": "PostgreSQL Reference: Comprehensive Developer's Guide",
             "description": "PostgreSQL Guide covering basic to advanced concepts, including data types, queries, transactions, replication, and more for efficient database management.",
             "keywords": "PostgreSQL Reference Guide, PostgreSQL Cheatsheet, Comprehensive PostgreSQL Guide, PostgreSQL Reference Manual"
+        }
+    },
+    {
+        "title": "Rust",
+        "filename": "rust_reference.rs",
+        "language": "rust",
+        "new":true,
+        "meta": {
+            "title": "Rust Reference: Comprehensive Developer's Guide",
+            "description": "Rust Guide covering basic to advanced concepts, including data types, ownership, concurrency, lifetimes, macros and more for building robust applications.",
+            "keywords": "Rust Reference Guide, Rust Cheatsheet, Comprehensive Rust Guide, Rust Reference Manual"
+        }
+    },
+    {
+        "title": "Haskell",
+        "filename": "haskell_reference.hs",
+        "language": "haskell",
+        "new":true,
+        "meta": {
+            "title": "Haskell Reference: Comprehensive Developer's Guide",
+            "description": "Haskell Guide covering basic to advanced concepts, including functional programming, type systems, monads, and more. Essential resource for Haskell programmers of all levels.",
+            "keywords": "Haskell Reference Guide, Haskell Cheatsheet, Comprehensive Haskell Guide, Haskell Reference Manual"
+        }
+    },
+    {
+        "title": "Vimscript",
+        "filename": "vimscript_reference.vim",
+        "language": "vimscript",
+        "new":true,
+        "meta": {
+            "title": "Vimscript Reference: Comprehensive Developer's Guide",
+            "description": "Vimscript Guide covering basic to advanced concepts, including mappings, functions, commands, and more for customizing the Vim editor. Essential reference for Vimscript programmers of all levels.",
+            "keywords": "Vimscript Reference Guide, Vimscript Cheatsheet, Comprehensive Vimscript Guide, Vimscript Reference Manual"
+        }
+    },
+    {
+        "title": "Go",
+        "filename": "go_reference.go",
+        "language": "go",
+        "new":true,
+        "meta": {
+            "title": "Go Reference: Comprehensive Developer's Guide",
+            "description": "Go Guide covering basic to advanced concepts, including concurrency, interfaces, packages, and more for building scalable applications. Essential reference for programmers of all levels.",
+            "keywords": "Golang Reference Guide, Golang Cheatsheet, Comprehensive Golang Guide, Golang Reference Manual"
+        }
+    },
+    {
+        "title": "Zig",
+        "filename": "zig_reference.zig",
+        "language": "zig",
+        "new":true,
+        "meta": {
+            "title": "Zig Reference: Comprehensive Developer's Guide",
+            "description": "Zig Guide covering basic to advanced concepts, including memory management, comptime, error handling, and more for system programming. Essential reference for programmers of all levels.",
+            "keywords": "Zig Reference Guide, Zig Cheatsheet, Comprehensive Zig Guide, Zig Reference Manual"
         }
     }
 ]
