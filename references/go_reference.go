@@ -7,15 +7,15 @@
 
 // TABLE OF CONTENTS
 // -----------------
-// 1. Introduction to Go
-// 2. Basic Syntax and Structure
-// 3. Data Types and Variables
-// 4. Operators and Expressions
-// 5. Control Flow Statements
-// 6. Functions
-// 7. Arrays and Slices
-// 8. Maps
-// 9. Structs
+// 1.  Introduction to Go
+// 2.  Basic Syntax and Structure
+// 3.  Data Types and Variables
+// 4.  Operators and Expressions
+// 5.  Control Flow Statements
+// 6.  Functions
+// 7.  Arrays and Slices
+// 8.  Maps
+// 9.  Structs
 // 10. Pointers
 // 11. Methods
 // 12. Interfaces

@@ -1,611 +1,513 @@
-// --------------------------------------------------------------------------------
-// Rust Reference and Guide
+// ---------------------------------------------------------------------------------
+// Rust Programming Guide
 //
 // ReferenceCollection.com
 // Licensed under CC BY-SA
-// --------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 
 // TABLE OF CONTENTS
 // -----------------
-// 1. Introduction to Rust
-// 2. Basic Syntax and Structure
-// 3. Data Types
-// 4. Variables and Mutability
-// 5. Operators
-// 6. Control Flow
-// 7. Functions
-// 8. Ownership and Borrowing
-// 9. Structs and Enums
-// 10. Modules and Crates
-// 11. Error Handling
-// 12. Generics
-// 13. Traits
-// 14. Lifetimes
-// 15. Collections
-// 16. Concurrency
-// 17. Testing
-// 18. Macros
-// 19. Unsafe Rust
+// 1.  Introduction to Rust
+// 2.  Basic Syntax and Structure
+// 3.  Data Types and Variables
+// 4.  Ownership and Borrowing
+// 5.  Control Flow
+// 6.  Functions and Methods
+// 7.  Structs and Enums
+// 8.  Collections
+// 9.  Error Handling
+// 10. Traits and Generics
+// 11. Lifetimes
+// 12. Modules and Crates
+// 13. Testing
+// 14. Concurrency
+// 15. Smart Pointers
+// 16. Macros
+// 17. Unsafe Rust
+// 18. Advanced Topics
+// 19. Common Rust Patterns
+// 20. Performance and Optimization
 
-// -----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 // 1. Introduction to Rust
-// -----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 
-// Rust is a systems programming language that emphasizes safety, speed, and concurrency.
-// It achieves memory safety without a garbage collector, using a system of ownership
-// and borrowing. Rust is suitable for a wide range of applications, from embedded systems
-// to web servers and beyond.
-//
-// Why Learn Rust?
-// - Memory Safety: Prevents common errors like dangling pointers and data races at compile-time.
-// - Performance: Offers performance comparable to C and C++ with zero-cost abstractions.
-// - Concurrency: Provides safe and efficient tools for concurrent programming.
-// - Expressive Type System: Enables powerful and flexible code with strong static typing.
-// - Growing Ecosystem: A vibrant community and an increasing number of libraries and tools.
-//
+// Rust is a systems programming language that emphasizes safety, concurrency, and 
+// performance. It achieves memory safety without garbage collection through its 
+// unique ownership system and provides zero-cost abstractions for building reliable
+// and efficient software.
+
+// Key Features:
+// - Memory Safety: Prevents common programming errors like null pointer dereferencing,
+//   buffer overflows, and data races at compile time
+// - Zero-cost Abstractions: High-level features that compile to efficient low-level code
+// - Concurrency: Safe concurrent programming through ownership and type system
+// - Performance: C-like performance with modern language features
+// - Reliability: Strong type system and compile-time guarantees
+// - Modern Tooling: Integrated package manager (Cargo), documentation generator (rustdoc),
+//   and formatting tool (rustfmt)
+
 // Getting Started:
-// - Install Rust.
-// - Use the Rust compiler `rustc` to compile code.
-// - Use the Rust package manager `cargo` to manage projects, dependencies, and builds.
-// - Create Rust source files with the `.rs` extension.
-//
-// Basic Execution:
-// - Create a new project: `cargo new <project_name>`
-// - Navigate to the project directory: `cd <project_name>`
-// - Build the project: `cargo build`
-// - Run the project: `cargo run`
-// - Compile a single file: `rustc <filename.rs>`
-// - Run a compiled binary: `./<filename>` (or `<filename>.exe` on Windows)
+// 1. Install Rust:
+//    - Visit https://rustup.rs/
+//    - Follow installation instructions for your platform
+// 2. Verify installation:
+//    - Run `rustc --version` in terminal
+// 3. Create new project:
+//    - Run `cargo new project_name`
+//    - CD into project directory
+// 4. Build and run:
+//    - Use `cargo build` to compile
+//    - Use `cargo run` to compile and execute
+// 5. Package management:
+//    - Use `cargo add package_name` to add dependencies
+//    - Edit Cargo.toml for manual dependency management
 
-// -----------------------------------------------------------------------------------------------------
+// Basic Project Structure:
+// project_name/
+// ├── Cargo.toml      // Project metadata and dependencies
+// ├── src/
+// │   └── main.rs     // Main entry point
+// └── target/         // Build artifacts
+
+// Example of a basic Rust program:
+fn main() {
+    println!("Hello, Rust!");
+}
+
+// ---------------------------------------------------------------------------------
 // 2. Basic Syntax and Structure
-// -----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 
-// A Rust program is structured into functions, which contain statements and expressions.
-// The `main` function is the entry point of the program.
-//
-// Basic Syntax Elements:
-// - Comments: Use `//` for single-line comments and `/* ... */` for multi-line comments.
-// - Semicolons: Statements in Rust must end with a semicolon `;`.
-// - Blocks: Rust uses curly braces {} to define blocks of code.
-// - Case-sensitive: Variable and Function names are case-sensitive.
+// Rust programs consist of functions, statements, and expressions. The main function
+// is the entry point of every executable Rust program. The language emphasizes 
+// explicit over implicit behavior and provides strong static typing with type inference.
 
-// This is the main function where the program execution begins.
-fn main() {
-    println!("Hello, Rust!"); // This line prints "Hello, Rust!" to the console.
+// Comments:
+// - Single-line comments start with //
+// - Multi-line comments use /* ... */
+// - Documentation comments use /// or //! (generate documentation)
+
+/// This is a documentation comment that generates documentation for the following item
+fn documented_function() {
+    println!("This function has documentation!");
 }
 
-// -----------------------------------------------------------------------------------------------------
-// 3. Data Types
-// -----------------------------------------------------------------------------------------------------
+// Statements and Expressions:
+// - Statements perform actions but don't return values
+// - Expressions evaluate to a value
+// - Last expression in a block becomes its return value
 
-// Rust is statically typed, meaning that the type of every variable must be known at compile time.
-// Common data types include:
-//   - Integers: `i8`, `i16`, `i32`, `i64`, `isize` (signed); `u8`, `u16`, `u32`, `u64`, `usize` (unsigned)
-//   - Floating-point numbers: `f32`, `f64`
-//   - Booleans: `bool` (true or false)
-//   - Characters: `char` (Unicode scalar values)
-//   - Tuples: `(value1, value2, ...)`
-//   - Arrays: `[value1, value2, ...]` (fixed size)
-//   - Slices: Dynamic views into arrays
-//   - Strings: `String` (growable, heap-allocated) and `&str` (string slices)
-
-fn data_types_example() {
-    let integer: i32 = 42; // Declaring an i32 integer.
-    let float: f64 = 3.14; // Declaring a f64 floating-point number.
-    let boolean: bool = true; // Declaring a boolean.
-    let character: char = 'A'; // Declaring a character.
-    let tuple: (i32, f64, char) = (10, 2.71, 'B'); // Declaring a tuple.
-    let array: [i32; 3] = [1, 2, 3]; // Declaring an array of 3 i32 integers.
-    let string_slice: &str = "hello"; // Declaring a string slice.
-    let string_owned: String = String::from("world"); // Declaring an owned string.
+fn expression_example() {
+    let x = 5;          // Statement
+    let y = {           // Expression block
+        let z = 3;
+        z + 1           // Expression (returns 4)
+    };
+    println!("y is: {}", y);
 }
 
-// For dynamic collections, use `Vec` (vector). We will cover this in the Collections section.
+// Variables:
+// - Declared using 'let'
+// - Immutable by default
+// - Type inference available
+// - Explicit type annotations use ':'
 
-// -----------------------------------------------------------------------------------------------------
-// 4. Variables and Mutability
-// -----------------------------------------------------------------------------------------------------
+let immutable = 42;             // Immutable variable
+let mut mutable = 42;           // Mutable variable
+let typed: i32 = 42;           // Explicit type annotation
+let inferred = 42;             // Type inferred as i32
 
-// Variables in Rust are immutable by default.
-// Use `let` to declare variables and `mut` to make them mutable.
+// Constants:
+// - Declared using 'const'
+// - Must have type annotation
+// - Value must be known at compile time
 
-// Immutable variables, cannot be changed after they are initialized.
-fn main() {
-    let x = 5; // x is an immutable variable
-    // x = 10; // This will cause a compile-time error because x is immutable
-    println!("The value of x is: {}", x);
-}
+const MAX_POINTS: u32 = 100_000;
 
-// Mutable variables, can be changed after they are initialized.
-fn main() {
-    let mut x = 5; // x is a mutable variable
-    println!("The value of x is: {}", x);
-    x = 10; // x is now 10
-    println!("The value of x is: {}", x);
-}
+// ---------------------------------------------------------------------------------
+// 3. Data Types and Variables
+// ---------------------------------------------------------------------------------
 
-// Shadowing, allows you to declare a new variable with the same name as a previous variable.
-fn main() {
-    let x = 5;
-    println!("The value of x is: {}", x); // Output: The value of x is: 5
-    let x = x + 1; // Shadowing the previous x
-    println!("The value of x is: {}", x); // Output: The value of x is: 6
-}
+// Rust is statically typed, meaning all variables must have known types at compile time.
+// The compiler can often infer types, but explicit annotations are sometimes needed.
+// Understanding Rust's type system is crucial for writing efficient and safe code.
 
-// Constants, are immutable and must have their type specified.
-const PI: f64 = 3.14159;
-println!("Constant PI: {}", PI);
+// Scalar Types:
+// ------------
 
-// Type inference, is the compiler's ability to deduce the type of a variable.
-let x = 100; // Rust infers x to be of type i32
-println!("Inferred x: {}", x);
+// Integers:
+let signed: i32 = -42;         // Signed 32-bit integer
+let unsigned: u32 = 42;        // Unsigned 32-bit integer
+let byte: u8 = b'A';           // Byte (u8)
 
-// -----------------------------------------------------------------------------------------------------
-// 5. Operators
-// -----------------------------------------------------------------------------------------------------
+// Integer types:
+// - Signed: i8, i16, i32, i64, i128, isize (pointer-sized)
+// - Unsigned: u8, u16, u32, u64, u128, usize (pointer-sized)
 
-// Rust supports a variety of operators, including arithmetic, comparison, logical, and bitwise operators.
+// Integer literals:
+let decimal = 98_222;          // Decimal
+let hex = 0xff;                // Hexadecimal
+let octal = 0o77;              // Octal
+let binary = 0b1111_0000;      // Binary
 
-fn main() {
-    // Arithmetic operators include `+`, `-`, `*`, `/`, and `%`.
-    let a = 10;
-    let b = 3;
-    println!("Addition: {}", a + b);    // Output: 13
+// Floating-point:
+let float32: f32 = 3.14;       // 32-bit float
+let float64: f64 = 2.71828;    // 64-bit float (default)
 
-    // Comparison operators include `==`, `!=`, `>`, `<`, `>=`, and `<=`.
-    let c = 5;
-    let d = 10;
-    println!("Equal: {}", c == d); // Output: false
+// Boolean:
+let boolean: bool = true;       // true or false
 
-    // Logical operators include `&&` (logical AND), `||` (logical OR), and `!` (logical NOT).
-    let e = true;
-    let f = false;
-    println!("And: {}", e && f); // Output: false
+// Character:
+let character: char = 'A';      // Unicode scalar value (4 bytes)
 
-    // Bitwise operators include `&` (bitwise AND), `|` (bitwise OR), `^` (bitwise XOR), `<<` (left shift), and `>>` (right shift).
-    let g: u8 = 0b00001111; // Binary representation
-    let h: u8 = 0b00000101;
-    println!("Bitwise AND: {:08b}", g & h); // Output: 00000101, `{:b}` is used to print the binary representation
+// Compound Types:
+// -------------
 
-    // Assignment operators include `=`, `+=`, `-`, `*=`, `/=`, and `%=`.
-    let mut i = 5;
-    i += 2; // i = i + 2
-    println!("Assignment: {}", i); // Output: 7
-}
+// Tuples:
+let tup: (i32, f64, char) = (500, 6.4, 'A');
+let (x, y, z) = tup;           // Destructuring
+let first = tup.0;             // Access by index
 
-// -----------------------------------------------------------------------------------------------------
-// 6. Control Flow
-// -----------------------------------------------------------------------------------------------------
+// Arrays:
+let array: [i32; 5] = [1, 2, 3, 4, 5];  // Fixed-size array
+let repeated = [3; 5];         // [3, 3, 3, 3, 3]
 
-// Control flow statements determine the order in which code is executed.
-// Rust has several control flow statements, including `if`, `else if`, `else`, `loop`, `while`, and `for`.
+// Slices:
+let slice = &array[1..4];      // Reference to part of array
 
-// `if`, `else if`, `else` Statements
-fn main() {
-    let x = 10;
+// Strings:
+let string_literal = "hello";   // String literal (&str)
+let string = String::from("hello"); // Owned String
 
-    if x > 10 {
-        println!("x is greater than 10");
-    } else if x < 10 {
-        println!("x is less than 10");
-    } else {
-        println!("x is equal to 10");
-    } // Output: x is equal to 10
-}
+// Type Aliases:
+type Distance = f64;           // Create type alias
+let distance: Distance = 5.0;
 
-// `loop` statements create an infinite loop, use `break` to exit the loop.
-fn main() {
-    let mut counter = 0;
-    loop {
-        println!("Counter: {}", counter);
-        counter += 1;
-        if counter > 5 {
-            break; // Exit the loop when counter is greater than 5
-        }
-    }
-}
+// ---------------------------------------------------------------------------------
+// 4. Ownership and Borrowing
+// ---------------------------------------------------------------------------------
 
-// `while` statements execute a block of code as long as a condition is true.
-fn main() {
-    let mut counter = 0;
-    while counter <= 5 {
-        println!("Counter: {}", counter);
-        counter += 1;
-    }
-}
+// Ownership is Rust's innovative approach to memory management, ensuring memory safety
+// without garbage collection. It's based on a set of rules checked at compile time,
+// preventing common programming errors like use-after-free and data races.
 
-// `for` statements iterate over a sequence of values.
-fn main() {
-    for i in 0..5 { // Iterate from 0 to 4 (exclusive of 5)
-        println!("Value: {}", i);
-    }
-}
+// Ownership Rules:
+// 1. Each value has exactly one owner
+// 2. Only one owner at a time
+// 3. When owner goes out of scope, value is dropped
 
-// -----------------------------------------------------------------------------------------------------
-// 7. Functions
-// -----------------------------------------------------------------------------------------------------
-
-// Functions are blocks of code that perform specific tasks.
-// Functions can have parameters and return values.
-
-// Functions are defined using the `fn` keyword, followed by the function name,
-// parameters in parentheses, and the return type after an arrow `->`.
-
-// Function Definition
-fn add(x: i32, y: i32) -> i32 {
-    // The `-> i32` specifies that the function returns a 32-bit integer.
-    // The last expression in a function is implicitly returned (no semicolon).
-    x + y
-}
-
-// Function without parameters and return value.
-fn greet() {
-    println!("Hello from greet function!");
-}
-
-// Returning Multiple Values, Functions can return multiple values using tuples.
-fn get_coordinates() -> (i32, i32) {
-    (10, 20)
-}
-
-// Early Returns, Functions can return early using the `return` keyword.
-fn check_number(number: i32) -> bool {
-    if number < 0 {
-        return false; // Early return if number is negative
-    }
-    true
-}
-
-fn main() {
-
-    println!("The sum is: {}", add(5, 3)); // Output: The sum is: 8
-
-    greet(); // Output: Hello from greet function!
-
-    let coordinates = get_coordinates();
-    println!("X: {}, Y: {}", coordinates.0, coordinates.1); // Output: X: 10, Y: 20
-
-    println!("Is 5 positive? {}", check_number(5)); // Output: Is 5 positive? true
-}
-
-// -----------------------------------------------------------------------------------------------------
-// 8. Ownership and Borrowing
-// -----------------------------------------------------------------------------------------------------
-
-// Rust's ownership system is a core feature that enables memory safety without a garbage collector.
-// Every value has an owner, when the owner goes out of scope, the value is dropped (memory is freed).
-
-// Ownership
-// There can only be one owner of a value at a time.
-// When a value is assigned to a new variable, the ownership is transferred.
+// Example of Ownership:
 fn ownership_example() {
-    let s1 = String::from("hello"); // s1 owns the string data
-    let s2 = s1; // Ownership is transferred from s1 to s2
-    // println!("s1: {}", s1); // This will cause a compile-time error because s1 no longer owns the data
-    println!("s2: {}", s2); // s2 now owns the data.
+    let s1 = String::from("hello");    // s1 owns the string
+    let s2 = s1;                       // Value moved to s2
+    // println!("{}", s1);             // Error: s1 no longer valid
+    println!("{}", s2);                // Works fine
 }
 
-// Cloning
-// To copy the data instead of transferring ownership, use the `clone()` method.
-fn clone_example() {
-    let s1 = String::from("hello");
-    let s2 = s1.clone(); // s2 gets a copy of the data
-    println!("s1: {}, s2: {}", s1, s2); // Both s1 and s2 own their own copies of the data.
+// Borrowing:
+// - References allow using a value without taking ownership
+// - References are immutable by default
+// - Only one mutable reference OR any number of immutable references at a time
+
+// Immutable Borrowing:
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
 
-// Immutable Borrowing
-// Borrowing is a way to access the data of a value without transferring ownership.
-// Immutable references: `&`
-fn immutable_borrow_example() {
-    let s1 = String::from("hello");
-    let r1 = &s1; // r1 is an immutable borrow of s1
-    let r2 = &s1; // r2 is another immutable borrow of s1
-    println!("r1: {}, r2: {}, s1: {}", r1, r2, s1); // All three can access the data.
+let s1 = String::from("hello");
+let len = calculate_length(&s1);       // Borrow s1
+
+// Mutable Borrowing:
+fn change(s: &mut String) {
+    s.push_str(", world");
 }
 
-// Mutable Borrowing
-// You can have only one mutable borrow of a value at a time.
-// You cannot have any immutable borrows while there is a mutable borrow.
-fn mutable_borrowing() {
-    let mut s1 = String::from("hello");
-    let r1 = &mut s1; // r1 is a mutable borrow of s1
-    r1.push_str(", world!"); // Modify the borrowed data.
-    // let r2 = &s1; // This will cause a compile-time error because there is already a mutable borrow.
-    println!("r1: {}", r1);
+let mut s = String::from("hello");
+change(&mut s);
+
+// Reference Rules:
+// 1. References must always be valid (no dangling references)
+// 2. References must be one of:
+//    - One mutable reference
+//    - Any number of immutable references
+// 3. References must not outlive their referent
+
+// ---------------------------------------------------------------------------------
+// 5. Control Flow
+// ---------------------------------------------------------------------------------
+
+// Rust provides several control flow constructs for controlling program execution.
+// These include conditional statements, loops, and pattern matching through the
+// match expression.
+
+// If Expressions:
+let number = 7;
+
+if number < 5 {
+    println!("condition was true");
+} else {
+    println!("condition was false");
 }
 
-// Dangling References
-// Rust's borrow checker prevents dangling references (references to memory that has been deallocated).
-fn dangle() -> &String { // This function will cause a compile-time error.
-    let s = String::from("hello");
-    &s /* Return a reference to the string, but the string will be dropped when the function ends, leaving a dangling reference. */
-}
-// The above code will not compile. Rust prevents dangling references at compile time.
-// To avoid dangling references, return the value, not a reference.
-fn no_dangle() -> String {
-    let s = String::from("hello");
-    s // Return the string, not a reference. Ownership is transferred.
-}
+// If in a Let Statement:
+let condition = true;
+let number = if condition { 5 } else { 6 };
 
-// -----------------------------------------------------------------------------------------------------
-// 9. Structs and Enums
-// -----------------------------------------------------------------------------------------------------
+// Loops:
+// Three types of loops: loop, while, and for
 
-// Structs and enums are used to create custom data types.
-// Structs are used to group related data together.
-// Enums are used to define a type that can have one of several possible values.
+// Infinite Loop with Break:
+let mut counter = 0;
+let result = loop {
+    counter += 1;
+    if counter == 10 {
+        break counter * 2;
+    }
+};
 
-// Structs
-// Defined using `struct`, followed by the struct name and a list of fields.
-struct Point {
-    x: i32,
-    y: i32,
+// While Loop:
+let mut number = 3;
+while number != 0 {
+    println!("{}!", number);
+    number -= 1;
 }
 
-fn main() {
-    let p = Point { x: 10, y: 20 }; // Create an instance of the Point struct
-    println!("Point: x = {}, y = {}", p.x, p.y); // Access struct fields using dot notation
+// For Loop:
+let a = [10, 20, 30, 40, 50];
+for element in a.iter() {
+    println!("the value is: {}", element);
 }
 
-// Tuple Structs
-// Similar to structs, but their fields are accessed by index instead of by name.
-struct Color(u8, u8, u8);
-
-fn main() {
-    let red = Color(255, 0, 0); // Create an instance of the Color tuple struct
-    println!("Red: R = {}, G = {}, B = {}", red.0, red.1, red.2); // Access tuple struct fields using index
+// Range-based For Loop:
+for number in 1..4 {
+    println!("{}", number);
 }
 
-// Unit-like Structs
-// Unit-like structs have no fields.
-// They are useful for implementing traits.
-struct Marker;
-
-fn main() {
-    let _m = Marker; // Create an instance of the unit-like struct
-    println!("Marker struct created");
+// Match Expression:
+// Pattern matching with match is exhaustive and must cover all possibilities
+let number = 6;
+match number {
+    1 => println!("One"),
+    2 => println!("Two"),
+    3..=5 => println!("Three to Five"),
+    _ => println!("Something else"),
 }
 
-// Enums
-// Defined using the `enum` keyword, followed by the enum name and a list of variants.
-enum Direction {
-    North,
-    South,
-    East,
-    West,
+// ---------------------------------------------------------------------------------
+// 6. Functions and Methods
+// ---------------------------------------------------------------------------------
+
+// Functions are the primary building blocks of Rust code. They can take parameters,
+// return values, and serve as the core organizational unit of code. Methods are
+// functions associated with a particular type.
+
+// Basic Function:
+fn greet(name: &str) {
+    println!("Hello, {}!", name);
 }
 
-fn main() {
-    let direction = Direction::North; // Create an instance of the Direction enum
-    match direction {
-        Direction::North => println!("Moving North"),
-        Direction::South => println!("Moving South"),
-        Direction::East => println!("Moving East"),
-        Direction::West => println!("Moving West"),
-    } // Output: Moving North
+// Function with Return Value:
+fn add(a: i32, b: i32) -> i32 {
+    a + b       // Implicit return (no semicolon)
 }
 
-// Enums with Data
-// Enums can store data with their variants.
-enum Message {
-    Quit,
-    Move { x: i32, y: i32 },
-    Write(String),
-    ChangeColor(u8, u8, u8),
+// Methods:
+// Functions associated with a type, defined in impl blocks
+struct Rectangle {
+    width: u32,
+    height: u32,
 }
 
-fn main() {
-    let message = Message::Move { x: 10, y: 20 };
-    match message {
-        Message::Quit => println!("Quit"),
-        Message::Move { x, y } => println!("Move to x = {}, y = {}", x, y), // Output: Move to x = 10, y = 20
-        Message::Write(text) => println!("Write: {}", text),
-        Message::ChangeColor(r, g, b) => println!("Change color to R = {}, G = {}, B = {}", r, g, b),
+impl Rectangle {
+    // Associated function (static method)
+    fn new(width: u32, height: u32) -> Rectangle {
+        Rectangle { width, height }
+    }
+
+    // Method (takes &self)
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    // Mutable method
+    fn resize(&mut self, width: u32, height: u32) {
+        self.width = width;
+        self.height = height;
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// 10. Modules and Crates
-// -----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
+// 7. Structs and Enums
+// ---------------------------------------------------------------------------------
 
-// Modules and crates are used to organize and manage Rust code.
-// A crate is a compilation unit, which can be a binary executable or a library.
-// Modules are used to group related code within a crate.
+// Structs and enums are the building blocks for creating custom data types in Rust.
+// They allow you to create complex data structures that group related data together.
 
-// Modules
-// Defined using the `mod` keyword, followed by the module name and a block of code.
-// Modules can contain functions, structs, enums, and other modules.
-mod my_module {
-    pub fn hello() {
-        println!("Hello from my_module!");
+// Regular struct:
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+
+// Creating struct instance:
+let user1 = User {
+    email: String::from("someone@example.com"),
+    username: String::from("someusername123"),
+    active: true,
+    sign_in_count: 1,
+};
+
+// Tuple structs:
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+// Unit structs:
+struct AlwaysEqual;
+
+// Enums:
+// Define a type by enumerating its possible variants
+enum IpAddr {
+    V4(u8, u8, u8, u8),
+    V6(String),
+}
+
+// Using enums with match:
+let home = IpAddr::V4(127, 0, 0, 1);
+
+match home {
+    IpAddr::V4(a, b, c, d) => println!("{}.{}.{}.{}", a, b, c, d),
+    IpAddr::V6(addr) => println!("{}", addr),
+}
+
+// Option enum:
+// Built-in enum for handling nullable values
+let some_number = Some(5);
+let absent_number: Option<i32> = None;
+
+// ---------------------------------------------------------------------------------
+// 8. Collections
+// ---------------------------------------------------------------------------------
+
+// Rust's standard library includes several collection types that provide ways to
+// store multiple values. Unlike arrays, these collections are stored on the heap
+// and can grow or shrink at runtime.
+
+// Vectors:
+// Growable arrays
+let mut vec: Vec<i32> = Vec::new();
+vec.push(1);
+vec.push(2);
+
+// Vector with initial values:
+let vec = vec![1, 2, 3];
+
+// Accessing elements:
+let third: &i32 = &vec[2];
+let third: Option<&i32> = vec.get(2);
+
+// Strings:
+// UTF-8 encoded, growable text
+let mut s = String::from("hello");
+s.push_str(", world!");
+
+// Hash Maps:
+use std::collections::HashMap;
+
+let mut scores = HashMap::new();
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Yellow"), 50);
+
+// Accessing values:
+let team_name = String::from("Blue");
+let score = scores.get(&team_name);
+
+// Updating values:
+scores.entry(String::from("Blue")).or_insert(50);
+
+// ---------------------------------------------------------------------------------
+// 9. Error Handling
+// ---------------------------------------------------------------------------------
+
+// Rust groups errors into two categories: recoverable errors using Result<T, E>
+// and unrecoverable errors using panic!. This approach ensures robust error handling
+// while maintaining program reliability.
+
+// Result enum:
+enum Result<T, E> {
+    Ok(T),    // Success case with value of type T
+    Err(E),   // Error case with error of type E
+}
+
+// Example using Result:
+fn divide(a: f64, b: f64) -> Result<f64, String> {
+    if b == 0.0 {
+        Err(String::from("Division by zero"))
+    } else {
+        Ok(a / b)
     }
 }
 
-fn main() {
-    my_module::hello(); // Access the function in the module using the module name and `::`
+// Using match with Result:
+match divide(10.0, 2.0) {
+    Ok(result) => println!("Result: {}", result),
+    Err(e) => println!("Error: {}", e),
 }
 
-// Nested Modules
-// Modules can be nested within other modules.
-mod parent_module {
-    pub mod child_module {
-        pub fn hello_child() {
-            println!("Hello from child_module!");
-        }
-    }
+// Using ? operator for error propagation:
+fn read_username_from_file() -> Result<String, std::io::Error> {
+    let mut file = std::fs::File::open("username.txt")?;
+    let mut username = String::new();
+    file.read_to_string(&mut username)?;
+    Ok(username)
 }
 
-fn main() {
-    parent_module::child_module::hello_child(); // Access the function in the nested module
-}
+// Panic:
+// For unrecoverable errors
+// panic!("crash and burn");
 
-// `use` Keyword
-// The `use` keyword is used to bring items from a module into the current scope.
-// This allows you to use the items without having to specify the full path.
-mod my_math {
-    pub fn add(x: i32, y: i32) -> i32 {
-        x + y
-    }
-}
-
-use my_math::add;
-
-fn main() {
-    let sum = add(5, 3); // Use the `add` function directly using the `use` keyword.
-    println!("Sum: {}", sum);
-}
-
-// Crates
-// A crate is a compilation unit, which can be a binary executable or a library.
-// A binary crate has a `main` function and produces an executable file.
-// A library crate does not have a `main` function and produces a library file (e.g., `.rlib`).
-
-// Example:
-
-// Creating a Library Crate
-// Create a new library crate using `cargo new --lib my_lib`.
-// In `src/lib.rs`, add the following code:
-
-// src/lib.rs
-pub mod math {
-    pub fn add(x: i32, y: i32) -> i32 {
-        x + y
-    }
-}
-
-// Using a Library Crate
-// In a new binary crate, add `my_lib` as a dependency in `Cargo.toml`.
-// Then in `src/main.rs`, add the following code:
-
-// Cargo.toml
-// [dependencies]
-// my_lib = { path = "../my_lib" }
-
-// src/main.rs
-// extern crate my_lib;
-
-// use my_lib::math::add;
-
-// fn main() {
-//     let sum = add(5, 3);
-//     println!("Sum: {}", sum);
-// }
-
-// -----------------------------------------------------------------------------------------------------
-// 11. Error Handling
-// -----------------------------------------------------------------------------------------------------
-
-// Rust uses a robust error handling system that emphasizes explicitness and safety.
-// Rust differentiates between recoverable errors (e.g., file not found) and unrecoverable errors (e.g., out of memory).
-
-// Recoverable Errors with `Result`
-// The `Result` enum is used to represent the outcome of an operation that might fail.
-// It has two variants: `Ok(T)` for success and `Err(E)` for failure, where `T` is the success type and `E` is the error type.
-
-// Example: Using `Result`
-use std::fs::File;
-use std::io::ErrorKind;
-use std::io::Read;
-
-fn read_file(file_path: &str) -> Result<String, std::io::Error> {
-    let mut file = File::open(file_path)?; // The `?` operator propagates the error if the file cannot be opened.
-    let mut contents = String::new();
-    file.read_to_string(&mut contents)?; // The `?` operator propagates the error if the read operation fails.
-    Ok(contents) // Return the file contents if the operations are successful.
-}
-
-fn main() {
-    match read_file("example.txt") {
-        Ok(contents) => println!("File contents: {}", contents),
-        Err(error) => match error.kind() {
-            ErrorKind::NotFound => println!("File not found"),
-            _ => println!("Error reading file: {}", error),
-        }
-    }
-}
-
-// Note: Create an example.txt file with some content in the same directory to run this example.
-
-// Unrecoverable Errors with `panic!`
-// The `panic!` macro is used to indicate that a program has reached an unrecoverable state.
-// When a `panic!` occurs, the program will typically terminate.
-
-// Example: Using `panic!`
-fn divide(x: i32, y: i32) -> i32 {
-    if y == 0 {
-        panic!("Cannot divide by zero"); // Trigger a panic if y is zero
-    }
-    x / y
-}
-
-fn main() {
-    let result = divide(10, 2);
-    println!("Result: {}", result);
-
-    // The following line will cause a panic
-    // let result = divide(10, 0);
-    // println!("Result: {}", result);
-}
-
-// `unwrap()` and `expect()`
-// The `unwrap()` method extracts the success value from a `Result`, but will `panic!` if the `Result` is an `Err`.
-// The `expect()` method is similar to `unwrap()`, but allows you to specify a custom error message.
-// These methods should be used with caution, as they can lead to unhandled panics.
-
-// Example: `unwrap()` and `expect()`
-use std::fs;
-
-fn main() {
-    let contents = fs::read_to_string("example.txt").expect("Failed to read file");
-    println!("File contents: {}", contents);
-}
-
-// Custom Error Types
-// You can define your own error types using enums or structs.
-// This allows you to provide more specific error information.
-
-// Example: Custom Error Type
+// Custom error types:
 #[derive(Debug)]
-enum MyError {
-    InvalidInput,
-    OpenFileFailed(std::io::Error),
+struct AppError {
+    kind: String,
+    message: String,
 }
 
-fn process_input(input: i32) -> Result<i32, MyError> {
-    if input < 0 {
-        return Err(MyError::InvalidInput);
-    }
-    Ok(input * 2)
-}
+// ---------------------------------------------------------------------------------
+// 10. Traits and Generics
+// ---------------------------------------------------------------------------------
 
+// Traits define shared behavior across types, similar to interfaces in other languages.
+// Generics provide a way to write flexible, reusable code that works with different types
+// while maintaining type safety.
 
-fn main() {
-    match process_input(-5) {
-        Ok(result) => println!("Result: {}", result),
-        Err(error) => println!("Error: {:?}", error), // Output: Error: InvalidInput
-    }
-
-    match process_input(5) {
-        Ok(result) => println!("Result: {}", result), // Output: Result: 10
-        Err(error) => println!("Error: {:?}", error),
+// Traits: Define shared behavior
+trait Summary {
+    fn summarize(&self) -> String;
+    
+    // Default implementation
+    fn default_summary(&self) -> String {
+        String::from("(Read more...)")
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// 12. Generics
-// -----------------------------------------------------------------------------------------------------
+// Implementing a trait
+struct NewsArticle {
+    headline: String,
+    location: String,
+    author: String,
+}
 
-// Generics allow you to write code that can work with different types without having to duplicate the code.
-// Generics are a powerful tool for creating reusable and flexible code.
+impl Summary for NewsArticle {
+    fn summarize(&self) -> String {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
 
-// Generic Functions
-// Generic functions are functions that can work with different types.
-// Type parameters are specified in angle brackets `<>` after the function name.
-
-// Example: Generic Function
+// Generic Functions with Trait Bounds
 fn largest<T: PartialOrd>(list: &[T]) -> &T {
-    // `T: PartialOrd` specifies that the type `T` must implement the `PartialOrd` trait, which allows comparison.
     let mut largest = &list[0];
     for item in list {
         if item > largest {
@@ -615,251 +517,22 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
     largest
 }
 
-fn main() {
-    let numbers = vec![1, 5, 2, 8, 3];
-    let largest_number = largest(&numbers);
-    println!("Largest number: {}", largest_number); // Output: Largest number: 8
-
-    let chars = vec!['a', 'z', 'b', 'c'];
-    let largest_char = largest(&chars);
-    println!("Largest char: {}", largest_char); // Output: Largest char: z
-}
-
 // Generic Structs
-// Generic structs are structs that can contain different types.
-// Type parameters are specified in angle brackets `<>` after the struct name.
-
-// Example: Generic Struct
 struct Point<T> {
     x: T,
     y: T,
 }
 
-fn main() {
-    let p1: Point<i32> = Point { x: 10, y: 20 };
-    let p2: Point<f64> = Point { x: 3.14, y: 2.71 };
-    println!("Point 1: x = {}, y = {}", p1.x, p1.y); // Output: Point 1: x = 10, y = 20
-    println!("Point 2: x = {}, y = {}", p2.x, p2.y); // Output: Point 2: x = 3.14, y = 2.71
-}
+// ---------------------------------------------------------------------------------
+// 11. Lifetimes
+// ---------------------------------------------------------------------------------
 
-// Generic Enums
-// Generic enums are enums that can have different types in their variants.
+// Lifetimes are Rust's way of ensuring that references are valid for the duration
+// they're used. Every reference in Rust has a lifetime, which is the scope for
+// which that reference is valid.
 
-// Example: Generic Enum
-enum Option<T> {
-    Some(T),
-    None,
-}
-
-fn main() {
-    let some_value: Option<i32> = Option::Some(10);
-    let none_value: Option<String> = Option::None;
-
-    match some_value {
-        Option::Some(value) => println!("Some value: {}", value), // Output: Some value: 10
-        Option::None => println!("None value"),
-    }
-
-    match none_value {
-        Option::Some(value) => println!("Some value: {}", value),
-        Option::None => println!("None value"), // Output: None value
-    }
-}
-
-// Generic Traits
-// Generic traits are traits that can be implemented for different types.
-
-// Example: Generic Trait
-trait Summary {
-    fn summarize(&self) -> String;
-}
-
-struct NewsArticle {
-    headline: String,
-    author: String,
-    content: String,
-}
-
-impl Summary for NewsArticle {
-    fn summarize(&self) -> String {
-        format!("{}, by {}", self.headline, self.author)
-    }
-}
-
-struct Tweet {
-    username: String,
-    content: String,
-}
-
-impl Summary for Tweet {
-    fn summarize(&self) -> String {
-        format!("{} : {}", self.username, self.content)
-    }
-}
-
-fn main() {
-    let article = NewsArticle {
-        headline: String::from("Rust Generics"),
-        author: String::from("Jane Doe"),
-        content: String::from("This is an article about Rust generics."),
-    };
-    let tweet = Tweet {
-        username: String::from("rustacean"),
-        content: String::from("Rust is awesome!"),
-    };
-
-    println!("Tweet summary: {}", tweet.summarize()); // Output: Tweet summary: rustacean : Rust is awesome!
-}
-
-// -----------------------------------------------------------------------------------------------------
-// 13. Traits
-// -----------------------------------------------------------------------------------------------------
-
-// Traits are similar to interfaces or abstract classes in other programming languages.
-// They define a set of methods that a type must implement to be considered a member of that trait.
-// Traits enable polymorphism and code reuse.
-
-// Defining Traits
-// Traits are defined using the `trait` keyword, followed by the trait name and a block of method signatures.
-
-// Example: Defining a Trait
-trait Shape {
-    fn area(&self) -> f64;
-    fn perimeter(&self) -> f64;
-}
-
-// Implementing Traits
-// Types implement traits using the `impl` keyword, followed by the trait name and the type.
-
-// Example: Implementing a Trait
-struct Circle {
-    radius: f64,
-}
-
-impl Shape for Circle {
-    fn area(&self) -> f64 {
-        std::f64::consts::PI * self.radius * self.radius
-    }
-
-    fn perimeter(&self) -> f64 {
-        2.0 * std::f64::consts::PI * self.radius
-    }
-}
-
-struct Rectangle {
-    width: f64,
-    height: f64,
-}
-
-impl Shape for Rectangle {
-    fn area(&self) -> f64 {
-        self.width * self.height
-    }
-
-    fn perimeter(&self) -> f64 {
-        2.0 * (self.width + self.height)
-    }
-}
-
-fn main() {
-    let circle = Circle { radius: 5.0 };
-    let rectangle = Rectangle { width: 4.0, height: 6.0 };
-
-    println!("Circle area: {}, perimeter: {}", circle.area(), circle.perimeter()); // Output: Circle area: 78.53981633974483, perimeter: 31.41592653589793
-    println!("Rectangle area: {}, perimeter: {}", rectangle.area(), rectangle.perimeter()); // Output: Rectangle area: 24, perimeter: 20
-}
-
-// Trait Bounds
-// Trait bounds specify which traits a generic type must implement.
-
-// Example: Trait Bounds
-fn print_area<T: Shape>(shape: &T) {
-    println!("Area: {}", shape.area());
-}
-
-fn main() {
-    let circle = Circle { radius: 5.0 };
-    let rectangle = Rectangle { width: 4.0, height: 6.0 };
-
-    print_area(&circle); // Output: Area: 78.53981633974483
-    print_area(&rectangle); // Output: Area: 24
-}
-
-// Subtopic: Default Implementations
-// Traits can provide default implementations for methods.
-// Types can override these default implementations if needed.
-
-// Example: Default Implementations
-trait Display {
-    fn display(&self) -> String;
-    fn print(&self) {
-        println!("{}", self.display());
-    }
-}
-
-struct Point {
-    x: i32,
-    y: i32,
-}
-
-impl Display for Point {
-    fn display(&self) -> String {
-        format!("({}, {})", self.x, self.y)
-    }
-}
-
-fn main() {
-    let point = Point { x: 10, y: 20 };
-    point.print(); // Output: (10, 20)
-}
-
-// Traits as Parameters
-// Traits can be used as parameters to functions.
-// This allows you to write functions that can work with any type that implements the trait.
-
-// Example: Traits as Parameters
-fn print_summary(item: &impl Summary) {
-    println!("Summary: {}", item.summarize());
-}
-
-trait Summary {
-    fn summarize(&self) -> String;
-}
-
-struct Article {
-    headline: String,
-    author: String,
-}
-
-impl Summary for Article {
-    fn summarize(&self) -> String {
-        format!("{} by {}", self.headline, self.author)
-    }
-}
-
-fn main() {
-    let article = Article {
-        headline: String::from("Traits in Rust"),
-        author: String::from("John Smith"),
-    };
-    print_summary(&article); // Output: Summary: Traits in Rust by John Smith
-}
-
-// -----------------------------------------------------------------------------------------------------
-// 14. Lifetimes
-// -----------------------------------------------------------------------------------------------------
-
-// Lifetimes are a mechanism in Rust that helps the compiler ensure that references are always valid.
-// Lifetimes are primarily used when dealing with references and borrowing.
-// They are a compile-time concept and do not affect runtime performance.
-
-// Lifetime Annotations
-// Lifetime annotations are used to specify the lifetime of references.
-// They are written using an apostrophe `'` followed by a lifetime name (e.g., `'a`).
-
-// Example:
+// Lifetime Annotation Syntax:
 fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
-    // The `'a` lifetime annotation indicates that the returned reference has the same lifetime as the input references.
     if x.len() > y.len() {
         x
     } else {
@@ -867,424 +540,327 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     }
 }
 
-fn main() {
-    let string1 = String::from("long string");
-    let string2 = "short";
-    let result = longest(string1.as_str(), string2);
-    println!("The longest string is: {}", result); // Output: The longest string is: long string
-}
-
-// Lifetime Elision
-// In many cases, Rust can infer lifetimes automatically without explicit annotations.
-// This is known as lifetime elision.
-// There are a few rules that the compiler uses to determine lifetimes.
-
-// Example:
-fn first_word(s: &str) -> &str {
-    // Rust automatically infers the lifetime of the return value.
-    let bytes = s.as_bytes();
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            return &s[0..i];
-        }
-    }
-    &s[..]
-}
-
-fn main() {
-    let my_string = String::from("Hello world");
-    let word = first_word(&my_string);
-    println!("First word: {}", word); // Output: First word: Hello
-}
-
-// Structs with Lifetimes
-// Structs can also have lifetime parameters.
-// This is useful when a struct contains references.
-
-// Example:
+// Struct with Lifetime Annotation:
 struct ImportantExcerpt<'a> {
     part: &'a str,
 }
 
-fn main() {
-    let novel = String::from("Call me Ishmael. Some years ago...");
-    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
-    let excerpt = ImportantExcerpt { part: first_sentence };
-    println!("Excerpt: {}", excerpt.part); // Output: Excerpt: Call me Ishmael
-}
+// Lifetime Elision Rules:
+// 1. Each parameter gets its own lifetime
+// 2. If there is exactly one input lifetime, it is assigned to all outputs
+// 3. If there is a &self parameter, its lifetime is assigned to all outputs
 
-// Lifetime Annotations in Methods
-// Methods can also have lifetime parameters.
+// ---------------------------------------------------------------------------------
+// 12. Modules and Crates
+// ---------------------------------------------------------------------------------
 
-// Example:
-impl<'a> ImportantExcerpt<'a> {
-    fn level(&self) -> i32 {
-      self.part.len() as i32
+// Modules help organize code into logical units, while crates are the smallest
+// amount of code that the Rust compiler considers at a time. Modules control
+// privacy and provide namespace separation.
+
+// Module Definition:
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+        
+        fn seat_at_table() {}
     }
 }
 
-fn main() {
-  let novel = String::from("Call me Ishmael. Some years ago...");
-  let first_sentence = novel.split('.').next().expect("Could not find a '.'");
-  let excerpt = ImportantExcerpt { part: first_sentence };
-  println!("Level: {}", excerpt.level()); // Output: Level: 16
-}
+// Using modules:
+use crate::front_of_house::hosting;
 
-// -----------------------------------------------------------------------------------------------------
-// 15. Collections
-// -----------------------------------------------------------------------------------------------------
+// Re-exporting names:
+pub use crate::front_of_house::hosting;
 
-// Rust provides several collection types for storing and managing data.
-// Common collections include vectors (`Vec`), strings (`String`), and hash maps (`HashMap`).
+// Nested paths:
+use std::{cmp::Ordering, io};
 
-// Vectors (`Vec`)
-// Vectors are resizable arrays that can store elements of the same type.
+// The glob operator:
+use std::collections::*;
 
-// Example: Creating and Using Vectors
-fn main() {
-    // Creating a new vector
-    let mut numbers: Vec<i32> = Vec::new();
-    numbers.push(1);
-    numbers.push(2);
-    numbers.push(3);
+// Creating a library crate:
+// In lib.rs:
+pub mod client;
+pub mod network;
 
-    // Creating a vector using the `vec!` macro
-    let more_numbers = vec![4, 5, 6];
+// ---------------------------------------------------------------------------------
+// 13. Testing
+// ---------------------------------------------------------------------------------
 
-    // Accessing elements by index
-    let first = numbers[0];
-    println!("First element: {}", first); // Output: First element: 1
+// Rust has built-in support for unit testing, integration testing, and
+// documentation testing. Tests are functions annotated with the #[test] attribute.
 
-    // Iterating over a vector
-    for number in &numbers {
-        println!("Number: {}", number); // Output: Number: 1, Number: 2, Number: 3
+// Unit Tests:
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        assert_eq!(2 + 2, 4);
     }
 
-    // Removing an element from a vector
-    numbers.pop();
-    println!("Remaining numbers: {:?}", numbers); // Output: Remaining numbers: [1, 2]
-}
-
-// Strings (`String`)
-// Strings are growable, UTF-8 encoded sequences of characters.
-
-// Example: Creating and Using Strings
-fn main() {
-    // Creating a new string
-    let mut message = String::new();
-    message.push_str("Hello, ");
-    message.push_str("world!");
-
-    // Creating a string from a literal
-    let greeting = String::from("Greetings!");
-
-    // Appending to a string
-    message.push('!');
-
-    // Accessing characters in a string (using iterators)
-    for char in message.chars() {
-        println!("Character: {}", char); // Output: Character: H, Character: e, Character: l, Character: l, Character: o, Character: ,, Character:  , Character: w, Character: o, Character: r, Character: l, Character: d, Character: !, Character: !
+    #[test]
+    #[should_panic(expected = "panic message")]
+    fn test_panic() {
+        panic!("panic message");
     }
-
-    println!("Message: {}", message); // Output: Message: Hello, world!!
-    println!("Greeting: {}", greeting); // Output: Greeting: Greetings!
-}
-
-// Hash Maps (`HashMap`)
-// Hash maps store key-value pairs, where keys are unique and values can be accessed by their keys.
-
-// Example: Creating and Using Hash Maps
-use std::collections::HashMap;
-
-fn main() {
-    // Creating a new hash map
-    let mut scores: HashMap<String, i32> = HashMap::new();
-    scores.insert(String::from("Blue"), 10);
-    scores.insert(String::from("Red"), 20);
-
-    // Creating a hash map using the `collect` method
-    let teams = vec![String::from("Yellow"), String::from("Green")];
-    let initial_scores = vec![30, 40];
-    let more_scores: HashMap<_, _> = teams.into_iter().zip(initial_scores.into_iter()).collect();
-
-    // Accessing values by key
-    let blue_score = scores.get("Blue");
-    match blue_score {
-        Some(score) => println!("Blue score: {}", score), // Output: Blue score: 10
-        None => println!("No score for Blue"),
-    }
-
-    // Iterating over a hash map
-    for (team, score) in &scores {
-        println!("Team: {}, Score: {}", team, score); // Output: Team: Red, Score: 20, Team: Blue, Score: 10 (order may vary)
+    
+    #[test]
+    fn larger_can_hold_smaller() {
+        let larger = Rectangle { width: 8, height: 7 };
+        let smaller = Rectangle { width: 5, height: 1 };
+        assert!(larger.can_hold(&smaller));
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// 16. Concurrency
-// -----------------------------------------------------------------------------------------------------
+// Integration Tests:
+// In tests/integration_test.rs:
+use my_crate;
 
-// Rust provides excellent support for concurrency, allowing you to write programs that can perform multiple tasks simultaneously.
-// Rust's concurrency features are built on the principles of safety and performance.
+#[test]
+fn it_adds_two() {
+    assert_eq!(4, my_crate::add_two(2));
+}
 
-// Threads
-// Threads are lightweight processes that can run concurrently within a program.
+// Documentation Tests:
+/// Adds one to the number given.
+///
+/// # Examples
+///
+/// ```
+/// let arg = 5;
+/// let answer = my_crate::add_one(arg);
+/// assert_eq!(6, answer);
+/// ```
+pub fn add_one(x: i32) -> i32 {
+    x + 1
+}
 
-// Example: Creating and Using Threads
+// ---------------------------------------------------------------------------------
+// 14. Concurrency
+// ---------------------------------------------------------------------------------
+
+// Rust's ownership and type systems guarantee thread safety and prevent data races.
+// The language provides multiple tools for concurrent programming, including threads,
+// message passing, and shared state concurrency.
+
+// Threads:
 use std::thread;
 use std::time::Duration;
 
-fn main() {
-    // Creating a new thread
-    let handle = thread::spawn(|| {
-        for i in 1..10 {
-            println!("Thread: {}", i);
-            thread::sleep(Duration::from_millis(1));
-        }
-    });
-
-    for i in 1..5 {
-        println!("Main: {}", i);
+let handle = thread::spawn(|| {
+    for i in 1..10 {
+        println!("hi number {} from the spawned thread!", i);
         thread::sleep(Duration::from_millis(1));
     }
+});
 
-    handle.join().unwrap(); // Wait for the thread to finish
-}
-
-// Message Passing
-// Message passing is a way for threads to communicate with each other by sending messages.
-// Rust provides channels for message passing.
-
-// Example: Message Passing
+// Message Passing:
 use std::sync::mpsc;
 
-fn main() {
-    let (tx, rx) = mpsc::channel();
+let (tx, rx) = mpsc::channel();
 
-    thread::spawn(move || {
-        let message = String::from("Hello from thread!");
-        tx.send(message).unwrap(); // Send the message through the channel
-    });
+thread::spawn(move || {
+    tx.send(String::from("hello")).unwrap();
+});
 
-    let received = rx.recv().unwrap(); // Receive the message from the channel
-    println!("Received: {}", received); // Output: Received: Hello from thread!
+println!("Got: {}", rx.recv().unwrap());
+
+// Mutual Exclusion:
+use std::sync::Mutex;
+
+let m = Mutex::new(5);
+{
+    let mut num = m.lock().unwrap();
+    *num = 6;
 }
 
-// Shared State Concurrency
-// Shared state concurrency involves multiple threads accessing and modifying shared data.
-// This can be complex and error-prone, but Rust provides mechanisms to ensure safety.
+// ---------------------------------------------------------------------------------
+// 15. Smart Pointers
+// ---------------------------------------------------------------------------------
 
-// Example: Shared State with Mutex
-use std::sync::{Arc, Mutex};
+// Smart pointers are data structures that act like pointers but include additional
+// metadata and capabilities. They often own the data they point to.
 
-fn main() {
-    let counter = Arc::new(Mutex::new(0));
-    let mut handles = vec![];
+// Box<T>: Heap allocation
+let b = Box::new(5);
 
-    for _ in 0..10 {
-        let counter = Arc::clone(&counter);
-        let handle = thread::spawn(move || {
-            let mut num = counter.lock().unwrap(); // Acquire the lock to access the shared data
-            *num += 1; // Modify the shared data
-        });
-        handles.push(handle);
-    }
+// Rc<T>: Reference counting
+use std::rc::Rc;
 
-    for handle in handles {
-        handle.join().unwrap();
-    }
+let rc = Rc::new(String::from("shared data"));
+let rc2 = Rc::clone(&rc);
 
-    println!("Counter: {}", *counter.lock().unwrap()); // Output: Counter: 10
+// RefCell<T>: Interior mutability
+use std::cell::RefCell;
+
+let data = RefCell::new(5);
+*data.borrow_mut() = 6;
+
+// Custom Smart Pointer:
+struct CustomSmartPointer {
+    data: String,
 }
 
-// -----------------------------------------------------------------------------------------------------
-// 17. Testing
-// -----------------------------------------------------------------------------------------------------
-
-// Rust has built-in support for testing, allowing you to write unit tests and integration tests.
-// Tests are used to verify that your code works as expected.
-
-// Unit Tests
-// Unit tests are used to test individual functions or modules.
-// They are typically placed in the same file as the code they are testing.
-
-// Example: Unit Tests
-fn add(x: i32, y: i32) -> i32 {
-    x + y
-}
-
-#[cfg(test)] // This attribute indicates that the following module is a test module
-mod tests {
-    use super::*; // Import the code from the parent module
-
-    #[test] // This attribute indicates that the following function is a test function
-    fn test_add() {
-        assert_eq!(add(2, 3), 5); // Assert that the result of add(2, 3) is equal to 5
-        assert_ne!(add(2, 3), 6); // Assert that the result of add(2, 3) is not equal to 6
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
     }
 }
 
-// Integration Tests
-// Integration tests are used to test the interaction between different parts of your code.
-// They are typically placed in a separate `tests` directory.
+// ---------------------------------------------------------------------------------
+// 16. Macros
+// ---------------------------------------------------------------------------------
 
-// Example: Integration Tests
-// Create a `tests` directory in your project root.
-// Create a file named `integration_test.rs` inside the `tests` directory.
-// Add the following code to `tests/integration_test.rs`:
+// Macros are a way of writing code that writes other code, known as metaprogramming.
+// Rust provides several types of macros: declarative macros and procedural macros.
 
-// tests/integration_test.rs
-// extern crate your_crate_name; // Replace `your_crate_name` with the name of your crate
-
-// #[test]
-// fn test_integration() {
-//     assert_eq!(your_crate_name::add(2, 3), 5); // Assert that the result of add(2, 3) is equal to 5
-// }
-
-// -----------------------------------------------------------------------------------------------------
-// 18. Macros
-// -----------------------------------------------------------------------------------------------------
-
-// Macros are a powerful feature of Rust that allow you to write code that generates other code.
-// They are useful for reducing code duplication and creating more expressive APIs.
-// Macros are expanded at compile time.
-
-// Declarative Macros
-// Declarative macros are defined using the `macro_rules!` syntax.
-// They are based on pattern matching and code substitution.
-
-// Example: Declarative Macro
-macro_rules! my_macro {
-    ($x:expr, $y:expr) => {
-        {
-            let result = $x + $y;
-            println!("Result: {}", result);
-        }
+// Declarative Macros:
+macro_rules! say_hello {
+    () => {
+        println!("Hello!");
+    };
+    ($name:expr) => {
+        println!("Hello, {}!", $name);
     };
 }
 
-fn main() {
-    my_macro!(5, 3); // Output: Result: 8
-    my_macro!(10, 20); // Output: Result: 30
+// Using macros:
+say_hello!();           // Prints: Hello!
+say_hello!("Rust");     // Prints: Hello, Rust!
+
+// Procedural Macros:
+// These are more complex and require a separate crate
+#[derive(Debug)]     // Example of a derive macro
+struct Point {
+    x: i32,
+    y: i32,
 }
 
-// Procedural Macros
-// Procedural macros are defined using functions.
-// They are more powerful than declarative macros, but also more complex.
-// Procedural macros are used for more complex code generation tasks.
+// ---------------------------------------------------------------------------------
+// 17. Unsafe Rust
+// ---------------------------------------------------------------------------------
 
-// Example: Defining a Procedural Macro
-// Procedural macros require a separate crate.
-// Create a new library crate named `my_proc_macro` using `cargo new --lib my_proc_macro`.
-// Add the following code to `src/lib.rs`:
+// Unsafe Rust exists to perform operations that the compiler cannot guarantee are safe.
+// It's necessary for low-level programming and interfacing with other languages.
 
-// src/lib.rs
-// extern crate proc_macro;
-// use proc_macro::TokenStream;
+// Unsafe blocks allow:
+// 1. Dereferencing raw pointers
+// 2. Calling unsafe functions
+// 3. Implementing unsafe traits
+// 4. Mutating static variables
+// 5. Accessing fields of unions
 
-// #[proc_macro_derive(MyDerive)]
-// pub fn my_derive(input: TokenStream) -> TokenStream {
-//     let ast: syn::DeriveInput = syn::parse(input).unwrap();
-//     let name = &ast.ident;
-//     let output = quote::quote! {
-//         impl #name {
-//             fn hello() {
-//                 println!("Hello from {}", stringify!(#name));
-//             }
-//         }
-//     };
-//     output.into()
-// }
+unsafe fn dangerous() {
+    // Unsafe operations here
+}
 
-// Example: Using a Procedural Macro
-// In a new binary crate, add `my_proc_macro` as a dependency in `Cargo.toml`.
-// Then in `src/main.rs`, add the following code:
+unsafe {
+    dangerous();
+}
 
-// Cargo.toml
-// [dependencies]
-// my_proc_macro = { path = "../my_proc_macro" }
+// Raw Pointers:
+let mut num = 5;
+let r1 = &num as *const i32;
+let r2 = &mut num as *mut i32;
 
-// src/main.rs
-// #[macro_use]
-// extern crate my_proc_macro;
+unsafe {
+    println!("r1 is: {}", *r1);
+    *r2 = 6;
+}
 
-// #[derive(MyDerive)]
-// struct MyStruct;
+// ---------------------------------------------------------------------------------
+// 18. Advanced Topics
+// ---------------------------------------------------------------------------------
 
-// fn main() {
-//     MyStruct::hello(); // Output: Hello from MyStruct
-// }
+// Advanced Type System Features:
 
-// -----------------------------------------------------------------------------------------------------
-// 19. Unsafe Rust
-// -----------------------------------------------------------------------------------------------------
+// Type Aliases:
+type Kilometers = i32;
+let distance: Kilometers = 5;
 
-// Unsafe Rust is a feature of Rust that allows you to perform operations that are not guaranteed to be memory-safe.
-// Unsafe Rust should be used sparingly and only when necessary.
-// It is important to understand the risks involved when using unsafe code.
+// Never Type:
+fn bar() -> ! {
+    panic!("This function never returns!");
+}
 
-// `unsafe` Keyword
-// The `unsafe` keyword is used to mark blocks of code that may perform unsafe operations.
+// Sized Trait:
+fn generic<T: ?Sized>(t: &T) {
+    // This function can take unsized types
+}
 
-// Example: `unsafe` Keyword
-fn main() {
-    let mut x = 10;
-    let ptr = &mut x as *mut i32; // Create a raw pointer to x
+// Associated Types:
+trait Container {
+    type Item;
+    fn get(&self) -> &Self::Item;
+}
 
-    unsafe {
-        *ptr = 20; // Dereference the raw pointer (unsafe operation)
+// ---------------------------------------------------------------------------------
+// 19. Common Rust Patterns
+// ---------------------------------------------------------------------------------
+
+// Builder Pattern:
+struct Builder {
+    field1: Option<i32>,
+    field2: Option<String>,
+}
+
+impl Builder {
+    fn new() -> Builder {
+        Builder {
+            field1: None,
+            field2: None,
+        }
     }
 
-    println!("x: {}", x); // Output: x: 20
-}
-
-// Raw Pointers
-// Similar to pointers in C.
-// They do not have the same safety guarantees as references.
-// Raw pointers can be null, dangling, or point to invalid memory.
-
-// Example: Raw Pointers
-fn main() {
-    let x = 10;
-    let ptr1 = &x as *const i32; // Create an immutable raw pointer
-    let ptr2 = &x as *const i32; // Create another immutable raw pointer
-
-    unsafe {
-        println!("Value at ptr1: {}", *ptr1); // Dereference the raw pointer (unsafe operation)
-        println!("Value at ptr2: {}", *ptr2); // Dereference the raw pointer (unsafe operation)
+    fn field1(mut self, value: i32) -> Builder {
+        self.field1 = Some(value);
+        self
     }
-}
 
-// Unsafe Functions
-// Functions can be marked as `unsafe` to indicate that they may perform unsafe operations.
-// Calling an unsafe function requires an `unsafe` block.
-
-// Example: Unsafe Function
-unsafe fn dangerous_function() {
-    println!("This is a dangerous function!");
-}
-
-fn main() {
-    unsafe {
-        dangerous_function(); // Call the unsafe function (unsafe operation)
+    fn field2(mut self, value: String) -> Builder {
+        self.field2 = Some(value);
+        self
     }
 }
 
-// FFI (Foreign Function Interface)
-// FFI allows you to call code written in other languages, such as C.
-// FFI often involves unsafe operations.
+// RAII (Resource Acquisition Is Initialization):
+struct Resource {
+    data: String,
+}
 
-// Example: FFI (Simplified)
-// This is a simplified example and requires a C library to be linked.
-// extern "C" {
-//     fn my_c_function(x: i32) -> i32;
-// }
+impl Drop for Resource {
+    fn drop(&mut self) {
+        println!("Cleaning up resource!");
+    }
+}
 
-// fn main() {
-//     let result = unsafe {
-//         my_c_function(10) // Call the C function (unsafe operation)
-//     };
-//     println!("Result from C: {}", result);
-// }
+// ---------------------------------------------------------------------------------
+// 20. Performance and Optimization
+// ---------------------------------------------------------------------------------
 
-// Happy coding!
+// Zero-Cost Abstractions:
+fn zero_cost_example<T: Iterator<Item = i32>>(iter: T) -> i32 {
+    iter.filter(|&x| x > 0)
+        .map(|x| x * 2)
+        .sum()
+}
+
+// Memory Layout Optimization:
+#[repr(C)]
+struct Aligned {
+    a: u8,
+    b: u32,
+    c: u16,
+}
+
+// Compile-Time Evaluation:
+const fn compile_time_fn(x: u32) -> u32 {
+    x * 2
+}
+
+const COMPUTED: u32 = compile_time_fn(21);
+
+// Happy coding

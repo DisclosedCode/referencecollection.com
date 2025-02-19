@@ -53,7 +53,6 @@
         "title": "Rust",
         "filename": "rust_reference.rs",
         "language": "rust",
-        "new":true,
         "meta": {
             "title": "Rust Reference: Comprehensive Developer's Guide",
             "description": "Rust Guide covering basic to advanced concepts, including data types, ownership, concurrency, lifetimes, macros and more for building robust applications.",
@@ -64,7 +63,6 @@
         "title": "Haskell",
         "filename": "haskell_reference.hs",
         "language": "haskell",
-        "new":true,
         "meta": {
             "title": "Haskell Reference: Comprehensive Developer's Guide",
             "description": "Haskell Guide covering basic to advanced concepts, including functional programming, type systems, monads, and more. Essential resource for Haskell programmers of all levels.",
@@ -75,7 +73,6 @@
         "title": "Vimscript",
         "filename": "vimscript_reference.vim",
         "language": "vimscript",
-        "new":true,
         "meta": {
             "title": "Vimscript Reference: Comprehensive Developer's Guide",
             "description": "Vimscript Guide covering basic to advanced concepts, including mappings, functions, commands, and more for customizing the Vim editor. Essential reference for Vimscript programmers of all levels.",
@@ -86,7 +83,6 @@
         "title": "Go",
         "filename": "go_reference.go",
         "language": "go",
-        "new":true,
         "meta": {
             "title": "Go Reference: Comprehensive Developer's Guide",
             "description": "Go Guide covering basic to advanced concepts, including concurrency, interfaces, packages, and more for building scalable applications. Essential reference for programmers of all levels.",
@@ -97,11 +93,32 @@
         "title": "Zig",
         "filename": "zig_reference.zig",
         "language": "zig",
-        "new":true,
         "meta": {
             "title": "Zig Reference: Comprehensive Developer's Guide",
             "description": "Zig Guide covering basic to advanced concepts, including memory management, comptime, error handling, and more for system programming. Essential reference for programmers of all levels.",
             "keywords": "Zig Reference Guide, Zig Cheatsheet, Comprehensive Zig Guide, Zig Reference Manual"
+        }
+    },
+    {
+        "title": "Git",
+        "filename": "git_reference.sh",
+        "language": "shellscript",
+        "new":true,
+        "meta": {
+            "title": "Git Reference: Comprehensive Developer's Guide",
+            "description": "Git Guide covering basic to advanced concepts, including branching, merging, rebasing, and more for version control. Essential reference for developers of all levels.",
+            "keywords": "Git Reference Guide, Git Cheatsheet, Comprehensive Git Guide, Git Reference Manual"
+        }
+    },
+    {
+        "title": "Docker",
+        "filename": "docker_reference.sh",
+        "language": "shellscript",
+        "new":true,
+        "meta": {
+            "title": "Docker Reference: Comprehensive Developer's Guide",
+            "description": "Docker Guide covering basic to advanced concepts, including networking, volumes, security, and more. Essential reference for developers of all levels.",
+            "keywords": "Docker Reference Guide, Docker Cheatsheet, Comprehensive Docker Guide, Docker Reference Manual"
         }
     }
 ]

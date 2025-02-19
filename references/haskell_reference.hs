@@ -7,15 +7,15 @@
 
 -- TABLE OF CONTENTS
 -- -----------------
--- 1. Introduction to Haskell
--- 2. Basic Syntax and Structure
--- 3. Types and Type Classes
--- 4. Defining Functions
--- 5. Control Flow
--- 6. Lists
--- 7. Tuples
--- 8. Input and Output
--- 9. Modules
+-- 1.  Introduction to Haskell
+-- 2.  Basic Syntax and Structure
+-- 3.  Types and Type Classes
+-- 4.  Defining Functions
+-- 5.  Control Flow
+-- 6.  Lists
+-- 7.  Tuples
+-- 8.  Input and Output
+-- 9.  Modules
 -- 10. Algebraic Data Types
 -- 11. Type Aliases and Newtypes
 -- 12. Functors

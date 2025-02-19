@@ -744,8 +744,10 @@ kbd,
 pre,
 samp {
     font-family: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-    font-size: 0.810rem;
+    font-size: 0.835rem;
     line-height: 1.250rem;
+    white-space: pre;
+    overflow-x: scroll;
 }
 
 pre.shiki,

@@ -1,9 +1,9 @@
-----------------------------------
+-- --------------------------------------------------------------------------------
 -- PostgreSQL Reference and Guide
 
 -- ReferenceCollection.com
 -- Licensed under CC BY-SA
-----------------------------------
+-- --------------------------------------------------------------------------------
 
 -- Table of Contents
 --------------------
@@ -35,9 +35,9 @@
 -- 26. Common Table Expressions (CTEs)
 -- 27. Inheritance
 
-------------------
+-- --------------------------------------------------------------------------------
 -- 1. Introduction
-------------------
+-- --------------------------------------------------------------------------------
 -- Overview
 -----------
 -- PostgreSQL is a powerful open-source relational database management 
@@ -74,9 +74,9 @@
 -- Data Control Language (DCL): GRANT, REVOKE
 -- Transaction Control Language (TCL): BEGIN, COMMIT, ROLLBACK
 
-------------------
+-- --------------------------------------------------------------------------------
 -- 2. Basic Syntax
-------------------
+-- --------------------------------------------------------------------------------
 
 -- Comments
 -----------
@@ -109,9 +109,9 @@ CREATE TABLE my_schema.my_table (id serial PRIMARY KEY);
 -- Set the search path to prioritize 'my_schema'.
 SET search_path TO my_schema, public;
 
-----------------
+-- --------------------------------------------------------------------------------
 -- 3. Data Types
-----------------
+-- --------------------------------------------------------------------------------
 -- PostgreSQL supports a wide variety of data types.
 
 -- Numeric Types
@@ -153,9 +153,9 @@ CIDR          -- IPv4 or IPv6 network address
 INET          -- IPv4 or IPv6 host address
 MACADDR       -- MAC address
 
--------------------------
+-- --------------------------------------------------------------------------------
 -- 4. Database Operations
--------------------------
+-- --------------------------------------------------------------------------------
 -- Data is organized into databases, which contain schemas and tables.
 
 -- Listing databases.
@@ -170,9 +170,9 @@ DROP DATABASE IF EXISTS my_database;
 -- Connecting to a database.
 \c my_database
 
-----------------------
+-- --------------------------------------------------------------------------------
 -- 5. Table Operations
-----------------------
+-- --------------------------------------------------------------------------------
 -- Tables are composed of columns (fields) and rows (records).
 
 -- Creating a table
@@ -196,9 +196,9 @@ DROP TABLE IF EXISTS products;
 -- Describe table structure.
 \d products
 
------------------
+-- --------------------------------------------------------------------------------
 -- 6. Constraints
------------------
+-- --------------------------------------------------------------------------------
 -- PostgreSQL constraints are used to specify rules for the data in a table.
 -- They ensure the integrity of data in the database.
 --
@@ -231,9 +231,9 @@ CREATE TABLE reservations (
     EXCLUDE USING GIST (room_id WITH =, during WITH &&)
 );
 
------------------------
+-- --------------------------------------------------------------------------------
 -- 7. Data Manipulation
------------------------
+-- --------------------------------------------------------------------------------
 -- Inserting/Updating data in your tables.
 
 -- You can insert either a single row or multiple rows
@@ -249,9 +249,9 @@ UPDATE products SET price = 879.99 WHERE product_name = 'Smartphone';
 -- Deleting a specific product based on its stock_quantity.
 DELETE FROM products WHERE stock_quantity = 0;
 
--------------------
+-- --------------------------------------------------------------------------------
 -- 8. Querying Data
--------------------
+-- --------------------------------------------------------------------------------
 -- Retrieving data from your tables.
 
 -- Retrieve all columns for each product.
@@ -319,9 +319,9 @@ SELECT products.product_name, categories.category_name
 FROM products
 CROSS JOIN categories;
 
---------------------------
+-- --------------------------------------------------------------------------------
 -- 10. Aggregate Functions
---------------------------
+-- --------------------------------------------------------------------------------
 -- Used to perform calculations on a set of values and return a single value.
 -- Often used with the GROUP BY clause to group rows that have the same values.
 
@@ -361,9 +361,9 @@ SELECT category, STRING_AGG(product_name, ', ') AS product_list
 FROM products
 GROUP BY category;
 
------------------
+-- --------------------------------------------------------------------------------
 -- 11. Subqueries
------------------
+-- --------------------------------------------------------------------------------
 -- A Subquery is a query nested inside another query. They are useful for 
 -- breaking down complex queries and can be used in SELECT, WHERE, HAVING, 
 -- FROM, and EXISTS clauses.
@@ -409,9 +409,9 @@ WHERE p.price > (
     WHERE category = p.category
 );
 
---------------
+-- --------------------------------------------------------------------------------
 -- 12. Indexes
---------------
+-- --------------------------------------------------------------------------------
 -- Improve query performance by speeding up data retrieval. But may slow 
 -- down data modification operations such as INSERT, UPDATE, and DELETE.
 --
@@ -444,9 +444,9 @@ DROP INDEX IF EXISTS idx_product_name;
 -- Rebuild all indexes for the products table.
 REINDEX TABLE products;
 
---------------------------------------
+-- --------------------------------------------------------------------------------
 -- 13. Stored Procedures and Functions
---------------------------------------
+-- --------------------------------------------------------------------------------
 -- A set of SQL statements that can be stored and executed repeatedly.
 -- They improve performance by reducing client-server communication.
 --
@@ -494,9 +494,9 @@ SELECT get_product_count('Electronics');
 -- Drop the function if it exists.
 DROP FUNCTION IF EXISTS get_product_count(VARCHAR);
 
--------------------
+-- --------------------------------------------------------------------------------
 -- 14. Transactions
--------------------
+-- --------------------------------------------------------------------------------
 -- Transaction is a sequence of one or more SQL operations that are executed
 -- as a single unit. If any statement fails, the entire transaction can be 
 -- rolled back to maintain data integrity.
@@ -543,9 +543,9 @@ RELEASE SAVEPOINT my_savepoint;
 -- Commit the transaction, applying all changes up to the savepoint.
 COMMIT;
 
-------------
+-- --------------------------------------------------------------------------------
 -- 15. Views
-------------
+-- --------------------------------------------------------------------------------
 -- Views are virtual tables based on the result of an SQL statement. 
 -- They don't store data and provide a way to simplify complex queries, 
 -- improve data security and ensure a consistent data interface.
@@ -598,9 +598,9 @@ DROP VIEW IF EXISTS product_overview;
 DROP VIEW IF EXISTS detailed_order_summary;
 DROP MATERIALIZED VIEW IF EXISTS product_sales_summary;
 
----------------
+-- --------------------------------------------------------------------------------
 -- 16. Triggers
----------------
+-- --------------------------------------------------------------------------------
 -- Triggers are database objects that are automatically executed when 
 -- certain events occurs. 
 -- 
@@ -660,9 +660,9 @@ DROP TRIGGER IF EXISTS before_order_insert ON orders;
 -- Drop the stock checking function if it exists.
 DROP FUNCTION IF EXISTS check_stock_before_insert();
 
-----------------------
+-- --------------------------------------------------------------------------------
 -- 17. User Management
-----------------------
+-- --------------------------------------------------------------------------------
 -- User management involves creating, modifying, and deleting user 
 -- accounts, as well as granting and revoking privileges.
 
@@ -696,9 +696,9 @@ DROP USER IF EXISTS new_user;
 -- Drop the read_only role.
 DROP ROLE read_only;
 
--------------------------
+-- --------------------------------------------------------------------------------
 -- 18. Backup and Restore
--------------------------
+-- --------------------------------------------------------------------------------
 -- Regular backups are crucial for data safety and recovery.
 
 -- Backup the entire database to a SQL file.
@@ -758,9 +758,9 @@ recovery_target_time = 'YYYY-MM-DD HH:MI:SS'
 -- 6. Start the PostgreSQL server:
 pg_ctl start -D /path/to/data_directory
 
---------------------------
+-- --------------------------------------------------------------------------------
 -- 19. Concurrency Control
---------------------------
+-- --------------------------------------------------------------------------------
 -- Concurrency Control ensures that multiple transactions can be executed
 -- simultaneously, without interfering with each other, maintaining integrity
 -- and consistency. By Default Postgres uses Multi-Version Concurrency Control.
@@ -843,9 +843,9 @@ COMMIT;
 
 -- PostgreSQL detects the deadlock and aborts one of the transactions.
 
-------------------
+-- --------------------------------------------------------------------------------
 -- 20. Replication
-------------------
+-- --------------------------------------------------------------------------------
 -- Is a process that allows you to automatically copy data from one 
 -- database server (the master) to one or more database servers (the slaves).
 --
@@ -902,9 +902,9 @@ SELECT pg_wal_replay_resume();
 -- Promote the replica to primary.
 pg_ctl promote -D /path/to/standby/data
 
--------------------
+-- --------------------------------------------------------------------------------
 -- 21. Partitioning
--------------------
+-- --------------------------------------------------------------------------------
 -- Is a database feature that allows you to divide a large table into 
 -- smaller, more manageable pieces, yet still treat them as a single table.
 --
@@ -968,9 +968,9 @@ FOR VALUES FROM ('2023-01-01') TO ('2024-01-01');
 -- Permanently delete a partition and its data.
 DROP TABLE products_2023;
 
------------------
+-- --------------------------------------------------------------------------------
 -- 22. Extensions
------------------
+-- --------------------------------------------------------------------------------
 -- Extensions are packages that add functionality to the database.
 -- They can include additional data types, functions, operators, and more.
 --
@@ -1011,9 +1011,9 @@ ALTER EXTENSION hstore UPDATE;
 
 -- Remove the hstore extension if it exists.
 DROP EXTENSION IF EXISTS hstore;
----------------------
+-- --------------------------------------------------------------------------------
 -- 23. JSON and JSONB
----------------------
+-- --------------------------------------------------------------------------------
 -- PostgreSQL provides robust support for JSON, offering two main options:
 -- 1. JSON: Stores data as plain text.
 -- 2. JSONB: Stores data in a binary format for faster processing and indexing.
@@ -1093,9 +1093,9 @@ SELECT * FROM products WHERE product_data ?| array['name', 'color'];
 -- Check if JSON object contains all (?&) of the specified keys.
 SELECT * FROM products WHERE product_data ?& array['name', 'price'];
 
------------------------
+-- --------------------------------------------------------------------------------
 -- 24. Full-Text Search
------------------------
+-- --------------------------------------------------------------------------------
 -- A powerful feature for fast and flexible text searching and 
 -- ranking (how well a document matches a query) in large text fields.
 --
@@ -1177,9 +1177,9 @@ SELECT data->>'title'
 FROM json_articles
 WHERE to_tsvector('english', data->>'content') @@ to_tsquery('english', 'json');
 
----------------------------
+-- --------------------------------------------------------------------------------
 -- 25. Window Functions
----------------------------
+-- --------------------------------------------------------------------------------
 -- Perform calculations across a set of rows related to the current row, 
 -- without grouping them, allowing each row to retain its identity.
 
@@ -1214,9 +1214,9 @@ SELECT product_id, customer_name, quantity,
     SUM(quantity) OVER (PARTITION BY product_id ORDER BY order_date) AS running_total
 FROM orders;
 
---------------------------------------
+-- --------------------------------------------------------------------------------
 -- 26. Common Table Expressions (CTEs)
---------------------------------------
+-- --------------------------------------------------------------------------------
 -- CTEs are temporary result sets that can be referenced within a 
 -- `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statement in PostgreSQL.
 --
@@ -1271,9 +1271,9 @@ WITH RECURSIVE CategoryHierarchy AS (
 )
 SELECT * FROM CategoryHierarchy;
 
-------------------
+-- --------------------------------------------------------------------------------
 -- 27. Inheritance
-------------------
+-- --------------------------------------------------------------------------------
 -- A powerful feature that allows a table to inherit columns and 
 -- constraints from a parent table.
 -- 

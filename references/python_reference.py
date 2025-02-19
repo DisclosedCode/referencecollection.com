@@ -1,936 +1,1072 @@
-"""
-Python Reference and Guide
+# --------------------------------------------------------------------------------
+# Python Reference and Guide
+#
+# ReferenceCollection.com
+# Licensed under CC BY-SA
+# --------------------------------------------------------------------------------
 
-Author: ReferenceCollection.com
-Licensed under CC BY-SA
-"""
-
-# Table of Contents
-
-# 1.  Introduction
-# 2.  Basics of Python
-# 3.  Modules and Packages
-# 4.  Variables and Data Types
-# 5.  Operators
+# TABLE OF CONTENTS
+# -----------------
+# 1.  Introduction to Python
+# 2.  Installation and Setup
+# 3.  Basic Syntax and Structure
+# 4.  Data Types and Variables
+# 5.  Operators and Expressions
 # 6.  Control Flow Statements
-# 7.  Data Structures
-# 8.  Functions
-# 9.  File Handling
-# 10. Exception Handling
-# 11. Object-Oriented Programming (OOP)
+# 7.  Functions and Lambda Expressions
+# 8.  Data Structures
+# 9.  Object-Oriented Programming
+# 10. Modules and Packages
+# 11. File Handling and I/O
+# 12. Exception Handling
+# 13. Advanced Python Features
+# 14. Working with Data
+# 15. Testing and Debugging
+# 16. Standard Library Highlights
+# 17. Concurrency and Parallelism
 
-# ---------------
-# 1. Introduction
-# ---------------
+# --------------------------------------------------------------------------------
+# 1. Introduction to Python
+# --------------------------------------------------------------------------------
 
-"""
-Overview:
-Python is a high-level, interpreted programming language prized for its
-simplicity and readability, suitable for a wide range of applications including
-web development, data analysis, and artificial intelligence.
+# Python is a high-level, interpreted programming language known for its simplicity,
+# readability, and versatility. Created by Guido van Rossum and first released in
+# 1991, Python has become one of the world's most popular programming languages.
 
-History:
-Developed by Guido van Rossum and first released in 1991, Python has since gained popularity
-due to its clear and concise syntax. It has a vibrant community and extensive library support,
-making it easy for developers to build powerful applications quickly.
+# Key Features:
+# - Readability: Clean syntax with significant whitespace
+# - Interpreted: No compilation needed
+# - Dynamically Typed: Type checking at runtime
+# - Extensive Standard Library: "Batteries included" philosophy
+# - Cross-Platform: Runs on various operating systems
+# - Multi-Paradigm: Supports procedural, object-oriented, and functional programming
+# - Large Ecosystem: Rich collection of third-party packages
 
-Python Interpreter:
-The Python interpreter is a program that executes Python code. It reads and interprets
-Python scripts line by line, converting them into machine-readable bytecode that is
-then executed by the computer's processor.
+# Version Information:
+# - Python 2.x: Legacy version (End of Life: January 1, 2020)
+# - Python 3.x: Current version (Recommended for all new projects)
+#   Latest stable version can be found at https://www.python.org/downloads/
 
-Python Versions:
-Python has two major versions in use today: Python 2 and Python 3. Python 2, released in 2000,
-was the dominant version for many years. However, Python 3, introduced in 2008, is now the
-recommended version.
-"""
+# --------------------------------------------------------------------------------
+# 2. Installation and Setup
+# --------------------------------------------------------------------------------
 
-# -------------------
-# 2. Basics of Python
-# -------------------
+# Installing Python:
+# 1. Visit https://www.python.org/downloads/
+# 2. Download the latest version for your operating system
+# 3. Run the installer (Important: Check "Add Python to PATH" on Windows)
+# 4. Verify installation:
 
-"""
-Indentation:
-Indentation is crucial in Python for defining the structure and the scope of the blocks.
-"""
+# Open terminal/command prompt and run:
+# python --version  # Shows Python version
+# pip --version     # Shows pip version (package installer)
 
-if True:
-    print("Condition is true")
-    print("This is still part of the if block")
-print("This is outside the if block")
+# Virtual Environments:
+# Isolated environments for project dependencies
+# Create: python -m venv myenv
+# Activate:
+#   Windows: myenv\Scripts\activate
+#   Unix/macOS: source myenv/bin/activate
+# Deactivate: deactivate
 
-"""
-Comments:
-Comments annotate code for readability. They're ignored by the interpreter.
-"""
+# Package Management with pip:
+# pip: Python's package installer
+# pip list                        # List installed packages:
+# pip install package_name        # Install package
+# pip uninstall package_name      # Remove package
+# pip freeze > requirements.txt   # Save dependencies
+# pip install -r requirements.txt # Install from requirements
 
-# This is a single-line comment
+# First Python Program:
+print("Hello, World!")  # Traditional first program
 
-"""
-This is a
-multi-line comment
-"""
+# --------------------------------------------------------------------------------
+# 3. Basic Syntax and Structure
+# --------------------------------------------------------------------------------
 
-"""
-Documentation:
-Docstrings are documentation strings enclosed within triple quotes (''' ''').
-"""
+# Python's syntax is designed to be clear and readable. The language uses
+# indentation to define code blocks, making proper spacing crucial.
 
-def greet(name):
-    """
-    Greets the user with the given name.
-
-    Parameters:
-        name (str): The name of the person to greet.
-
-    Returns:
-        str: A greeting message.
-    """
-    return "Hello, " + name + "!"
-
-# Accessing doc using help()
-help(greet)
-
-# Accessing doc using __doc__
-print(greet.__doc__)
+# Comments:
+# Single-line comments start with #
+print("Hello")  # This is an inline comment
 
 """
-Input and Output:
-Python provides functions for taking input from the user and displaying output.
+This is a multi-line comment (docstring)
+It can span multiple lines
+Often used for documentation
 """
 
-# Input
-name = input("Enter your name: ")
-age = input("Enter your age: ")
+# Indentation:
+# Python uses indentation (typically 4 spaces) to define code blocks
+def example_function():
+    if True:
+        print("Indented block")  # 8 spaces (2 levels)
+    print("Back one level")      # 4 spaces (1 level)
 
-# Output
-print("Name:", name, "Age:", age)
+# Line Continuation:
+# Long lines can be broken using \ or implicit continuation within parentheses
+long_string = "This is a very long string that " \
+             "continues on the next line"
 
-# -----------------------
-# 3. Modules and Packages
-# -----------------------
+total = (1 + 2 + 3 +
+         4 + 5 + 6)  # Implicit continuation
 
-"""
-Modules:
-Modules are files containing Python code, in order to be reused.
-"""
+# Naming Conventions:
+snake_case_variable = "For variables and functions"
+UPPERCASE_CONSTANT = "For constants"
+CapitalizedClass = "For classes"
+_private_variable = "Suggests private/internal use"
 
-# File: math.py
-def add(a, b):
-    return a + b
+# Statement Termination:
+# Unlike many languages, Python uses newlines to terminate statements
+x = 1
+y = 2
+# Multiple statements on one line (not recommended for readability)
+a = 1; b = 2
 
-"""
-Packages:
-Packages are directories containing multiple Python modules. They contain a special file
-called __init__.py, indicating that the directory is a package.
-"""
+# --------------------------------------------------------------------------------
+# 4. Data Types and Variables
+# --------------------------------------------------------------------------------
 
-# my_package/__init__.py
-# This file can be empty or can contain initialization code
+# Python is dynamically typed, meaning variable types are determined at runtime.
+# Variables are created when first assigned and can reference different types.
 
-# my_package/module.py
-def greet():
-    print("Hello from module.py")
+# Basic Data Types:
+# 1. Numeric Types
+integer = 42               # int: Whole numbers (unlimited size)
+floating = 3.14            # float: Decimal numbers (64-bit precision)
+complex_num = 1 + 2j       # complex: Numbers with real and imaginary parts
 
-"""
-Importing Modules:
-- import module_name: Imports the entire module.
-- from module_name import function_name: Imports specific functions or objects.
-- import module_name as alias: Imports the module with an alias.
-"""
-
-# Import entire module
-import math
-# Import add function from module
-from math import add
-# Import module with alias
-import math as m
-
-"""
-Importing from Packages:
-Same import mechanisms apply for packages with a slight change.
+# 2. Text Type
+string = "Hello, Python!"   # str: Immutable sequence of characters
+multi_line = """
+Multiple lines
+of text
 """
 
-# Import module from a package
-import my_package.module
-# Import module with alias from a package
-import my_package.module as mod
+# 3. Boolean Type
+is_true = True             # bool: True or False values
+is_false = False
 
-# ---------------------------
-# 4. Variables and Data Types
-# ---------------------------
+# 4. None Type
+empty_value = None         # NoneType: Represents absence of value
 
-"""
-Variables:
-Variables are used to store data values. A variable is created when it is assigned a value
-and is automatically assigned a type based on its value.
-"""
+# Type Conversion:
+str_num = "123"
+num = int(str_num)         # String to integer
+float_num = float(num)     # Integer to float
+str_back = str(num)        # Number to string
 
-pi = 3.14
+# Variable Assignment:
+x = 5                     # Single assignment
+a = b = c = 0             # Multiple assignment
+x, y = 1, 2               # Tuple unpacking
+
+# Type Checking:
+print(type(x))            # Check variable type
+isinstance(x, int)        # Check if variable is of specific type
+
+# Memory Management:
+# Python uses automatic memory management (garbage collection)
+# Objects are automatically deallocated when no longer referenced
+
+# String Operations:
+name = "Python"
+print(len(name))         # Length: 6
+print(name[0])           # Indexing: 'P'
+print(name[1:4])         # Slicing: 'yth'
+print(name + " 3.x")     # Concatenation: 'Python 3.x'
+print(name * 2)          # Repetition: 'PythonPython'
+
+# F-strings (Python 3.6+):
 age = 30
-name = "David"
+print(f"Age: {age}")     # Modern string formatting
 
-"""
-Primitive Data Types:
-- int: Integer numbers without decimals.
-- float: Floating-point numbers with decimals.
-- str: Strings, enclosed in single or double quotes.
-- bool: Boolean values, True or False.
-- NoneType: Represents the absence of a value.
-- complex: Complex numbers with a real and imaginary part.
-"""
+# --------------------------------------------------------------------------------
+# 5. Operators and Expressions
+# --------------------------------------------------------------------------------
 
-age = 25                    # int
-name = "John"               # str
-height = 5.9                # float
-is_valid = True             # bool
-null_value = None           # NoneType
-complex_num = 3 + 4j        # complex
+# Operators allow you to perform operations on variables and values.
+# Python follows standard operator precedence rules (PEMDAS).
 
-"""
-Complex Data Types:
-Python also supports complex data types, such as lists, tuples, dictionaries, and sets:
-- list: Ordered collection of items, mutable.
-- tuple: Ordered collection of items, immutable.
-- dict: Collection of key-value pairs, mutable.
-- set: Unordered collection of unique items, mutable.
-"""
-
-numbers_list = [1, 2, 3]                        # list
-person_info = ("John", 25, "New York")          # tuple
-student_info = {"name": "Alice", "age": 20}     # dict
-unique_numbers = {1, 2, 3, 4, 5}                # set
-
-"""
-Dynamic Typing:
-Variables can also change types during execution
-"""
-
-variable = 50
-variable = "Hello!"
-
-"""
-Type Conversion:
-Converting data from one type to another. Common conversion functions include
-int(), float(), str(), and bool().
-"""
-
-# Implicit
-result = 10 + 1.5           # 11.5 (converted to float)
-
-# Explicit
-result = 100 + int("10")    # 110 (string converted to int)
-
-# ------------
-# 5. Operators
-# ------------
-
-"""
-Arithmetic Operators:
-Perform mathematical operations.
-"""
-
-addition = 10 + 5            # Addition
-subtraction = 10 - 5         # Subtraction
-multiplication = 10 * 5      # Multiplication
-division = 10 / 5            # Division
-modulus = 10 % 3             # Modulus
-exponentiation = 2 ** 3      # Exponentiation
-floor_division = 10 // 3     # Floor division (integer division, flooring the result)
-
-"""
-Comparison Operators:
-Compare values.
-"""
-
-equal = (10 == 10)                      # Equal
-not_equal = (10 != 5)                   # Not equal to
-greater_than = (10 > 5)                 # Greater than
-less_than = (10 < 5)                    # Less than
-greater_than_or_equal_to = (10 >= 10)   # Greater than or equal to
-less_than_or_equal_to = (10 <= 5)       # Less than or equal to
-
-"""
-Assignment Operators:
-Assign values to variables.
-"""
-
-var = 10
-var += 5     # Addition:        var = var + 5
-var -= 5     # Subtraction:     var = var - 5
-var *= 2     # Multiplication:  var = var * 2
-var /= 4     # Division:        var = var / 4
-var %= 3     # Modulus:         var = var % 3
-var **= 2    # Exponentiation:  var = var ** 2
-var //= 2    # Floor division:  var = var // 2 (2.0)
-
-"""
-Logical Operators:
-Combine conditional statements.
-"""
-
-true_condition = True
-false_condition = False
-
-result_and = true_condition and false_condition     # Logical AND
-result_or = true_condition or false_condition       # Logical OR
-result_not = not true_condition                     # Logical NOT
-
-"""
-Bitwise Operators:
-Perform bitwise operations on integers.
-"""
-
+# 1. Arithmetic Operators:
 a = 10
-b = 4
+b = 3
 
-bitwise_and = a & b         # Bitwise AND
-bitwise_or = a | b          # Bitwise OR
-bitwise_xor = a ^ b         # Bitwise XOR
-bitwise_not = ~a            # Bitwise NOT
-left_shift = a << b         # Left shift
-right_shift = a >> b        # Right shift
+addition = a + b          # Addition: 13
+subtraction = a - b       # Subtraction: 7
+multiplication = a * b    # Multiplication: 30
+division = a / b          # Float division: 3.333...
+floor_division = a // b   # Integer division: 3
+modulus = a % b           # Remainder: 1
+power = a ** b            # Exponentiation: 1000
 
-"""
-Membership Operators:
-Test if a sequence is present in an object.
-"""
+# 2. Comparison Operators:
+equals = a == b          # Equal to: False
+not_equals = a != b      # Not equal to: True
+greater = a > b          # Greater than: True
+less = a < b             # Less than: False
+greater_equal = a >= b   # Greater than or equal to: True
+less_equal = a <= b      # Less than or equal to: False
 
-list = [1, 2, 3, 4, 5]
+# 3. Logical Operators:
+x = True
+y = False
 
-result = 3 in list          # True
-result = 6 not in list      # True
-result = 7 in list          # False
+and_result = x and y     # Logical AND: False
+or_result = x or y       # Logical OR: True
+not_result = not x       # Logical NOT: False
 
-"""
-Identity Operators:
-Compare the memory locations of two objects.
-"""
+# 4. Assignment Operators:
+c = 5                    # Simple assignment
+c += 2                   # Add and assign (c = c + 2)
+c -= 1                   # Subtract and assign
+c *= 3                   # Multiply and assign
+c /= 2                   # Divide and assign
+c //= 2                  # Floor divide and assign
+c %= 3                   # Modulus and assign
+c **= 2                  # Power and assign
 
-x = [1, 2, 3]
-y = [1, 2, 3]
-z = x
+# 5. Identity Operators:
+list1 = [1, 2, 3]
+list2 = [1, 2, 3]
+list3 = list1
 
-result = x is z             # True
-result = x is y             # False
-result = x is not y         # True
+print(list1 is list3)    # True (same object)
+print(list1 is list2)    # False (different objects)
+print(list1 is not list2)# True
 
-"""
-Ternary Operator:
-A concise way to write conditional expressions.
-Syntax: result_if_true if condition else result_if_false
-"""
+# 6. Membership Operators:
+numbers = [1, 2, 3, 4, 5]
+print(3 in numbers)      # True
+print(6 not in numbers)  # True
 
-x = 10
-y = 20
-result = "x is greater" if x > y else "y is greater"
+# 7. Bitwise Operators:
+x = 5  # Binary: 0101
+y = 3  # Binary: 0011
 
-# --------------------------
+print(x & y)  # AND: 1 (0001)
+print(x | y)  # OR: 7 (0111)
+print(x ^ y)  # XOR: 6 (0110)
+print(~x)     # NOT: -6
+print(x << 1) # Left shift: 10 (1010)
+print(x >> 1) # Right shift: 2 (0010)
+
+# Operator Precedence:
+result = 2 + 3 * 4      # Multiplication before addition: 14
+result = (2 + 3) * 4    # Parentheses override precedence: 20
+
+# --------------------------------------------------------------------------------
 # 6. Control Flow Statements
-# --------------------------
+# --------------------------------------------------------------------------------
 
-"""
-Conditional Statements:
-Execute different actions based on conditions.
-"""
+# Control flow statements determine the execution path of your program based on
+# conditions and allow you to repeat blocks of code.
+
+# 1. Conditional Statements:
+# if statement
+age = 20
+if age >= 18:
+    print("Adult")        # Executes if condition is True
+
+# if-else statement
+temperature = 15
+if temperature > 25:
+    print("Hot day")
+else:
+    print("Cool day")     # Executes if condition is False
 
 # if-elif-else statement
-x = 10
-if x > 5:
-    print("x is greater than 5")
-elif x == 5:
-    print("x is equal to 5")
+score = 85
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")     # Executes as score is between 80 and 89
 else:
-    print("x is less than 5"
+    print("Grade: C")
 
-"""
-Looping Statements:
-Execute a block of code repeatedly.
-"""
-
-# for loop
+# 2. Looping Statements:
+# for loop - iterate over a sequence
 fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-    print(x)
+for fruit in fruits:
+    print(fruit)          # Prints each fruit in the list
 
-# range() generates a sequence of numbers
+# range() function with for loop
+for i in range(5):        # range(5) generates numbers 0 to 4
+    print(i)
 
-# for loop, range(stop) from 0 to stop value (not included)
-for i in range(5):
-    print(i) # Outputs: 0, 1, 2, 3, 4
-
-# for loop, range(start, stop) from start to stop value (not included)
-for i in range(2, 5):
-    print(i) # Outputs: 2, 3, 4
-
-# for loop, range(start, stop, step) incrementing by the step value
-for i in range(1, 10, 2):
-    print(i) # Outputs: 1, 3, 5, 7, 9
-else: # else is optional
-    print("Loop finished")
-
-# while loop, else is optional
+# while loop - repeat while condition is True
 count = 0
 while count < 5:
-    print("Count:", count)
-    count += 1
+    print(count)
+    count += 1           # Important: prevent infinite loop
+
+# 3. Loop Control Statements:
+# break - exit the loop
+for i in range(10):
+    if i == 5:
+        break           # Exit loop when i equals 5
+    print(i)
+
+# continue - skip current iteration
+for i in range(5):
+    if i == 2:
+        continue        # Skip printing when i equals 2
+    print(i)
+
+# pass - do nothing (placeholder)
+for i in range(3):
+    if i == 1:
+        pass           # Placeholder for future code
+    print(i)
+
+# 4. Loop with else:
+# else block executes when loop completes normally (not via break)
+for i in range(3):
+    print(i)
 else:
-    print("Loop finished")
+    print("Loop completed")  # Executes after loop finishes
 
-"""
-Control Transfer Statements:
-Change the flow of execution.
-"""
+# 5. Nested Loops:
+# Loop inside another loop
+for i in range(2):
+    for j in range(2):
+        print(f"i={i}, j={j}")  # Prints all combinations
 
-# break statement
-for i in range(5):
-    if i == 4:
-        break # Exit loop in 4th iteration
-    print(i)
+# 6. Comprehensions:
+# List comprehension
+squares = [x**2 for x in range(5)]  # Create list of squares
 
-# continue statement
-for i in range(5):
-    if i == 3:
-        continue # Skip 3rd iteration
-    print(i)
+# Dictionary comprehension
+square_dict = {x: x**2 for x in range(5)}
 
-# pass statement
-for i in range(5):
-    pass # do nothing, placeholder for future code
+# Set comprehension
+even_squares = {x**2 for x in range(10) if x % 2 == 0}
 
-# ------------------
-# 7. Data Structures
-# ------------------
+# 7. Match Statement (Python 3.10+):
+# Modern alternative to multiple if-elif statements
+status_code = 404
+match status_code:
+    case 200:
+        print("OK")
+    case 404:
+        print("Not Found")
+    case _:              # Default case
+        print("Unknown")
 
-"""
-Lists:
-Ordered collection of items, that can be changed (mutable).
-"""
+# --------------------------------------------------------------------------------
+# 7. Functions and Lambda Expressions
+# --------------------------------------------------------------------------------
 
-# Creating a list
-numbers_list = [1, 2, 3, 4, 5]
+# Functions are reusable blocks of code that perform specific tasks.
+# They help organize code and follow the DRY (Don't Repeat Yourself) principle.
 
-# Accessing elements
-print(numbers_list[0])    # 1
-print(numbers_list[-1])   # 5
+# 1. Basic Function Definition:
+def greet(name):
+    """
+    Simple greeting function.
+    Args:
+        name (str): Name to greet
+    Returns:
+        str: Greeting message
+    """
+    return f"Hello, {name}!"
 
-# Slicing
-print(numbers_list[1:3])    # [2, 3]
+# Function call
+message = greet("Alice")
+print(message)           # Output: Hello, Alice!
 
-# Modifying elements
-numbers_list[0] = 10
-print(numbers_list)         # [10, 2, 3, 4, 5]
+# 2. Parameters and Arguments:
+# Default parameters
+def power(base, exponent=2):
+    return base ** exponent
 
-# Adding elements
-numbers_list.append(6)      # Appends 6 to the end
-numbers_list.insert(2, 7)   # Inserts 7 at index 2
-print(numbers_list)         # [10, 2, 7, 3, 4, 5, 6]
+print(power(4))         # Uses default exponent=2: 16
+print(power(2, 3))      # Overrides default: 8
 
-# Removing elements
-numbers_list.remove(3)      # Removes the first occurrence of 3
-del numbers_list[4]         # Deletes element at index 4
-popped = numbers_list.pop() # Removes and returns the last element
+# Keyword arguments
+def display_info(name, age):
+    print(f"Name: {name}, Age: {age}")
 
-"""
-Tuples:
-Ordered collection of items, that can't be changed (immutable).
-"""
+display_info(age=25, name="Bob")  # Order doesn't matter
 
-# Creating a tuple
-numbers_tuple = (1, 2, 3, 4, 5)
+# 3. Variable Arguments:
+# *args - variable positional arguments
+def sum_all(*args):
+    return sum(args)
 
-# Accessing elements
-print(numbers_tuple[0])     # 1
-print(numbers_tuple[-1])    # 5
+print(sum_all(1, 2, 3, 4))  # Can take any number of arguments
 
-# Tuple unpacking
-a, b, c, d, e = numbers_tuple
-print(a)                    # 1
-print(b)                    # 2
-print(a, b, c, d, e)        # 1 2 3 4 5
+# **kwargs - variable keyword arguments
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
 
-"""
-Sets:
-A collection of unique items, unordered and mutable.
-"""
+print_info(name="Alice", age=25, city="New York")
 
-# Creating a set
-numbers_set = {1, 2, 3, 4, 5}
+# 4. Return Values:
+def divide(a, b):
+    if b == 0:
+        return None     # Return on error
+    return a / b        # Return result
 
-# Adding elements
-numbers_set.add(6)         # Adds 6 to the set
-numbers_set.update({8, 9}) # Adds multiple elements at once
-print(numbers_set)         # {1, 2, 4, 5, 6, 8, 9}
+# Multiple return values (actually returns a tuple)
+def get_coordinates():
+    return 3, 4
 
-# Removing elements
-numbers_set.remove(3)      # Removes 3 from the set
-numbers_set.discard(7)     # Removes 7 if present, does nothing if not
-popped = numbers_set.pop() # Removes and returns an arbitrary element
-numbers_set.clear()        # Removes all elements from the set
+x, y = get_coordinates()  # Tuple unpacking
 
-# Set operations
-set1 = {1, 2, 3}
-set2 = {3, 4, 5}
-union = set1 | set2          # Union
-intersection = set1 & set2   # Intersection
-difference = set1 - set2     # Difference
+# 5. Lambda Functions:
+# Anonymous functions for simple operations
+square = lambda x: x**2
+print(square(5))        # Output: 25
 
-"""
-Dictionaries:
-A collection of key-value pairs.
-"""
+# Lambda with multiple arguments
+sum_lambda = lambda a, b: a + b
+print(sum_lambda(2, 3)) # Output: 5
 
-# Creating a dictionary
+# 6. Function as First-Class Objects:
+def apply_operation(func, value):
+    return func(value)
+
+result = apply_operation(lambda x: x*2, 5)  # Output: 10
+
+# 7. Type Hints (Python 3.5+):
+def calculate_area(radius: float) -> float:
+    """Calculate circle area with type hints."""
+    import math
+    return math.pi * radius ** 2
+
+# 8. Decorators:
+# Higher-order functions that modify the behavior of other functions
+def timer(func):
+    """Simple timer decorator."""
+    from time import time
+    
+    def wrapper(*args, **kwargs):
+        start = time()
+        result = func(*args, **kwargs)
+        end = time()
+        print(f"Function {func.__name__} took {end-start:.2f} seconds")
+        return result
+    return wrapper
+
+@timer
+def slow_function():
+    """Simulates a slow operation."""
+    import time
+    time.sleep(1)
+    print("Finished executing!")
+
+slow_function() 
+
+# Output:
+# Finished executing!
+# Function slow_function took 1.00 seconds
+
+# --------------------------------------------------------------------------------
+# 8. Data Structures
+# --------------------------------------------------------------------------------
+
+# Python provides several built-in data structures for organizing and storing data.
+
+# 1. Lists and Tuples
+# -------------------
+
+# Lists: Ordered, mutable sequences
+fruits = ["apple", "banana", "cherry"]
+
+# List Operations:
+fruits.append("orange")    # Add item to end
+fruits.insert(1, "mango")  # Insert at specific position
+fruits.remove("banana")    # Remove specific item
+popped = fruits.pop()      # Remove and return last item
+fruits.sort()              # Sort in place
+fruits.reverse()           # Reverse in place
+length = len(fruits)       # Get length
+exists = "apple" in fruits # Check membership
+
+# List Slicing:
+numbers = [0, 1, 2, 3, 4, 5]
+subset = numbers[1:4]       # Get elements 1 through 3
+reversed = numbers[::-1]    # Reverse list
+every_second = numbers[::2] # Get every second element
+
+# Tuples: Ordered, immutable sequences
+coordinates = (10, 20)
+x, y = coordinates        # Tuple unpacking
+single_item = (1,)        # Single-item tuple needs comma
+
+# 2. Dictionaries
+# ---------------
+
+# Dictionaries: Key-value pairs
 person = {
-'name': 'David',
-'age': 30
+    "name": "Alice",
+    "age": 25,
+    "city": "New York"
 }
 
-# Accessing values
-person_name = person['name']    # "David"
-person_age = person.get('age')  # 30
+# Dictionary Operations:
+person["email"] = "alice@example.com"  # Add/update item
+del person["age"]                      # Remove item
+value = person.get("name", "Unknown")  # Safe access with default
+keys = person.keys()                   # Get all keys
+values = person.values()               # Get all values
+items = person.items()                 # Get key-value pairs
 
-# Modifying values
-person['name'] = 'John'
-person['age'] = 31
+# Dictionary Methods:
+person.update({"age": 26, "phone": "123"})  # Update multiple
+person.pop("phone")                         # Remove and return
+person.clear()                              # Remove all items
 
-# Adding new key-value pairs
-person['job'] = 'Engineer'
+# 3. Sets
+# -------
 
-# Removing elements
-del person["job"]        # Removes the key 'job'
-age = person.pop("age")  # Removes and returns the value of 'age'
+# Sets: Unordered collections of unique elements
+numbers = {1, 2, 3, 3}    # Duplicates are automatically removed
 
-# Looping through a dictionary
-for key, value in person.items():
-    print(key, value)
+# Set Operations:
+numbers.add(4)            # Add single item
+numbers.update([5, 6])    # Add multiple items
+numbers.remove(2)         # Remove item (raises error if missing)
+numbers.discard(10)       # Remove item (no error if missing)
 
-# ------------
-# 8. Functions
-# ------------
+# Set Mathematics:
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+union = set1 | set2        # Union: {1, 2, 3, 4, 5}
+intersection = set1 & set2 # Intersection: {3}
+difference = set1 - set2   # Difference: {1, 2}
+symmetric = set1 ^ set2    # Symmetric difference: {1, 2, 4, 5}
 
-"""
-Function Definition:
-A block of reusable code, defined using 'def'.
-"""
+# --------------------------------------------------------------------------------
+# 9. Object-Oriented Programming
+# --------------------------------------------------------------------------------
 
-def greet():
-    print("Hello world!")
+# Python is an object-oriented programming language where everything is an object.
 
-greet()  # Hello world!
+# Class Definition:
+class Person:
+    """
+    A class representing a person.
+    """
+    
+    # Class variable (shared by all instances)
+    species = "Homo sapiens"
+    
+    def __init__(self, name: str, age: int):
+        """Initialize a new Person instance."""
+        self.name = name     # Instance variable
+        self.age = age
+        self._private = True # Convention for private variable
+    
+    def greet(self) -> str:
+        """Return a greeting."""
+        return f"Hello, my name is {self.name}"
+    
+    @property
+    def age_group(self) -> str:
+        """Property decorator example."""
+        if self.age < 18:
+            return "minor"
+        return "adult"
+    
+    @classmethod
+    def from_birth_year(cls, name: str, year: int):
+        """Alternative constructor using class method."""
+        from datetime import datetime
+        age = datetime.now().year - year
+        return cls(name, age)
+    
+    @staticmethod
+    def species_info():
+        """Static method example."""
+        return "Humans are mammals"
 
-"""
-Function Arguments:
-Values passed to a function call.
-"""
+# Creating Objects:
+person = Person("Alice", 25)
+print(person.greet())
+print(person.age_group)
 
+# Inheritance:
+class Student(Person):
+    def __init__(self, name: str, age: int, student_id: str):
+        super().__init__(name, age)  # Call parent constructor
+        self.student_id = student_id
+    
+    def study(self):
+        return f"{self.name} is studying"
+
+# Multiple Inheritance:
+class A:
+    def method(self):
+        return "A method"
+
+class B:
+    def method(self):
+        return "B method"
+
+class C(A, B):  # Method Resolution Order (MRO) determines which method to use
+    pass
+
+# Special Methods:
+class Point:
+    def __init__(self, x: float, y: float):
+        self.x = x
+        self.y = y
+    
+    def __str__(self) -> str:
+        """String representation for end users."""
+        return f"Point({self.x}, {self.y})"
+    
+    def __repr__(self) -> str:
+        """String representation for developers."""
+        return f"Point(x={self.x}, y={self.y})"
+    
+    def __eq__(self, other) -> bool:
+        """Define equality comparison."""
+        if not isinstance(other, Point):
+            return NotImplemented
+        return self.x == other.x and self.y == other.y
+
+# --------------------------------------------------------------------------------
+# 10. Modules and Packages
+# --------------------------------------------------------------------------------
+
+# Modules are Python files containing code, while packages are directories
+# containing multiple modules. They help organize and reuse code.
+
+# Importing Modules:
+import math                    # Import entire module
+from datetime import datetime  # Import specific item
+import numpy as np             # Import with alias
+from typing import List, Dict  # Import type hints
+
+# Creating a Module:
+# Save as mymodule.py
 def greet(name):
-    print("Hello " + name + "!")
+    return f"Hello, {name}"
 
-greet("John")  # Hello John!
+# Using the Module:
+import mymodule
+print(mymodule.greet("Alice"))
 
-"""
-Default Arguments:
-Assigns a default value to a function parameter.
-"""
+# Package Structure:
+# my_package/
+# ├── __init__.py
+# ├── module1.py
+# └── module2.py
 
-def greet(name="world"):
-    print("Hello ", name)
+# Built-in Modules:
+import os               # Operating system interface
+import json             # JSON encoding/decoding
+import random           # Random number generation
+import collections      # Specialized container datatypes
 
-greet()          # Output: Hello world
-greet("David")   # Output: Hello David
+# --------------------------------------------------------------------------------
+# 11. File Handling and I/O
+# --------------------------------------------------------------------------------
 
-"""
-Keyword Arguments:
-Passing arguments to a function with key-value.
-"""
+# Python provides built-in functions for file operations.
 
-def greet(name, message):
-    print("Hello ", name + "!", message)
+# Opening Files:
+# Modes: 'r' (read), 'w' (write), 'a' (append), 'b' (binary), '+' (read and write), 
+#        'x' (Exclusive creation), 't' (Text mode)
+with open('example.txt', 'r') as file:  # Context manager
+    content = file.read()               # Read entire file
+    
+# Reading Files:
+with open('example.txt', 'r') as file:
+    lines = file.readlines()            # Read all lines into list
+    line = file.readline()              # Read single line
+    for line in file:                   # Iterate over lines
+        print(line.strip())
 
-greet(message="Good morning!", name="David")  # Hello David! Good morning!
+# Writing Files:
+with open('output.txt', 'w') as file:
+    file.write('Hello\n')               # Write string
+    file.writelines(['Line 1\n',        # Write multiple lines
+                    'Line 2\n'])
 
-"""
-Arbitrary Arguments (*args):
-Accept any number of arguments.
-"""
-
-def add(*args):
-    total = 0
-    for num in args:
-        total += num
-    return total
-
-result = add(1, 2, 3)
-print(result)  # 6
-
-"""
-Arbitrary Keyword Arguments (**kwargs):
-Accept any number of keyword arguments.
-"""
-
-def greet(**kwargs):
-    for key, value in kwargs.items():
-        print(key + ": " + value)
-
-greet(David="Hi", John="Hello")
-# David: Hi
-# John: Hello
-
-"""
-Returning Values:
-Return a value and terminate the function.
-"""
-
-def add(x, y):
-    return x + y
-
-result = add(3, 5)
-print(result)   # 8
-
-# Function with multiple return values
-def rectangle_info(length, width):
-    area = length * width
-    perimeter = 2 * (length + width)
-    return area, perimeter
-
-area, perimeter = rectangle_info(5, 3)
-
-print("Rectangle Area:", area)
-print("Rectangle Perimeter:", perimeter)
-
-"""
-Lambda Functions:
-Anonymous functions defined using 'lambda' keyword.
-Syntax: lambda arguments: expression
-"""
-
-add = lambda x, y: x + y
-
-result = add(3, 5)
-print(result)  # 8
-
-"""
-Recursion:
-A function that calls itself.
-"""
-
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
-
-result = factorial(5)
-print(result)  # 120
-
-"""
-Scope of Variables:
-Understand variable visibility.
-"""
-
-# Global variable
-global_var = 10
-
-def func_1():
-    # Accessing global variable
-    print("Inside func_1:", global_var)
-
-func_1()  # Inside func_1: 10
-
-def func_2():
-    local_var = 20
-    print("Inside func_2:", local_var)
-
-func_2()     # Inside func_2: 20
-
-# Accessing local_var outside func_2 will raise an error
-
-# ----------------
-# 9. File Handling
-# ----------------
-
-"""
-File Modes:
-Different modes for opening files - read, write, append, etc.
-"""
-
-# 'r': Read mode (default)
-# 'w': Write mode (overwrite existing content)
-# 'a': Append mode (append to the end of the file)
-# 'b': Binary mode (for binary files)
-# 't': Text mode (default, for text files)
-# 'r+': Update mode (read and write)
-
-"""
-Opening a File:
-Opening a file for reading, writing, or appending.
-"""
-
-# Open a file for reading
-file = open("file.txt", "r")
-
-# Open a file for writing
-file = open("file.txt", "w")
-
-# Open a file for appending
-file = open("file.txt", "a")
-
-"""
-Reading from a File:
-Reading data from an opened file.
-"""
-
-# Reading entire file
-content = file.read()
-
-# Reading line by line
-line = file.readline()
-
-# Reading all lines into a list
-lines = file.readlines()
-
-"""
-Writing to a File:
-Writing data to an opened file.
-"""
-
-# Writing/Appending a string to a file
-file.write("Hello world!")
-
-# Writing a list of strings to a file
-lines = ["First Line\n", "Second Line\n", "Third Line\n"]
-file.writelines(lines)
-
-"""
-Closing a File:
-Free up system resources by closing the file.
-"""
-
-file.close()
-
-"""
-File Methods:
-Methods to perform operations on files.
-"""
-
-# file.read(): Read from the file
-# file.write(string): Write to the file
-# file.readline(): Read a single line
-# file.readlines(): Read all lines into a list
-# file.close(): Close the file
-# file.seek(offset): Move the file pointer to a specific position
-# file.tell(): Get the current position of the file pointer
-# file.flush(): Flush the internal buffer
-
-"""
-Using 'with' Statement for File Handling:
-Automatically closes the file when done.
-"""
-
-# Opening a file in append mode
-with open('file.txt', 'a') as file:
-    # Perform operations on the file
+# Binary Files:
+with open('image.jpg', 'rb') as file:   # Read binary
     data = file.read()
-    print(data)
-# File is automatically closed after the block ends
 
-# ----------------------
-# 10. Exception Handling
-# ----------------------
+# File System Operations:
+import os
+import shutil
 
-"""
-try-except Block:
-Handling exceptions using try and except blocks.
-"""
+# Directory Operations:
+os.mkdir('new_dir')                     # Create directory
+os.makedirs('path/to/new_dir')          # Create nested directories
+os.rmdir('dir_name')                    # Remove empty directory
+os.listdir('.')                         # List directory contents
 
+# File Operations:
+os.rename('old.txt', 'new.txt')         # Rename file
+os.remove('file.txt')                   # Delete file
+shutil.copy('src.txt', 'dst.txt')       # Copy file
+shutil.move('src.txt', 'dst/')          # Move file
+
+# Path Operations:
+from pathlib import Path
+
+path = Path('folder/file.txt')
+print(path.exists())                    # Check if path exists
+print(path.is_file())                   # Check if path is file
+print(path.suffix)                      # Get file extension
+
+# --------------------------------------------------------------------------------
+# 12. Exception Handling
+# --------------------------------------------------------------------------------
+
+# Exception handling allows you to gracefully handle errors in your code.
+
+# Basic Try-Except:
 try:
-    # Code that may raise an exception
-    result = 10 / 0
-except ZeroDivisionError:
-    # Handle the exception
-    print("An error occurred")
+    x = 1 / 0                          # Raises ZeroDivisionError
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
 
-
-"""
-try-except-else Block:
-Executes the else block if no exception occurs.
-"""
-
+# Multiple Except Blocks:
 try:
-    result = 10 / 2
-except ZeroDivisionError:
-    print("Cannot divide by zero")
-else:
-    print("Result:", result)
-
-"""
-try-except-finally Block:
-Finally block get executed regardless of an exception or not.
-"""
-
-try:
-    result = 10 / 0
-except ZeroDivisionError:
-    print("Cannot divide by zero")
-finally:
-    print("Execution completed")
-
-"""
-Multiple Except Blocks:
-Handling multiple exceptions using separate except blocks.
-"""
-
-try:
-    # Code that may raise an exception
-    result = 10 / 0
-except ZeroDivisionError:
-    # Handle division by zero
-    print("Error: Division by zero")
+    num = int("abc")                   # Raises ValueError
 except ValueError:
-    # Handle value error
-    print("Error: Value error")
+    print("Invalid number")
+except TypeError:
+    print("Type error occurred")
+except Exception as e:                 # Catch all other exceptions
+    print(f"Unexpected error: {e}")
 
-"""
-Raising Exceptions:
-Manually raising exceptions using the raise keyword.
-"""
+# Try-Except-Else-Finally:
+try:
+    file = open("data.txt")
+except FileNotFoundError:
+    print("File not found")
+else:                                 # Runs if no exception
+    print("File operations successful")
+finally:                              # Always runs
+    file.close()
 
-a = 3
-if a < 5:
-    raise Exception("x should not exceed 5")
-
-"""
-Custom Exceptions:
-Defining custom exceptions for specific use cases.
-"""
-
-class MyError(Exception):
+# Custom Exceptions:
+class CustomError(Exception):
+    """Custom exception class"""
     def __init__(self, message):
         self.message = message
+        super().__init__(self.message)
 
-try:
-    raise MyError("This is a custom error")
-except MyError as e:
-    print("Custom error:", e.message)
+# Raising Exceptions:
+def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+    if not isinstance(age, int):
+        raise TypeError("Age must be an integer")
 
-# -------------------------------------
-# 11. Object-Oriented Programming (OOP)
-# -------------------------------------
+# Context Managers:
+class FileManager:
+    def __init__(self, filename):
+        self.filename = filename
+        self.file = None
+    
+    def __enter__(self):
+        self.file = open(self.filename, 'r')
+        return self.file
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.file:
+            self.file.close()
 
-"""
-Classes and Objects:
-Classes are blueprints for creating objects with attributes and methods.
-"""
-class Car:
-    # __init__: Constructor, a special method used for initializing objects
-   def __init__(self, brand="Unknown", model="Unknown"):
-        self.brand = brand
-        self.model = model
+# Using context manager:
+with FileManager('example.txt') as file:
+    content = file.read()
 
-   # Method
-   def display_info(self):
-       print(f"Brand: {self.brand}, Model: {self.model}.")
+# --------------------------------------------------------------------------------
+# 13. Advanced Python Features
+# --------------------------------------------------------------------------------
 
-# Creating objects
-car_1 = Car("Toyota", "Camry")
-car_2 = Car("Honda", "Accord")
+# 1. Iterators and Generators
+# ---------------------------
 
-# Accessing attributes
-print(car_1.brand)  # Toyota
+# Iterators are objects that implement __iter__ and __next__ methods
+class Counter:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.start >= self.end:
+            raise StopIteration
+        current = self.start
+        self.start += 1
+        return current
 
-# Calling methods
-car_1.display_info()  # Brand: Toyota, Model: Camry
+# Using iterator
+for num in Counter(0, 3):
+    print(num)              # Prints 0, 1, 2
 
-"""
-Inheritance:
-Allows a class to inherit properties and behavior from another class.
-"""
-# Inherits from Car
-class ElectricCar(Car):
-    # Constructor
-    def __init__(self, brand, model, battery_life):
-        Car.__init__(brand, model)
-        self.battery_life = battery_life
+# Generators using yield
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
 
-    # Method overriding
-    def display_info(self):
-        print(f"Brand: {self.brand}, Model: {self.model}, Battery Life: {self.battery_life}.")
+# Using generator
+for num in fibonacci(5):
+    print(num)              # Prints 0, 1, 1, 2, 3
 
-    # Additional method specific to ElectricCar
-    def charge(self):
-        print("Charging the car...")
+# Generator expressions
+squares = (x**2 for x in range(5))
 
-# Creating objects of subclass
-electric_car = ElectricCar("Toyota", "Prius", 400)
+# Class decorators
+def singleton(cls):
+    instances = {}
+    def get_instance(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+    return get_instance
 
-# Accessing attributes and methods from the superclass
-electric_car.display_info()  # Brand: Toyota, Model: Prius, Battery Life: 400
-
-"""
-Encapsulation:
-Hide the internal state of an object, and only allow access through methods.
-"""
-
-class LibraryBook:
+@singleton
+class Configuration:
     def __init__(self):
-        self._status = 'Available'  # Private variable
+        self.settings = {}
 
-    def check_out(self):
-        self._status = 'Checked Out'
+# 2. Context Managers
+# -------------------
 
-    def return_book(self):
-        self._status = 'Available'
+# Context manager using class - e.g. measures execution time
+class Timer:
+    def __enter__(self):
+        """Called when entering 'with' block. Sets start time."""
+        import time
+        self.start = time.time()
+        return self
+    
+    def __exit__(self, *args):
+        """Called when exiting 'with' block. Calculates duration."""
+        import time
+        self.end = time.time()
+        self.duration = self.end - self.start
 
-    # Getter and Setter methods for encapsulated fields
-    def get_status(self):
-        return self._status
+# Usage: 
+# with Timer() as t:
+#     do_something()
+# print(t.duration)
 
-    def set_status(self, status):
-        self._status = status
+# Context manager using decorator - e.g. handles temporary files
+from contextlib import contextmanager
 
+@contextmanager
+def temporary_file(filename):
+    """Creates a file that is automatically deleted after use."""
+    try:
+        f = open(filename, 'w')      # Create and open file
+        yield f                      # Provide file to with block
+    finally:
+        f.close()                    # Ensure file is closed
+        import os
+        os.remove(filename)          # Delete the temporary file
 
-book = LibraryBook()
-book.set_status('Checked Out')
-print("Status:", book.get_status())
+# Usage: 
+# with temporary_file('temp.txt') as f:
+#      f.write('data')  # File is automatically deleted after use.
 
-"""
-Polymorphism:
-Ability of objects to take on different forms based on their class.
-"""
+# --------------------------------------------------------------------------------
+# 14. Working with Data
+# --------------------------------------------------------------------------------
 
-def describe_vehicle(vehicle):
-    vehicle.display_info()
+# 1. Regular Expressions
+# ----------------------
 
-describe_vehicle(car_1)         # Brand: Toyota, Model: Camry
-describe_vehicle(electric_car)  # Brand: Toyota, Model: Prius, Battery Life: 400
+import re
 
-"""
-Class and Instance Variables:
-Class variables are shared among all instances of a class.
-Instance variables are unique to each instance.
-"""
+# Pattern matching
+text = "Python 3.9"
+if re.match(r'Python \d\.\d', text):
+    print("Version string matched")
 
-class Circle:
-    pi = 3.14  # Class variable
+# Finding all matches
+text = "Python2 Python3 Python4"
+matches = re.findall(r'Python\d', text)
 
-    def __init__(self, radius):
-        self.radius = radius  # Instance variable
+# Substitution
+text = "Date: 2023-08-15"
+new_text = re.sub(r'(\d{4})-(\d{2})-(\d{2})', r'\3/\2/\1', text)
 
-    def area(self):
-        return Circle.pi * self.radius ** 2
+# 2. JSON Processing
+# ------------------
 
-"""
-Static and Class Methods:
-Static methods don't access or modify class or instance variables.
-Class methods operate on class variables and can access or modify them.
-"""
+import json
 
-class MathUtils:
-    @staticmethod
-    def add(x, y):
-        return x + y
+# Writing JSON
+data = {
+    "name": "Alice",
+    "age": 30,
+    "cities": ["New York", "London"]
+}
+json_string = json.dumps(data, indent=2)
 
-    @classmethod
-    def square(cls, x):
-        return x ** 2
+# Reading JSON
+parsed_data = json.loads(json_string)
+
+# File operations
+with open('data.json', 'w') as f:
+    json.dump(data, f, indent=2)
+
+with open('data.json', 'r') as f:
+    loaded_data = json.load(f)
+
+# 3. Date and Time
+# ----------------
+
+from datetime import datetime, timedelta
+
+# Current date and time
+now = datetime.now()
+today = datetime.today()
+utc_now = datetime.utcnow()
+
+# Creating datetime objects
+date = datetime(2023, 8, 15, 14, 30)
+timestamp = date.timestamp()
+
+# Date formatting
+formatted = date.strftime('%Y-%m-%d %H:%M:%S')
+parsed = datetime.strptime('2023-08-15', '%Y-%m-%d')
+
+# Date arithmetic
+tomorrow = today + timedelta(days=1)
+next_week = today + timedelta(weeks=1)
+
+# --------------------------------------------------------------------------------
+# 15. Testing and Debugging
+# --------------------------------------------------------------------------------
+
+# Python provides built-in tools for testing and debugging code.
+
+# Unit Testing with unittest:
+import unittest
+
+class TestStringMethods(unittest.TestCase):
+    def setUp(self):
+        """Run before each test method."""
+        self.text = "hello"
+
+    def test_upper(self):
+        """Test upper() method."""
+        self.assertEqual(self.text.upper(), "HELLO")
+
+    def test_split(self):
+        """Test split() method."""
+        self.assertEqual("hello world".split(), ["hello", "world"])
+
+# Running tests:
+if __name__ == '__main__':
+    unittest.main()
+
+# Assertions:
+def divide(a, b):
+    assert b != 0, "Division by zero!"
+    return a / b
+
+# Debugging with pdb:
+import pdb
+
+def complex_function():
+    x = 5
+    y = 0
+    pdb.set_trace()    # Start debugger
+    z = x / y          # This will raise an error
+
+# Using print for debugging:
+def debug_function():
+    print(f"Debug: entering function")  # Debug message
+    result = some_calculation()
+    print(f"Debug: result = {result}")  # Debug message
+    return result
+
+# --------------------------------------------------------------------------------
+# 16. Standard Library Highlights
+# --------------------------------------------------------------------------------
+
+# Python's standard library provides a rich set of modules
+
+# Collections:
+from collections import defaultdict, Counter, deque
+
+# Default dictionary
+word_count = defaultdict(int)
+for word in ["apple", "banana", "apple"]:
+    word_count[word] += 1
+
+# Counter
+inventory = Counter(["apple", "banana", "apple"])
+
+# Double-ended queue
+queue = deque(["first", "second"])
+queue.append("third")      # Add to right
+queue.appendleft("zero")   # Add to left
+
+# Random Numbers:
+import random
+
+random.random()           # Float between 0 and 1
+random.randint(1, 10)     # Integer between 1 and 10
+random.choice([1, 2, 3])  # Random element from sequence
+
+# Math Operations:
+import math
+
+math.pi                  # Pi constant
+math.sqrt(16)            # Square root
+math.ceil(3.7)           # Round up
+math.floor(3.7)          # Round down
+
+# --------------------------------------------------------------------------------
+# 17. Concurrency and Parallelism
+# --------------------------------------------------------------------------------
+
+# Python offers several ways to handle concurrent operations
+
+# Threading - for I/O-bound tasks:
+import threading
+
+def worker():
+    """Thread worker function."""
+    print("Worker thread running")
+
+thread = threading.Thread(target=worker)
+thread.start()           # Begin thread execution
+thread.join()            # Wait for thread completion
+
+# Multiprocessing - for CPU-bound tasks:
+from multiprocessing import Process
+
+def process_worker():
+    """Process worker function."""
+    print("Process running")
+
+process = Process(target=process_worker)
+process.start()          # Start new process
+process.join()           # Wait for process completion
+
+# Asyncio (Python 3.5+) - for cooperative multitasking:
+import asyncio
+
+async def async_function():
+    """Asynchronous function."""
+    await asyncio.sleep(1)
+    return "Done"
+
+# Running async function:
+async def main():
+    result = await async_function()
+    print(result)
+
+asyncio.run(main())      # Execute async program

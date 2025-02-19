@@ -1,9 +1,9 @@
-----------------------------------
+-- --------------------------------------------------------------------------------
 -- MySQL Reference and Guide
-
+-- 
 -- ReferenceCollection.com
 -- Licensed under CC BY-SA
-----------------------------------
+-- --------------------------------------------------------------------------------
 
 -- Table of Contents
 --------------------
@@ -29,9 +29,9 @@
 -- 20. Replication
 -- 21. Partitioning
 
-------------------
+-- --------------------------------------------------------------------------------
 -- 1. Introduction
-------------------
+-- --------------------------------------------------------------------------------
 
 -- Overview
 -----------
@@ -67,9 +67,9 @@
 -- Data Control Language (DCL): GRANT, REVOKE
 -- Transaction Control Language (TCL): COMMIT, ROLLBACK, SAVEPOINT
 
-------------------
+-- --------------------------------------------------------------------------------
 -- 2. Basic Syntax
-------------------
+-- --------------------------------------------------------------------------------
 
 -- Comments
 -----------
@@ -93,9 +93,9 @@ SELECT 'Hello, MySQL';
 CREATE DATABASE ExampleDB;
 CREATE DATABASE exampledb; -- This will create a different database
 
-----------------
+-- --------------------------------------------------------------------------------
 -- 3. Data Types
-----------------
+-- --------------------------------------------------------------------------------
 -- MySQL supports various data types.
 
 -- Numeric Types
@@ -118,9 +118,9 @@ BOOLEAN       -- True or false values
 ENUM          -- String object with a value chosen from a list
 JSON          -- Stores and enables efficient access to JSON
 
--------------------------
+-- --------------------------------------------------------------------------------
 -- 4. Database Operations
--------------------------
+-- --------------------------------------------------------------------------------
 -- In MySQL, data is organized into databases, which contain tables.
 
 -- Listing databases
@@ -135,9 +135,9 @@ DROP DATABASE IF EXISTS my_database;
 -- Selecting a database
 USE my_database;
 
-----------------------
+-- --------------------------------------------------------------------------------
 -- 5. Table Operations
-----------------------
+-- --------------------------------------------------------------------------------
 -- Tables are composed of columns (fields) and rows (records).
 -- Syntax: <column> <datatype> <constraints>
 
@@ -159,9 +159,9 @@ ALTER TABLE products DROP COLUMN discount;
 -- Dropping a table
 DROP TABLE products;
 
------------------
+-- --------------------------------------------------------------------------------
 -- 6. Constraints
------------------
+-- --------------------------------------------------------------------------------
 -- MySQL constraints are used to specify rules for the data in a table. 
 -- They ensure the integrity of data in the database.
 --
@@ -187,9 +187,9 @@ CREATE TABLE orders (
 -- Adding a CHECK constraint
 ALTER TABLE orders ADD CONSTRAINT chk_valid_order CHECK (order_date <= CURRENT_DATE);
 
------------------------
+-- --------------------------------------------------------------------------------
 -- 7. Data Manipulation
------------------------
+-- --------------------------------------------------------------------------------
 -- Inserting/Updating data in your tables.
 
 -- You can insert either a single row or multiple rows
@@ -205,9 +205,9 @@ UPDATE products SET price = 879.99 WHERE id = 2;
 -- Deleting a specific product from the table based on its ID.
 DELETE FROM products WHERE id = 3;
 
--------------------
+-- --------------------------------------------------------------------------------
 -- 8. Querying Data
--------------------
+-- --------------------------------------------------------------------------------
 -- Retrieving data from your tables.
 
 -- Retrieve all columns for each product in table
@@ -225,9 +225,9 @@ SELECT * FROM products ORDER BY created_at DESC;
 -- Retrieve the first 10 products with their names and prices
 SELECT product_name, price FROM products LIMIT 10;
 
------------
+-- --------------------------------------------------------------------------------
 -- 9. Joins
------------
+-- --------------------------------------------------------------------------------
 -- Joins are crucial for querying data spread across multiple tables.
 -- They are used to combine rows from two or more tables based 
 -- on a related column between them.
@@ -257,9 +257,9 @@ SELECT products.product_name, orders.order_id, orders.customer_name, orders.quan
 FROM products
 RIGHT JOIN orders ON products.id = orders.product_id;
 
---------------------------
+-- --------------------------------------------------------------------------------
 -- 10. Aggregate Functions
---------------------------
+-- --------------------------------------------------------------------------------
 -- Used to perform calculations on a set of values and return a single value.
 -- Often used with the GROUP BY clause to group rows that have the same values.
 --
@@ -289,9 +289,9 @@ SELECT customer_id, SUM(amount) AS total_spent
 FROM orders
 GROUP BY customer_id;
 
------------------
+-- --------------------------------------------------------------------------------
 -- 11. Subqueries
------------------
+-- --------------------------------------------------------------------------------
 -- A Subquery is a query nested inside another query. They are useful for 
 -- breaking down complex queries and can be used in SELECT, WHERE, HAVING, 
 -- FROM, and EXISTS clauses.
@@ -338,9 +338,9 @@ WHERE EXISTS (
     WHERE o.product_id = p.id
     AND o.order_date > CURDATE() - INTERVAL 30 DAY
 );
---------------
+-- --------------------------------------------------------------------------------
 -- 12. Indexes
---------------
+-- --------------------------------------------------------------------------------
 -- Improve query performance by speeding up data retrieval. But may slow 
 -- down data modification operations such as INSERT, UPDATE, and DELETE.
 --
@@ -364,9 +364,9 @@ CREATE INDEX idx_category_price ON Products (category, price);
 -- Drop the full-text index on the description column.
 DROP INDEX idx_description ON Products;
 
-------------------------
+-- --------------------------------------------------------------------------------
 -- 13. Stored Procedures
-------------------------
+-- --------------------------------------------------------------------------------
 -- A set of SQL statements that can be stored in the database and executed 
 -- repeatedly. They improve performance by reducing client-server communication.
 --
@@ -439,9 +439,9 @@ CALL PlaceOrder(1, 'Customer Name', 2);
 -- Dropping Stored Procedures.
 DROP PROCEDURE IF EXISTS PlaceOrder;
 
--------------------
+-- --------------------------------------------------------------------------------
 -- 14. Transactions
--------------------
+-- --------------------------------------------------------------------------------
 -- Transaction is a sequence of one or more SQL operations that are executed 
 -- as a single unit. If any statement fails, the entire transaction can be 
 -- rolled back to maintain data integrity.
@@ -487,9 +487,9 @@ ROLLBACK TO SAVEPOINT savepoint_1;
 -- if everything is correct, commit the transaction.
 COMMIT;
 
-------------
+-- --------------------------------------------------------------------------------
 -- 15. Views
-------------
+-- --------------------------------------------------------------------------------
 -- Views are virtual tables based on the result of an SQL statement. 
 -- They don't store data and provide a way to simplify complex queries, 
 -- Improve data security and Ensure a consistent data interface.
@@ -530,9 +530,9 @@ SELECT * FROM OrderDetails;
 -- Dropping a view.
 DROP VIEW OrderDetails;
 
----------------
+-- --------------------------------------------------------------------------------
 -- 16. Triggers
----------------
+-- --------------------------------------------------------------------------------
 -- Triggers are database objects that are automatically executed when 
 -- certain events occurs. 
 -- 
@@ -579,9 +579,9 @@ DELIMITER ;
 -- Dropping a trigger.
 DROP TRIGGER after_order_update;
 
-----------------------
+-- --------------------------------------------------------------------------------
 -- 17. User Management
-----------------------
+-- --------------------------------------------------------------------------------
 -- User management involves creating, modifying, and deleting user 
 -- accounts, as well as granting and revoking privileges.
 
@@ -616,9 +616,9 @@ ALTER USER 'newuser'@'localhost' IDENTIFIED BY 'newpassword';
 -- Delete the user from the database.
 DROP USER 'newuser'@'localhost';
 
--------------------------
+-- --------------------------------------------------------------------------------
 -- 18. Backup and Restore
--------------------------
+-- --------------------------------------------------------------------------------
 -- Regular backups are crucial for data safety and recovery.
 
 -- Backup the entire database to a SQL file.
@@ -639,9 +639,9 @@ SHOW BINARY LOGS;
 -- 3. Apply binary logs up to a specific timestamp:
 mysqlbinlog /path/to/mysql-bin.000001 | mysql -u username -p my_database
 
---------------
+-- --------------------------------------------------------------------------------
 -- 19. Locking
---------------
+-- --------------------------------------------------------------------------------
 -- A Mechanisms used to manage concurrent access to database resources.
 -- Preventing conflicts when multiple transactions interact with the same data.
 -- 
@@ -678,9 +678,9 @@ SELECT * FROM Products WHERE category = 'Electronics' LOCK IN SHARE MODE;
 -- Releases the shared lock
 COMMIT;
 
-------------------
+-- --------------------------------------------------------------------------------
 -- 20. Replication
-------------------
+-- --------------------------------------------------------------------------------
 -- Is a process that allows you to automatically copy data from one 
 -- database server (the master) to one or more database servers (the slaves).
 -- 
@@ -741,9 +741,9 @@ STOP SLAVE;
 -- Reset replication.
 RESET SLAVE;
 
--------------------
+-- --------------------------------------------------------------------------------
 -- 21. Partitioning
--------------------
+-- --------------------------------------------------------------------------------
 -- Is a database feature that allows you to divide a large table into smaller, 
 -- more manageable pieces, yet still treat them as a single table.
 -- 
